@@ -1,0 +1,22 @@
+.header {
+  background-color: var(--header-color);
+}
+
+.usuario {
+  color: #3D55AD;
+}
+
+.separador {
+  color: #13B1BB;
+}
+
+.imagenes{
+    background-color: #259BA3;
+    border-radius: 10px;
+    height: 200px;
+    width: 500px;
+}
+
+.enlace{
+    color: #025668;
+}
