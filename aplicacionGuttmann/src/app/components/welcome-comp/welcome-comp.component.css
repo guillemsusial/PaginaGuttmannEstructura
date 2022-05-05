@@ -10,11 +10,21 @@
   color: #13B1BB;
 }
 
+.col{
+    display: flex;    
+}
+
 .imagenes{
     background-color: #259BA3;
-    border-radius: 10px;
-    height: 200px;
-    width: 500px;
+    margin: auto;
+    border-radius: 10px;   
+    width: 100%;
+    height: 70%;
+    max-width: 80%;
+    animation-delay: 0s;
+    animation-direction: normal;
+    animation-duration: 2400ms;
+    animation-iteration-count: 1;
 }
 
 .enlace{
