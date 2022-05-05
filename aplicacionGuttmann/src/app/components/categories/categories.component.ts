@@ -13,6 +13,8 @@ export class CategoriesComponent implements OnInit {
   constructor() {}
 
   ngOnInit(){
+    $('.div-game').show();
+    
     $('button[category="category1"]').click(function (){
       $('.div-game').hide();
       $('div[category="category1"]').show();
