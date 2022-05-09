@@ -1,3 +1,4 @@
+/*CSS de de los div de pruebas y categorias*/
 .div-game{
     background-color: #8cc9d1;
     border-radius: 10px;
@@ -26,4 +27,4 @@
 .button-categories-active {
     background-color: #2532a1;
     color: white;
-  }
+}
