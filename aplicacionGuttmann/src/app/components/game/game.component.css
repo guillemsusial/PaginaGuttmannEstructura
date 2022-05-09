@@ -1,0 +1,26 @@
+#game{
+    width: 80vw;
+    height:40vw;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin: 0 auto;
+    border-radius:10pt;
+    background-color: rgb(37, 159, 163);
+    display: flex;
+}
+.card{
+    width:15vw;
+    height:10vw;
+    background-color:rgb(247, 247, 247);
+}
+#game{ 
+
+    display: grid;
+    padding:4vw ;
+    grid-template-columns:  repeat(4, auto) ;
+    
+   
+    grid-gap: 10px;
+}
+.Active{
+    background-color: green;
+}
