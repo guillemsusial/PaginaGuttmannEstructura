@@ -1,0 +1,73 @@
+#game{
+    width: 80vw;
+    height:40vw;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin: 0 auto;
+    border-radius:10pt;
+    background-color: rgb(37, 159, 163);
+    display: flex;
+}
+.card{
+    width:15vw;
+    height:10vw;
+    background-color:rgb(247, 247, 247);
+}
+#game{ 
+
+    display: grid;
+    padding:4vw ;
+    grid-template-columns:  repeat(4, auto) ;
+    
+   
+    grid-gap: 10px;
+}
+.Active{
+    background-color: green;
+}
+
+.buttonContainer {
+    display: inline-grid;
+    grid-gap: 10px;
+    grid-template-columns: auto auto;
+    transform: rotate(45deg);
+}
+/*.card:hover{
+    background-color:rgba(5, 233, 5, 0.301);
+}*/
+
+
+
+.card:active,
+.active {
+    filter: brightness(125%);
+}
+
+
+#startButton {
+    width: 75px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: none;
+    font-family: 'Merriweather', serif;
+    cursor: pointer;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #587792;
+    padding: 5px;
+}
+
+#startButton:disabled {
+    background-color: #eee;
+}
+
+.title {
+    width: min-content;
+}
+
+.winner {
+    animation: spin 1s ease-in-out;
+}
+
+@keyframes spin { 
+    100% { transform:rotate(180deg) } }
