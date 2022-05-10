@@ -5,6 +5,12 @@
   padding: 0%;
 }
 
+.header{
+  background-color: var(--header-color);
+  border-color: var(--header-color);
+  border-width: 2px;
+}
+
 .b-example-divider {
   height: 3rem;
   background-color: rgba(0, 0, 0, .1);

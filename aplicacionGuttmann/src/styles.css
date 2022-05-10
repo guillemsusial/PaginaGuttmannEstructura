@@ -3,8 +3,6 @@
 /*Colores definidos global*/
 :root{
     --header-color: #8CC9D1;
+    --footer-color: rgb(50,50,50);
 }
 
-.header{
-    background-color: var(--header-color);
-}
