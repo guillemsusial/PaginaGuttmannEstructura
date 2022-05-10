@@ -1,6 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+//INICIO DE SERVICIOS
+
+import { CargarScriptsService } from './cargar-scripts.service';
+
+//FIN DE SERVICIOS
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { WelcomeCompComponent } from './components/welcome-comp/welcome-comp.component';
@@ -28,7 +34,9 @@ import { ScoreComponent } from './components/score/score.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    CargarScriptsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
