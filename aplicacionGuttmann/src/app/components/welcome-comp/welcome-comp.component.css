@@ -10,12 +10,13 @@
   color: #13B1BB;
 }
 
-.col{
+.flex{
   display: flex;    
 }
 
 .textos{
   margin: auto;
+  text-align: justify;
 }
 
 .imagenes{
