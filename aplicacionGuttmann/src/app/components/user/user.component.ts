@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CargarScriptsService } from 'src/app/cargar-scripts.service';
 
 @Component({
   selector: 'app-user',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _CargarScripts:CargarScriptsService) { 
+
+    _CargarScripts.Carga(["graficoLinea"]);
+    _CargarScripts.Carga(["graficoHex"]);
+  }
 
   ngOnInit(): void {
+    
+    
   }
 
 }
