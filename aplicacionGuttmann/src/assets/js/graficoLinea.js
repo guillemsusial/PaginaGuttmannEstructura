@@ -1,19 +1,22 @@
 const labels = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
+    'Sesion 1',
+    'Sesion 2',
+    'Sesion 3',
+    'Sesion 4',
+    'Sesion 5',
+    'Sesion 6',
+    'Sesion 7',
+    'Sesion 8',
+    'Sesion 9'
   ];
 
   const data = {
     labels: labels,
     datasets: [{
-      label: 'My First dataset',
+      label: 'Numero de aciertos',
       backgroundColor: 'rgb(255, 99, 132)',
       borderColor: 'rgb(255, 99, 132)',
-      data: [0, 10, 5, 2, 20, 30, 45],
+      data: [1, 4, 10, 6, 15, 9, 11, 16],
     }]
   };
 
