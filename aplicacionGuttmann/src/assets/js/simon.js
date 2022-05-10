@@ -20,17 +20,17 @@ class Simon {
     }
 
     // Inicia el Simon
-    init() {
-        this.display.startButton.onclick = () => this.startGame();
+    init() {       
+       // this.display.startButton.onclick = () => this.startGame();
+       this.startGame();
     }
 
     // Comienza el juego
-    startGame() {
-        this.display.startButton.disabled = true; 
+    startGame() {       
+        this.display.startButton.disabled = true;         
         this.updateRound(0);
         this.userPosition = 0;
-        this.sequence = this.createSequence();
-        console.log(this.sequence);
+        this.sequence = this.createSequence();       
         this.buttons.forEach((element, i) => {
             element.classList.remove('winner');
             element.onclick = () => this.buttonClick(i);
@@ -49,7 +49,7 @@ class Simon {
         return Array.from({length: this.totalRounds}, () =>  this.getRandomColor());
     }
 
-    // Devuelve un número al azar entre 0 y 3
+    // Devuelve un número al azar entre 0 y 11
     getRandomColor() {
         
         return Math.floor(Math.random() * 11);
@@ -57,6 +57,7 @@ class Simon {
 
     // Ejecuta una función cuando se hace click en un botón
     buttonClick(value) {
+        console.log(value);
         !this.blockedButtons && this.validateChosenColor(value);
     }
 
@@ -95,6 +96,7 @@ class Simon {
           
             this.toggleButtonStyle(button)
             setTimeout( () => this.toggleButtonStyle(button), this.speed / 2)
+            
             sequenceIndex++;
             if (sequenceIndex > this.round) {
                 this.blockedButtons = false;

@@ -25,54 +25,23 @@
     background-color: green;
 }
 
-body {
-    display: inline-grid;
-    place-items: center;
-    width: 100%;
-    font-family: 'Merriweather', serif;
-}
-
-.simon {
-    position: relative;
-    margin-top: 50px;
-    padding: 10px;
-    border-radius: 5px;
-}
-
 .buttonContainer {
     display: inline-grid;
     grid-gap: 10px;
     grid-template-columns: auto auto;
     transform: rotate(45deg);
 }
+/*.card:hover{
+    background-color:rgba(5, 233, 5, 0.301);
+}*/
 
-.square {
-    border-radius: 5px;
-    width: 150px;
-    height: 150px;
-    cursor: pointer;
-}
 
-.square:active,
+
+.card:active,
 .active {
     filter: brightness(125%);
 }
 
-.red {
-    background-color: #EE6352;
-}
-
-.blue {
-    background-color: #08B2E3;
-}
-
-.green {
-    background-color: #57A773;
-}
-
-.yellow {
-    background-color: #FFDF64;
-}
 
 #startButton {
     width: 75px;
