@@ -4,20 +4,27 @@ body {
   background: #f2f2f2;
 }
 
-html{
-    background-color: #13B1BB !important;
+#back {
+  position: static;
+  width: 100%;
+  height: 100vh;
+  background-image: url("https://www.guttmann.com/sites/default/files/2021-11/institut-guttmann.jpg");
+  padding: 7%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
 }
 
-.guttmann{
-    width: 70%;
+.guttmann {
+  width: 70%;
 }
 
-.textos{
-    color: #8a8a8a;
+.textos {
+  color: #8a8a8a;
 }
 
-#registrarse{
-    border-radius: 3px;
+#registrarse {
+  border-radius: 3px;
 }
 
 .clearfix:after {
@@ -34,7 +41,7 @@ html{
   max-width: 100%;
   box-sizing: border-box;
   padding: 25px;
-  margin: 8% auto 0;
+  margin: auto;
   position: relative;
   z-index: 1;
   border-top: 5px solid #188097;
