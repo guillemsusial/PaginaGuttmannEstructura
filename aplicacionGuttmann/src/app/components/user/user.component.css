@@ -1,6 +1,9 @@
 #foto-user{
     background-color: rgb(85, 158, 255);
     border-radius: 15px;
+    background-image: url("../../../assets/img/DefaultUser.png");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .div-user{
@@ -35,7 +38,3 @@
     background-color: #2532a1;
     color: white;
 }
-
-
-/*CSS GRAFICOS*/
-
