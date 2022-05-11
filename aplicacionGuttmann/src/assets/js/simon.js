@@ -1,6 +1,6 @@
 const round = document.getElementById('round');
 const simonButtons = document.getElementsByClassName('card');
-const startButton = document.getElementById('startButton');
+
 const transition = document.getElementById('transition')
 
 class Simon {
@@ -23,7 +23,8 @@ class Simon {
   // Inicia el Simon
   init() {
     this.display.startButton.onclick = () => this.startGame();
-    this.startGame();
+    this.startGame();    
+   
   }
 
   // Comienza el juego
@@ -35,9 +36,9 @@ class Simon {
     this.userPosition = 0;
     this.sequence = this.createSequence();
     this.buttons.forEach((element, i) => {
-      element.classList.remove('winner');
+      element.classList.remove('winner');      
       element.onclick = () => this.buttonClick(i);
-    });
+    }); 
     this.showSequence();
 
   }
@@ -95,6 +96,7 @@ class Simon {
 
   // Muestra la secuencia de botones que va a tener que tocar el usuario
   showSequence() {
+    this.sequence=this.createSequence();
     this.blockedButtons = true;
     let sequenceIndex = 0;
     let you = 0;
@@ -135,6 +137,7 @@ class Simon {
       transition.classList.toggle('Active-1');
       transition.classList.toggle('Guess');
     }
+
     /**SI FALLAS TE DA 1 OPORTUNIDAD MAS */
     if (!value) {
       this.fallos++;
@@ -144,6 +147,7 @@ class Simon {
         transition.classList.toggle('Active-1');
         transition.classList.toggle('Warning');
         transition.innerHTML = "Tienes 1 intento MAS"
+        this.round =0;
         if (this.fallos == 2) {
           setTimeout(() => this.showSequence(), this.speed * 0.5)
           transition.innerHTML = "YOU"
@@ -155,10 +159,12 @@ class Simon {
         transition.classList.add('Error');
         transition.innerHTML = "FALLASTE";
         if (this.fallos == 4) {
-          var divNota = document.createElement("button")          
+          var divNota = document.createElement("button")           
+          divNota.setAttribute("id","startButton")         
           divNota.setAttribute("Style", " width: 50%;margin: auto; height: 60%; font-size: 50%;border: none;font-family: 'Merriweather', serif;cursor: pointer;border-radius: 10pt; color: #fff;background-color: #587792;padding: 5px;");
           setTimeout(() => transition.appendChild(divNota), divNota.textContent = "Try Again", this.speed * 0.5);
-
+          divNota.onclick = () => window.location.reload();        
+          
         }
       }
 
@@ -189,7 +195,9 @@ class Simon {
     this.buttons.forEach(element => {
       element.classList.add('winner');
     });
-    this.updateRound('🏆');
+    transition.classList.toggle('Active-1');
+    transition.classList.toggle('Warning');
+    transition.innerHTML='🏆';
   }
 }
 
