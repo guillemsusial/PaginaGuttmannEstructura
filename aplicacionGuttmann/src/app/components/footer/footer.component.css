@@ -1,6 +1,19 @@
+#Footer{--footer-color: rgb(50,50,50);
+      --hInfo-color: #1b9eff;
+}
 .footer{
   background-color: var(--footer-color);
   border-color: var(--footer-color);
+}
+
+.IhColor{
+  color:var(--hInfo-color) !important;
+  text-decoration: none !important;
+}
+
+.IdColor{
+  text-decoration: none !important;
+
 }
 
 .format{
@@ -24,3 +37,5 @@
 a:link{
   text-decoration: none;
 }
+
+.wicon{filter: invert(50%)}
