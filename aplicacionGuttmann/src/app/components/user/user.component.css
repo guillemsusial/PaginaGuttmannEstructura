@@ -1,17 +1,40 @@
 #foto-user{
     background-color: rgb(85, 158, 255);
     border-radius: 15px;
+    background-image: url("../../../assets/img/DefaultUser.png");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .div-user{
     border-radius: 15px;
-    height: 320px;
+    background-color: white;
 }
 
 .contenedor{
-    background-color: aqua;
+    background-color: #8bc3f7b9;
     border-radius: 15px;
 }
 
-/*CSS GRAFICOS*/
+.div-categorias{
+    background-color: #60A5E0;
+    height: 60px;
+    border-radius: 10px;
+    font-family: "Koulen", serif;
+    font-size: larger;
+}
 
+.button-categories:hover {
+    background-color: #2532a1;
+    color: white;
+}
+
+.button-categories:active {
+  background-color: #2532a1;
+  transform: translateY(4px);
+}
+
+.button-categories-active {
+    background-color: #2532a1;
+    color: white;
+}
