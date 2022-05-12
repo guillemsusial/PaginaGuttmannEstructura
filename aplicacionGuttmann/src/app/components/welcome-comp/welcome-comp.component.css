@@ -59,9 +59,9 @@
 }
 
 .titulos {
-  color: #000000;
+  color: #ffffff;
   margin-bottom: 15%;
-  text-shadow: white;
+  text-shadow: 0 0 20px #000000;
 }
 
 /* Animacion de la flecha */
