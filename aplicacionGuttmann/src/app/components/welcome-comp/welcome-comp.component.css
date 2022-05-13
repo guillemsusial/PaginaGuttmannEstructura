@@ -1,5 +1,5 @@
-.header {
-  background-color: var(--header-color);
+#header {
+  background-color: #8CC9D1;
 }
 
 .usuario {
