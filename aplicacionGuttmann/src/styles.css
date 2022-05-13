@@ -1,10 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 
-/*Colores definidos global*/
+/*Colores definidos global
 :root{
     --header-color: #8CC9D1;
+    --footer-color: rgb(50,50,50);
+    --hInfo-color: #1b9eff;
 }
+*/
 
-.header{
-    background-color: var(--header-color);
-}

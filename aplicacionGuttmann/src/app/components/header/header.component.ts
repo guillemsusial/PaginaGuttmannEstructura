@@ -6,13 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  logged =false
+  logged =true;
   constructor() {
 
   }
 
   ngOnInit(): void {
-    let logged = false;
+    let logged = true;
   }
 
 }
+

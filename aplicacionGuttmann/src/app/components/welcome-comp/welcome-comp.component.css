@@ -1,5 +1,5 @@
-.header {
-  background-color: var(--header-color);
+#header {
+  background-color: #8CC9D1;
 }
 
 .usuario {
@@ -10,39 +10,58 @@
   color: #13B1BB;
 }
 
-.flex{
-  display: flex;    
+.flex {
+  display: flex;
 }
 
-.textos{
+.textos {
   margin: auto;
   text-align: justify;
 }
 
-.imagenes{
-    margin: auto;
-    border-radius: 10px;   
-    width: 100%;
-    height: 70%;
-    max-width: 80%;
+.imagenes {
+  margin: auto;
+  border-radius: 10px;
+  width: 100%;
+  height: 70%;
+  max-width: 80%;
 }
 
-.sombra{
+.sombra {
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
 }
 
-.enlace{
-    color: #025668;
+.enlace {
+  color: #025668;
 }
 
-.carousel{
-  max-width: 800px;
-}
-
-.centrar{
+.centrar {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/*footer*/
+.foot {
+  background-color: #8cc9d1;
+}
+
+.iconos {
+  max-width: 3%;
+}
+
+/*carousel*/
+.carousel-item {
+  height: 30rem;
+  background: #000000;
+  background-position: center;
+  background-size: cover;
+}
+
+.titulos {
+  color: #ffffff;
+  margin-bottom: 15%;
+  text-shadow: 0 0 20px #000000;
 }
 
 /* Animacion de la flecha */
