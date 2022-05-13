@@ -28,3 +28,11 @@
     background-color: #2532a1;
     color: white;
 }
+
+:disabled{
+    color: black;
+}
+
+:disabled.button-categories-active{
+    color: white;
+}

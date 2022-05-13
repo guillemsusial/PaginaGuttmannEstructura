@@ -34,40 +34,6 @@
     background-color: green!important;
 }
 
-.Active1{
-    background-color: red!important;
-}
-.Active2{
-    background-color: purple!important;
-}
-.Active3{
-    background-color: rgb(105, 30, 190)!important;
-}
-.Active4{
-    background-color: rgb(201, 45, 167)!important;
-}
-.Active5{
-    background-color: rgb(75, 77, 204)!important;
-}
-.Active6{
-    background-color: rgb(168, 91, 28)!important;
-}
-.Active7{
-    background-color: rgb(128, 77, 0)!important;
-}
-.Active8{
-    background-color: rgb(201, 36, 25)!important;
-}
-.Active9{
-    background-color: rgb(240, 36, 162)!important;
-}
-.Active10{
-    background-color: rgb(30, 188, 236)!important;
-}
-.Active11{
-    background-color: rgb(231, 235, 42)!important;
-}
-
 .buttonContainer {
     display: inline-grid;
     grid-gap: 10px;

@@ -1,3 +1,5 @@
+/**https://www.lawebdelprogramador.com/foros/JavaScript/1344396-secuencia-de-imagenes.html */
+
 const round = document.getElementById('round');
 const simonButtons = document.getElementsByClassName('card');
 
@@ -25,6 +27,7 @@ class Simon {
   // Inicia el Simon
   init() {
     this.display.startButton.onclick = () => this.startGame();
+
     this.startGame();    
    
   }
@@ -34,14 +37,19 @@ class Simon {
 
     transition.innerHTML = "YOU";
     this.display.startButton.disabled = true;
-    this.updateRound(0);
-    this.userPosition = 0;
+    
+    this.updateRound(1);
+
+    this.userPosition = 1;
+
     this.sequence = this.createSequence();
+
     this.buttons.forEach((element, i) => {     
       element.classList.remove('winner');      
 
       element.onclick = () => this.buttonClick(i);
     }); 
+
     this.showSequence();
 
   }
@@ -69,38 +77,13 @@ class Simon {
   buttonClick(value) {
 
     !this.blockedButtons && this.validateChosenColor(value);
+
   }
 
   // Valida si el boton que toca el usuario corresponde a al valor de la secuencia
+
   validateChosenColor(value) {
-
-    console.log(this.sequence);
-    console.log("VALUE->"+value);
-    console.log("Round " +this.round);
-
-      if(this.round == 0){
-        
-        console.log("POSITION->"+this.userPosition)
-        if (this.sequence[this.userPosition] === value) {
-
-          if (this.round === this.userPosition) {
-            this.round++;
-            this.updateRound(this.round);
-            this.userPosition = this.round;
-            console.log("POSITION->"+this.userPosition)
-
-            this.speed /= 1.02;
-            this.isGameOver();
-     
-          }else {
-            this.userPosition++;
-          }    
-          
-        }else {
-          this.gameLost();
-        }
-      
-      }else{
+    
 
         console.log("POSITION->"+this.userPosition)
         if (this.sequence[this.userPosition] === value) {
@@ -117,24 +100,21 @@ class Simon {
         }else {
           this.gameLost();
         }     
-      }
-   
-    
   }
 
   
-
   // Verifica que no haya acabado el juego
+
   isGameOver() {
     if (this.round === this.totalRounds) {
       this.gameWon();
-    } else {
-     // this.userPosition = 0;
+    } else {     
       this.showSequence();
     };
   }
 
   // Muestra la secuencia de botones que va a tener que tocar el usuario
+
   showSequence() {
     this.sequence=this.createSequence();
     this.blockedButtons = true;
@@ -145,7 +125,7 @@ class Simon {
 
       this.toggleButtonStyle(button)
       setTimeout(() => this.toggleButtonStyle(button), this.speed / 2)
-
+      console.log(this.sequence[sequenceIndex]);
       sequenceIndex++;      
       if (sequenceIndex > this.round) {
         this.blockedButtons = false;
@@ -165,6 +145,7 @@ class Simon {
   }
 
   // Pinta los botones para cuando se está mostrando la secuencia
+
   toggleButtonStyle(button) {
     
     button.classList.toggle('Active');
@@ -178,6 +159,7 @@ class Simon {
     }
 
     /**SI FALLAS TE DA 1 OPORTUNIDAD MAS */
+
     if (!value) {
       this.fallos++;
       if (this.fallos <= 2) {
@@ -186,12 +168,14 @@ class Simon {
         transition.classList.toggle('Active-1');
         transition.classList.toggle('Warning');
         transition.innerHTML = "Tienes 1 intento MAS"
-        this.round =0;
+        this.updateRound(1);
         if (this.fallos == 2) {
           setTimeout(() => this.showSequence(), this.speed * 0.5)
           transition.innerHTML = "YOU"
         }
+
         /**SI FALLAS POR SEGUNDA VEZ SE ACABARA EL JUEGO */
+
       } else {
         console.log("end")
         transition.classList.add('Active-1');
@@ -228,6 +212,7 @@ class Simon {
   }
 
   // Muestra la animacón de triunfo y actualiza el simon cuando el jugador gana
+
   gameWon() {
     this.display.startButton.disabled = false;
     this.blockedButtons = true;
