@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 //INICIO DE SERVICIOS
 
 import { CargarScriptsService } from './cargar-scripts.service';
+import { BooleanSelectorService } from './boolean-selector.service';
 
 //FIN DE SERVICIOS
 
@@ -37,7 +38,8 @@ import { LoginComponent } from './components/login/login.component';
     AppRoutingModule
   ],
   providers: [
-    CargarScriptsService
+    CargarScriptsService,
+    BooleanSelectorService
   ],
   bootstrap: [AppComponent]
 })
