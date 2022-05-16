@@ -2,7 +2,7 @@
 .div-game{
     background-color: #8cc9d1;
     border-radius: 10px;
-    height: 200px;
+    min-height: 200px;
     display: none;
 }
 
