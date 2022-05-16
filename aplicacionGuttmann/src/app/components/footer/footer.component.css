@@ -39,3 +39,32 @@ a:link{
 }
 
 .wicon{filter: invert(50%)}
+
+@media screen and (max-width:767px){
+
+  .font{
+    font-size: 15px !important;
+
+      word-wrap: break-word!important;
+      word-break: break-word!important;
+  }
+
+
+
+
+
+  .space{
+    margin-left: 20% !important;
+  }
+
+}
+
+
+
+.container{
+  width: 100%;
+  padding-left: 12px;
+  padding-right: 12px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
