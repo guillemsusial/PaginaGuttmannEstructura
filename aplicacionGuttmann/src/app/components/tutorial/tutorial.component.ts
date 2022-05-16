@@ -13,16 +13,7 @@ export class TutorialComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    let tutorial: boolean;
-    $('#tutorial').click(function () {
-      tutorial = true;
-      console.log(tutorial);
-    })
 
-    $('#juego').click(function () {
-      tutorial = false;
-      console.log(tutorial);
-    })
   }
 
 }

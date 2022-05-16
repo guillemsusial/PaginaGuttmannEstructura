@@ -19,6 +19,7 @@ import { TutorialComponent } from './components/tutorial/tutorial.component';
 import { GameComponent } from './components/game/game.component';
 import { ScoreComponent } from './components/score/score.component';
 import { LoginComponent } from './components/login/login.component';
+import { TemplateComponent } from './components/template/template.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { LoginComponent } from './components/login/login.component';
     TutorialComponent,
     GameComponent,
     ScoreComponent,
-    LoginComponent
+    LoginComponent,
+    TemplateComponent
   ],
   imports: [
     BrowserModule,
