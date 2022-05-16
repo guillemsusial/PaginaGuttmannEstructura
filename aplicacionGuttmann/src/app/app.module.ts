@@ -19,7 +19,11 @@ import { TutorialComponent } from './components/tutorial/tutorial.component';
 import { GameComponent } from './components/game/game.component';
 import { ScoreComponent } from './components/score/score.component';
 import { LoginComponent } from './components/login/login.component';
+
 import { SequenceComponent } from './components/sequence/sequence.component';
+
+import { TemplateComponent } from './components/template/template.component';
+
 
 @NgModule({
   declarations: [
@@ -33,7 +37,11 @@ import { SequenceComponent } from './components/sequence/sequence.component';
     GameComponent,
     ScoreComponent,
     LoginComponent,
-    SequenceComponent
+
+    SequenceComponent,
+
+    TemplateComponent
+
   ],
   imports: [
     BrowserModule,
