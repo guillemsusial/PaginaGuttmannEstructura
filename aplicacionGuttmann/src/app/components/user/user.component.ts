@@ -9,11 +9,11 @@ declare var $: any;
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-
-  constructor(private _CargarScripts: CargarScriptsService) {
  
+  constructor(private _CargarScripts: CargarScriptsService) {
     this._CargarScripts.Carga(["graficoLinea", "graficoPolar"]) 
   }
+  
 
   ngOnInit(): void {
    

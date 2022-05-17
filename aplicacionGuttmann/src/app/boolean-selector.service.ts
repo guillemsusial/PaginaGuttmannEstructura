@@ -10,7 +10,7 @@ export class BooleanSelectorService {
   
   }
   trialOrGame:any;
-  
+  trialorGame=false;
   setGame(buleano:boolean){
     this.trialOrGame = buleano;
   }
