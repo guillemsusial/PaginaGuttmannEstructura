@@ -8,14 +8,20 @@ declare var $: any;
   styleUrls: ['./template.component.css']
 })
 export class TemplateComponent implements OnInit {
+  juego: boolean;
 
-  constructor() { }
+  constructor() {
+    this.juego=true;
+  }
 
   ngOnInit(): void {
-    $('#juego').click(function (){
-      $('app-game').toggle();
+    /*$('#juego').click(function (juego:boolean){
+      juego=true;
       $('app-tutorial').toggle();
-    });
+      console.log(juego);
+      return juego;
+    });*/
+    
   }
 
 }
