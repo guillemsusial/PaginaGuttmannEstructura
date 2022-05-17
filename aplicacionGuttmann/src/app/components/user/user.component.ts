@@ -9,12 +9,13 @@ declare var $: any;
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-
+ 
   constructor(private _CargarScripts: CargarScriptsService) {
-
+    
     _CargarScripts.Carga(["graficoLinea"]);
     _CargarScripts.Carga(["graficoPolar"]);
   }
+  
 
   ngOnInit(): void {
     $('button[category="lineChart"]').click(function lineChart() {
