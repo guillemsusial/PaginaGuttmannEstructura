@@ -2,7 +2,7 @@
 #game{
     width: 80vw;
     height:40vw;
-    justify-content: center;
+    justify-content: start;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin: 0 auto;
     border-radius:10pt;
@@ -10,18 +10,37 @@
     display: flex;
 }
 .card{
-    width:15vw;
+    width:13vw;
     height:10vw;
-    background-color:rgb(247, 247, 247);
+    background-color:rgb(247, 247, 247);    
+    position: relative;
+    display: flex;
+    min-width: 0;
+    word-wrap: break-word;
+    justify-content: space-evenly;
+    align-items: center;
+}
+#answers>.card{
+    width:10vw;
+    height:8vw;
 }
 .card:hover{
     background-color:rgba(103, 252, 207, 0.459);
+  
 }
-#game{ 
+#sequence{ 
 
     display: grid;
     padding:4vw ;
-    grid-template-columns:  repeat(4, auto) ;  
+    grid-template-columns:  repeat(3, auto) ;  
+    grid-gap: 2vw;
+}
+#answers{ 
+    height:10%;
+    display: grid;    
+    padding:1vw ;
+    margin-top: 15%;
+    grid-template-columns:  repeat(2, auto) ;  
     grid-gap: 2vw;
 }
 #round{ 
