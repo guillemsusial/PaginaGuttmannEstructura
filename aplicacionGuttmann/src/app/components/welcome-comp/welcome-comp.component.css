@@ -1,5 +1,5 @@
-.header {
-  background-color: var(--header-color);
+#header {
+  background-color: #8CC9D1;
 }
 
 .usuario {
@@ -94,4 +94,8 @@ polygon.arrow-middle {
 
 polygon.arrow-top {
   opacity: 0.5;
+}
+
+#categories-1:hover{
+  cursor: pointer;
 }

@@ -2,7 +2,7 @@
 .div-game{
     background-color: #8cc9d1;
     border-radius: 10px;
-    height: 200px;
+    min-height: 200px;
     display: none;
 }
 
@@ -26,5 +26,13 @@
 
 .button-categories-active {
     background-color: #2532a1;
+    color: white;
+}
+
+:disabled{
+    color: black;
+}
+
+:disabled.button-categories-active{
     color: white;
 }
