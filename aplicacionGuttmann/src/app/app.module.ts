@@ -18,6 +18,7 @@ import { TutorialComponent } from './components/tutorial/tutorial.component';
 import { GameComponent } from './components/game/game.component';
 import { ScoreComponent } from './components/score/score.component';
 import { LoginComponent } from './components/login/login.component';
+import { PopupCourseComponent } from './components/popup-course/popup-course.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { LoginComponent } from './components/login/login.component';
     TutorialComponent,
     GameComponent,
     ScoreComponent,
-    LoginComponent
+    LoginComponent,
+    PopupCourseComponent
   ],
   imports: [
     BrowserModule,
