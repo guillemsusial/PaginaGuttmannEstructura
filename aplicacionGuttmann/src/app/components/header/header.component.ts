@@ -10,8 +10,8 @@ export class HeaderComponent implements OnInit {
   logged =false;
   loginForm!: FormGroup;
 
-  constructor() {
-    //script.Carga(["popupLogin"]);
+  constructor(private script: CargarScriptsService) {
+    script.Carga(["popupLogin"]);
   }
 
   ngOnInit(): void {
