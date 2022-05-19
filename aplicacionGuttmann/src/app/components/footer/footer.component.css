@@ -1,28 +1,31 @@
-#Footer{--footer-color: rgb(50,50,50);
-      --hInfo-color: #1b9eff;
+#Footer {
+  --footer-color: rgb(50, 50, 50);
+  --hInfo-color: #1b9eff;
 }
-.footer{
+
+.footer {
   background-color: var(--footer-color);
   border-color: var(--footer-color);
 }
 
-.IhColor{
-  color:var(--hInfo-color) !important;
+.IhColor {
+  color: var(--hInfo-color) !important;
   text-decoration: none !important;
 }
 
-.IdColor{
+.IdColor {
   text-decoration: none !important;
 
 }
 
-.format{
+.format {
   width: 200px;
   height: 100px;
   margin: 0%;
   padding: 0%;
   opacity: 30%;
 }
+
 .dot {
   height: 3px;
   width: 3px;
@@ -34,26 +37,28 @@
   display: inline-block;
 }
 
-a:link{
+a:link {
   text-decoration: none;
 }
 
-.wicon{filter: invert(50%)}
+.wicon {
+  filter: invert(50%)
+}
 
-@media screen and (max-width:767px){
+@media screen and (max-width:767px) {
 
-  .font{
+  .font {
     font-size: 15px !important;
 
-      word-wrap: break-word!important;
-      word-break: break-word!important;
+    word-wrap: break-word !important;
+    word-break: break-word !important;
   }
 
 
 
 
 
-  .space{
+  .space {
     margin-left: 20% !important;
   }
 
@@ -61,7 +66,7 @@ a:link{
 
 
 
-.container{
+.container {
   width: 100%;
   padding-left: 12px;
   padding-right: 12px;

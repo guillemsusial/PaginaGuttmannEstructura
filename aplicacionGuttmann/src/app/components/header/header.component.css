@@ -1,14 +1,15 @@
-.format{
+.format {
   width: 250px;
   height: 100px;
   margin: 0%;
   padding: 0%;
 }
-#header{
+
+#header {
   --header-color: #8CC9D1;
 }
 
-.header{
+.header {
   background-color: var(--header-color);
   border-color: var(--header-color);
   border-width: 2px;
@@ -27,6 +28,7 @@
   background-color: var(--bs-dark);
   border-color: var(--bs-gray);
 }
+
 .form-control-dark:focus {
   color: #fff;
   background-color: var(--bs-dark);
@@ -61,12 +63,12 @@
   }
 }
 
-.btn-iblue
-{
-  background-color: rgb(0, 61, 166) ;
+.btn-iblue {
+  background-color: rgb(0, 61, 166);
   color: white;
 }
-.btn-iblue:hover{
+
+.btn-iblue:hover {
   background-color: rgb(0, 48, 128)
 }
 

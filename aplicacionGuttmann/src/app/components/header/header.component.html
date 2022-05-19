@@ -1,26 +1,27 @@
-<div id="header"class="container-fluid header   rounded-bottom m-0">
+<div id="header" class="container-fluid header m-0">
 
-    <div class="content header">
-        <br>
-        <div class="row">
-            <div class="col-2 col-sm-2">
-              <div class="content">
-                <div class="row">
-      <!-- LOGO DEL SITIO WEB -->
-                  <div class="col-1 col-sm-1"></div>
-                  <div class="col-9 col-sm-9">
-                    <a href="#">
-                    <img class="format " src="../../../assets/img/logo.svg" alt="" srcset=""></a>
-                  </div>
-                </div>
-              </div>
+  <div class="content header">
+    <br>
+    <div class="row">
+      <div class="col-2 col-sm-2">
+        <div class="content">
+          <div class="row">
+            <!-- LOGO DEL SITIO WEB -->
+            <div class="col-1 col-sm-1"></div>
+            <div class="col-9 col-sm-9">
+              <a href="#">
+                <img class="format " src="../../../assets/img/logo.svg" alt="" srcset=""></a>
             </div>
+          </div>
+        </div>
+      </div>
       <!-- CENTRO DEL HEADER -->
-            <div class="col-8 col-sm-8">
+      <div class="col-8 col-sm-8">
 
-            </div>
+      </div>
 
       <!-- PERFIL USUARIO LOGGED-->
+
             <div  class="col-2 col-sm-2 pt-4 " *ngIf="logged">
               <div class="dropdown text-center">
                   <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -46,10 +47,18 @@
               <button type="button" class="btn btn-lg btn-iblue mb-2"  routerLink="/login">Sign-up</button>
 
             </div>
-        </div>
 
-        <br>
+        </div>
+      </div>
+      <!-- LOGIN SIGN-->
+      <div class="col-2 col-sm-2 text-center pt-5 " *ngIf="!logged">
+        <button type="button" class="btn btn-lg btn-secondary me-3 mb-2 ">Login</button>
+        <button type="button" class="btn btn-lg btn-iblue mb-2">Sign-up</button>
+      </div>
     </div>
+
+    <br>
+  </div>
 
 </div>
 <!--modal Login-->
