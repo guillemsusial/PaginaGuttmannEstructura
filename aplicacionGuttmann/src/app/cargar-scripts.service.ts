@@ -22,7 +22,7 @@ export class CargarScriptsService {
             let body = document.getElementsByTagName("body")[0];
             body.appendChild(script); 
           }else{
-            this.removeScript(archivos[i]);
+            window.location.reload;
            
              
           }

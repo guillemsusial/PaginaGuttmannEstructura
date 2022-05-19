@@ -17,6 +17,8 @@ class Simon {
     this.blockedButtons = true;
     this.buttons = Array.from(simonButtons);
     this.fallos = 0;
+    this.laSequencia_error=false;   
+    this.userSequence=[];
     this.display = {
       startButton,
       round
@@ -35,11 +37,15 @@ class Simon {
   // Comienza el juego
   startGame() {
 
-    transition.innerHTML = "YOU";
+    transition.innerHTML = "Tu turno";
     this.display.startButton.disabled = true;
     
     this.updateRound(1);
-
+    for(let i = 0;i<this.totalRounds;i++) {
+      this.userSequence.push([{"Round":i,"Options":[]}]);
+      
+    }
+    console.log(this.userSequence)
     this.userPosition = 1;
 
     this.sequence = this.createSequence();
@@ -57,7 +63,7 @@ class Simon {
   // Actualiza la ronda y el tablero
   updateRound(value) {
     this.round = value;
-    this.display.round.textContent = `Round ${this.round}`;
+    this.display.round.textContent = `${this.round}/${this.totalRounds}`;
   }
 
   // Crea el array aleatorio de botones
@@ -84,22 +90,35 @@ class Simon {
 
   validateChosenColor(value) {
     
-
+    console.log(this.sequence);
         console.log("POSITION->"+this.userPosition)
-        if (this.sequence[this.userPosition] === value) {
-
-          if (0 === this.userPosition) {
-            this.round++;
-            this.updateRound(this.round);
-            this.userPosition = this.round;
-            this.speed /= 1.02;
-            this.isGameOver();
-          } else {
-            this.userPosition--;
-          }    
+        console.log("VALUE->"+value);
+        //this.userSequence[this.round[1]].push([this.userPosition]);
+        console.log( this.userSequence);
+        if (this.sequence[this.userPosition] === value && !this.laSequencia_error) {
+      
+            if (0 === this.userPosition) {
+              this.round++;
+              this.updateRound(this.round);
+              this.userPosition = this.round;
+              this.speed /= 1.02;
+              this.isGameOver();
+            } else {
+              
+              this.userPosition--
+            }    
         }else {
+      
+         this.laSequencia_error =true
+
+          if(0 === this.userPosition && this.laSequencia_error){ 
+           
           this.gameLost();
-        }     
+          this.userPosition = this.round;
+          this.laSequencia_error =false
+          }
+          this.userPosition--
+        }
   }
 
   
@@ -124,8 +143,8 @@ class Simon {
       const button = this.buttons[this.sequence[sequenceIndex]];
 
       this.toggleButtonStyle(button)
-      setTimeout(() => this.toggleButtonStyle(button), this.speed / 2)
-      console.log(this.sequence[sequenceIndex]);
+      setTimeout(() => this.toggleButtonStyle(button), this.speed   )
+     
       sequenceIndex++;      
       if (sequenceIndex > this.round) {
         this.blockedButtons = false;
@@ -138,9 +157,9 @@ class Simon {
           }
 
           you++;
-        }, this.speed);
+        }, this.speed*2);
       }
-    }, this.speed);
+    }, this.speed*2);
 
   }
 
@@ -152,7 +171,7 @@ class Simon {
   }
 
   toggleTurnStyle(value) {
-    console.log("entra");
+  
     if (value) {
       transition.classList.toggle('Active-1');
       transition.classList.toggle('Guess');
@@ -163,28 +182,29 @@ class Simon {
     if (!value) {
       this.fallos++;
       if (this.fallos <= 2) {
-        console.log("fallos=" + this.fallos);
-        console.log("warning")
+      
         transition.classList.toggle('Active-1');
         transition.classList.toggle('Warning');
-        transition.innerHTML = "Tienes 1 intento MAS"
+        transition.style.left = '3vw'
+        transition.innerHTML = "Memoriza la siguiente secuencia"
         this.updateRound(1);
         if (this.fallos == 2) {
           setTimeout(() => this.showSequence(), this.speed * 0.5)
-          transition.innerHTML = "YOU"
+          transition.innerHTML = "Tu Turno"
+          transition.style.left = '38vw'
         }
 
         /**SI FALLAS POR SEGUNDA VEZ SE ACABARA EL JUEGO */
 
       } else {
-        console.log("end")
+      
         transition.classList.add('Active-1');
         transition.classList.add('Error');
         transition.innerHTML = "FALLASTE";
         if (this.fallos == 4) {
           var divNota = document.createElement("button")           
           divNota.setAttribute("id","startButton")         
-          divNota.setAttribute("Style", " width: 50%;margin: auto; height: 60%; font-size: 50%;border: none;font-family: 'Merriweather', serif;cursor: pointer;border-radius: 10pt; color: #fff;background-color: #587792;padding: 5px;");
+          divNota.setAttribute("Style", " width: 50%;margin: auto; height: 100%; font-size: 50%;border: none;font-family: 'Merriweather', serif;cursor: pointer;border-radius: 10pt; color:rgb(92, 0, 76);border:solid rgb(92, 0, 76) ;padding: 5px;");
           setTimeout(() => transition.appendChild(divNota), divNota.textContent = "Try Again", this.speed * 0.5);
           divNota.onclick = () => window.location.reload();        
           
@@ -196,7 +216,7 @@ class Simon {
 
   // Actualiza el simon cuando el jugador pierde
   gameLost() {
-    console.log("error")
+   
     this.display.startButton.disabled = false;
     this.blockedButtons = true;
     let you = 0;
