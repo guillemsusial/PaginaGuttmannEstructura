@@ -1,34 +1,43 @@
 /**https://www.lawebdelprogramador.com/foros/JavaScript/1344396-secuencia-de-imagenes.html */
 
+
+
 const round = document.getElementById('round');
 const simonButtons = document.getElementsByClassName('card');
 
 const transition = document.getElementById('transition');
+ class Simon {
 
-class Simon {
-
-  constructor(simonButtons, startButton, round) {
+  constructor(simonButtons, startButton, round) {    
+    
     this.round = 0;
     this.round1 = 1;
     this.userPosition = 0;
     this.totalRounds = 6;
     this.sequence = [];
+    
     this.speed = 1000;
     this.blockedButtons = true;
     this.buttons = Array.from(simonButtons);
     this.fallos = 0;
     this.laSequencia_error=false;   
     this.userSequence=[];
+    this.userObject=
+    {
+      Round:"",
+      Options:[]
+    };
     this.display = {
       startButton,
       round
     }
 
   }
+  
 
   // Inicia el Simon
   init() {
-    this.display.startButton.onclick = () => this.startGame();
+   // this.display.startButton.onclick = () => this.startGame();
 
     this.startGame();    
    
@@ -41,23 +50,27 @@ class Simon {
     this.display.startButton.disabled = true;
     
     this.updateRound(1);
-    for(let i = 0;i<this.totalRounds;i++) {
-      this.userSequence.push([{"Round":i,"Options":[]}]);
-      
-    }
-    console.log(this.userSequence)
+
+    this.createUserData();    
+   
     this.userPosition = 1;
 
-    this.sequence = this.createSequence();
-
-    this.buttons.forEach((element, i) => {     
-      element.classList.remove('winner');      
-
+    this.buttons.forEach((element, i) => {
       element.onclick = () => this.buttonClick(i);
     }); 
 
     this.showSequence();
 
+  }
+  
+  //crea el objeto dond alojaremos los datos del usuario segun la ronda
+  createUserData(){    
+
+    for(let i = 0;i<this.totalRounds;i++) {
+     
+      this.userSequence.push(this.userObject={"Round":i,"Options":[]});
+     
+    }
   }
 
   // Actualiza la ronda y el tablero
@@ -87,13 +100,12 @@ class Simon {
   }
 
   // Valida si el boton que toca el usuario corresponde a al valor de la secuencia
-
   validateChosenColor(value) {
     
-    console.log(this.sequence);
+        /*console.log(this.sequence);
         console.log("POSITION->"+this.userPosition)
-        console.log("VALUE->"+value);
-        //this.userSequence[this.round[1]].push([this.userPosition]);
+        console.log("VALUE->"+value);*/
+        this.userSequence[this.round].Options.push(this.userPosition);
         console.log( this.userSequence);
         if (this.sequence[this.userPosition] === value && !this.laSequencia_error) {
       
@@ -123,7 +135,6 @@ class Simon {
 
   
   // Verifica que no haya acabado el juego
-
   isGameOver() {
     if (this.round === this.totalRounds) {
       this.gameWon();
@@ -133,7 +144,6 @@ class Simon {
   }
 
   // Muestra la secuencia de botones que va a tener que tocar el usuario
-
   showSequence() {
     this.sequence=this.createSequence();
     this.blockedButtons = true;
@@ -145,22 +155,29 @@ class Simon {
       this.toggleButtonStyle(button)
       setTimeout(() => this.toggleButtonStyle(button), this.speed   )
      
-      sequenceIndex++;      
-      if (sequenceIndex > this.round) {
-        this.blockedButtons = false;
-        clearInterval(timer)
-        let timer1 = setInterval(() => {
-
-          this.toggleTurnStyle(true)
-          if (you >= 1) {
-            clearInterval(timer1)
-          }
-
-          you++;
-        }, this.speed*2);
-      }
+      sequenceIndex++;  
+      
+      this.stopShowingSequence(sequenceIndex,timer,you)
+     
     }, this.speed*2);
 
+  }
+
+  //Cuando la sequencia[i] llegue al numero de la ronda esta parara el Intervalo
+  stopShowingSequence(sequenceIndex,timer,you){
+    if (sequenceIndex > this.round) {
+      this.blockedButtons = false;
+      clearInterval(timer)
+      let timer1 = setInterval(() => {
+
+        this.toggleTurnStyle(true)
+        if (you >= 1) {
+          clearInterval(timer1)
+        }
+
+        you++;
+      }, this.speed*2);
+    }
   }
 
   // Pinta los botones para cuando se está mostrando la secuencia
@@ -170,14 +187,16 @@ class Simon {
     button.classList.toggle('Active');
   }
 
+  //Añade y quita classes segun el resultado del usuario
   toggleTurnStyle(value) {
   
+    /*ACIERTAS */
     if (value) {
       transition.classList.toggle('Active-1');
       transition.classList.toggle('Guess');
     }
 
-    /**SI FALLAS TE DA 1 OPORTUNIDAD MAS */
+    /*SI FALLAS TE DA 1 OPORTUNIDAD MAS */
 
     if (!value) {
       this.fallos++;
@@ -194,7 +213,7 @@ class Simon {
           transition.style.left = '38vw'
         }
 
-        /**SI FALLAS POR SEGUNDA VEZ SE ACABARA EL JUEGO */
+        /*SI FALLAS POR SEGUNDA VEZ SE ACABARA EL JUEGO */
 
       } else {
       
@@ -232,18 +251,26 @@ class Simon {
   }
 
   // Muestra la animacón de triunfo y actualiza el simon cuando el jugador gana
-
   gameWon() {
     this.display.startButton.disabled = false;
     this.blockedButtons = true;
-    this.buttons.forEach(element => {
-      element.classList.add('winner');
-    });
+   
     transition.classList.toggle('Active-1');
     transition.classList.toggle('Warning');
     transition.innerHTML='🏆';
   }
 }
 
+
+class Player{
+  constructor(name, salary) {
+      this.name = name;
+      this.salary = salary;
+    }
+
+
+    
+}
+const player = new Player('Alice',100);
 const simon = new Simon(simonButtons, startButton, round);
 simon.init();

@@ -15,6 +15,7 @@ export class GameComponent implements OnInit {
    constructor(private _CargarScripts:CargarScriptsService) { 
 
    _CargarScripts.Carga(["simon"]);  
+  
      
     }
     
