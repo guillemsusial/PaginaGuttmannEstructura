@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CargarScriptsService } from 'src/app/cargar-scripts.service';
+import { CargarScriptsService } from 'src/app/components/service/cargar-scripts.service';
 
 declare var $: any;
 
@@ -9,16 +9,16 @@ declare var $: any;
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
- 
+
   constructor(private _CargarScripts: CargarScriptsService) {
-    this._CargarScripts.Carga(["graficoLinea", "graficoPolar"]) 
+    this._CargarScripts.Carga(["graficoLinea", "graficoPolar"])
   }
-  
+
 
   ngOnInit(): void {
-   
-    
-    
+
+
+
     $('button[category="lineChart"]').click(function lineChart() {
       $('div[category="polarChart"]').toggle();
       $('div[category="lineChart"]').toggle();

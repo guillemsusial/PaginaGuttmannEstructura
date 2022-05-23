@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CargarScriptsService } from 'src/app/cargar-scripts.service';
+import { CargarScriptsService } from 'src/app/components/service/cargar-scripts.service';
 
 declare var $: any;
 
