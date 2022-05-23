@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { CargarScriptsService} from 'src/app/cargar-scripts.service';
 declare var $: any;
 
 @Component({
@@ -9,7 +9,10 @@ declare var $: any;
 })
 export class WelcomeCompComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _CargarScripts: CargarScriptsService) {
+    _CargarScripts.Carga(["animations"])
+
+   }
 
   ngOnInit(): void {
   }

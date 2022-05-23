@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
+import { GameComponent } from './components/game/game.component';
+
 import { LoginComponent } from './components/login/login.component';
 
 import { TemplateComponent } from './components/template/template.component';
@@ -11,6 +14,9 @@ const routes: Routes = [
   { path: 'home', component: WelcomeCompComponent},
   { path: 'game', component: TemplateComponent},
   { path: 'user', component: UserComponent},
+
+  { path: 'simon', component:GameComponent},
+
   { path: 'login', component: LoginComponent},
 
   { path: '**', redirectTo: 'home'}
