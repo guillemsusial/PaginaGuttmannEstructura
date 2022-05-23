@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CargarScriptsService } from './components/service/cargar-scripts.service';
+import { CargarScriptsService } from 'src/app/cargar-scripts.service';
 
 @Injectable({
   providedIn: 'root'
