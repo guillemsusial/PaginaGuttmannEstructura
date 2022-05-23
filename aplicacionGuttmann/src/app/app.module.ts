@@ -19,6 +19,7 @@ import { TutorialComponent } from './components/tutorial/tutorial.component';
 import { GameComponent } from './components/game/game.component';
 import { ScoreComponent } from './components/score/score.component';
 import { LoginComponent } from './components/login/login.component';
+import { PopupCourseComponent } from './components/popup-course/popup-course.component';
 
 import { SequenceComponent } from './components/sequence/sequence.component';
 
@@ -38,9 +39,11 @@ import { TemplateComponent } from './components/template/template.component';
     ScoreComponent,
     LoginComponent,
 
+    PopupCourseComponent,
     SequenceComponent,
 
     TemplateComponent
+
 
   ],
   imports: [
