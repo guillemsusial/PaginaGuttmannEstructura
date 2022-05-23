@@ -3,8 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 //INICIO DE SERVICIOS
 
-import { CargarScriptsService } from './cargar-scripts.service';
-import { BooleanSelectorService } from './boolean-selector.service';
+import { CargarScriptsService } from 'src/app/cargar-scripts.service';
+import { BooleanSelectorService } from 'src/app/boolean-selector.service';
 
 //FIN DE SERVICIOS
 

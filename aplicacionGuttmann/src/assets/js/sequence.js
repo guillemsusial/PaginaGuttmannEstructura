@@ -15,21 +15,21 @@ class sequence {
     }
 
     startGame() {
-     
-     this.buttons.forEach((element, i) => {  
-         
-        
+
+     this.buttons.forEach((element, i) => {
+
+
         if(element.id==i){
-           
+
             element.innerHTML=this.primerArray[i]
         }
         if(element.id=="answer"+i){
-            
+
             element.innerHTML = i
         }
-        
-       
-      });    
+
+
+      });
 
     }
 

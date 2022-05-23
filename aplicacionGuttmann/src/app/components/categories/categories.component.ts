@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, Input } from '@angular/core';
 
 declare var $: any;
 
@@ -9,7 +9,9 @@ declare var $: any;
 })
 
 export class CategoriesComponent implements OnInit {
-  
+
+      id:any;
+
   constructor() {}
 
   ngOnInit(){
@@ -78,6 +80,13 @@ export class CategoriesComponent implements OnInit {
       $('.button-categories').prop('disabled',false);
     }
     )
+
   }
 
-}
+
+
+  }
+
+
+
+
