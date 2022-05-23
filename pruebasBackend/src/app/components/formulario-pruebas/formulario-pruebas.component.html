@@ -16,14 +16,18 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Marc</td>
-                    <td>Chin Chon</td>
-                    <td>marc@gmail.com</td>
-                    <td>2000</td>
-                    <td>Ninguno</td>
-                    <td>Helicoptero Apache</td>
+                <tr *ngFor="let user of Users; let iControl=index">
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.Name }}</td>
+                    <td>{{ user.LastName }}</td>
+                    <td>{{ user.Email }}</td>
+                    <td>{{ user.anioNacimiento }}</td>
+                    <td>{{ user.Estudios }}</td>
+                    <td>{{ user.Sexo }}</td>
+                    <td>
+                        <a class="btn btn-info" routerLink="/edit-user/{{ user.id }}"> Editar </a> |
+                        <a class="btn btn-danger" (click)="deleteUser(user.id,iControl)" role="button"> Borrar </a>
+                    </td>
                 </tr>
             </tbody>
         </table>

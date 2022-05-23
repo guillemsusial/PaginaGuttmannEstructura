@@ -3,7 +3,7 @@
     Agregar user
   </div>
   <div class="card-body">
-    <form [formGroup]="formRegister" (ngSubmit)="enviarDatos()" class="row g-3 needs-validation">
+    <form [formGroup]="userForm" (ngSubmit)="enviarDatos()" class="row g-3 needs-validation">
       <div class="col-md-4">
         <label class="form-label">Nombre</label>
         <input formControlName="Name" type="text" class="form-control" required>
@@ -34,10 +34,9 @@
         <label class="form-label">Estudios</label>
         <select formControlName="Estudios" class="form-select" required>
           <option>Sin estudios</option>
-          <option>ESO</option>
-          <option>CFGM</option>
-          <option>CFGS</option>
-          <option>Universidad</option>
+          <option>Estudios primarios</option>
+          <option>Estudios secundarios</option>
+          <option>Estudios superiores</option>
         </select>
       </div>
       <div class="col-md-3">
@@ -45,8 +44,6 @@
         <select formControlName="Sexo" class="form-select" required>
           <option>Hombre</option>
           <option>Mujer</option>
-          <option>Helicoptero</option>
-          <option>Otro</option>
         </select>
       </div>
       <div class="col-12">

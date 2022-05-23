@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  formRegister:FormGroup;
+  userForm:FormGroup;
 
   constructor(
     public formulario:FormBuilder,
@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
     private router:Router
     ) {
     
-      this.formRegister=this.formulario.group({
+      this.userForm=this.formulario.group({
       Name:[''],
       LastName:[''],
       Email:[''],
@@ -33,10 +33,9 @@ export class RegisterComponent implements OnInit {
   }
 
   enviarDatos():any{
-    console.log("Me has presionado");
-    console.log(this.formRegister.value);
+    console.log(this.userForm.value);
     
-    this.crudService.AddUser(this.formRegister.value).subscribe();
-    this.router.navigateByUrl('/form');
+    this.crudService.AddUser(this.userForm.value).subscribe();
+    this.router.navigateByUrl('');
   }
 }

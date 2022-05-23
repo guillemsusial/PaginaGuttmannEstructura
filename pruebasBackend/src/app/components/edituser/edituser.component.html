@@ -1,1 +1,50 @@
-<p>edituser works!</p>
+<div class="card">
+  <div class="card-header">
+    Editar user
+  </div>
+  <div class="card-body">
+    <form [formGroup]="userForm" (ngSubmit)="enviarDatos()" class="row g-3 needs-validation">
+      <div class="col-md-4">
+        <label class="form-label">Nombre</label>
+        <input formControlName="Name" type="text" class="form-control" required>
+      </div>
+      <div class="col-md-4">
+        <label class="form-label">Apellidos</label>
+        <input formControlName="LastName" type="text" class="form-control" required>
+      </div>
+      <div class="col-md-4">
+        <label class="form-label">Email</label>
+        <input formControlName="Email" type="text" class="form-control" required>
+      </div>
+      <div class="col-md-2">
+        <label class="form-label">Año de nacimiento</label>
+        <select formControlName="anioNacimiento" class="form-select" required>
+          <option>2000</option>
+          <option>2001</option>
+          <option>2002</option>
+          <option>2003</option>
+          <option>2004</option>
+        </select>
+      </div>
+      <div class="col-md-3">
+        <label class="form-label">Estudios</label>
+        <select formControlName="Estudios" class="form-select" required>
+          <option>Sin estudios</option>
+          <option>Estudios primarios</option>
+          <option>Estudios secundarios</option>
+          <option>Estudios superiores</option>
+        </select>
+      </div>
+      <div class="col-md-3">
+        <label class="form-label">Sexo</label>
+        <select formControlName="Sexo" class="form-select" required>
+          <option>Hombre</option>
+          <option>Mujer</option>
+        </select>
+      </div>
+      <div class="col-12">
+        <button class="btn btn-primary" type="submit">Enviar</button>
+      </div>
+    </form>
+  </div>
+</div>
