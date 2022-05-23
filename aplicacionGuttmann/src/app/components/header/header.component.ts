@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CargarScriptsService} from "src/app/components/service/cargar-scripts.service";
+import { CargarScriptsService } from '../service/cargar-scripts.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { User} from 'src/assets/objects/usuarios';
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -40,7 +40,7 @@ export class HeaderComponent implements OnInit {
     // Call Api
   }
 
-  click(datos:User){
+  click(datos:any){
 
     console.log(datos);
     //this.http.createUser(datos);
