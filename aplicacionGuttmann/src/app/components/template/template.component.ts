@@ -12,10 +12,7 @@ export class TemplateComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    $('#juego').click(function (){
-      $('app-game').toggle();
-      $('app-tutorial').toggle();
-    });
+ 
   }
 
 }
