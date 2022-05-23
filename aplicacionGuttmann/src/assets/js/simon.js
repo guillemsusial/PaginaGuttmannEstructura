@@ -1,34 +1,27 @@
 /**https://www.lawebdelprogramador.com/foros/JavaScript/1344396-secuencia-de-imagenes.html */
 
-
-
 const round = document.getElementById('round');
 const simonButtons = document.getElementsByClassName('card');
-
 const transition = document.getElementById('transition');
+
+
  class Simon {
 
   constructor(simonButtons, startButton, round) {    
     
-    this.round = 0;
-    this.round1 = 1;
-    this.userPosition = 0;
-    this.totalRounds = 6;
-    this.sequence = [];
     
-    this.speed = 1000;
-    this.blockedButtons = true;
+    this.round = player.round;   
+    this.userPosition = player.userPosition;
+    this.totalRounds = player.totalRounds;
+    this.sequence = player.sequence;    
+    this.speed = player.speed;
+    this.blockedButtons = player.blockedButtons;
     this.buttons = Array.from(simonButtons);
-    this.fallos = 0;
-    this.laSequencia_error=false;   
-    this.userSequence=[];
-    this.userObject=
-    {
-      Round:"",
-      Options:[]
-    };
-    this.display = {
-      startButton,
+    this.fallos = player.fallos;
+    this.laSequencia_error= player.laSequencia_error;   
+    this.userSequence= player.userSequence;
+    this.userObject= player.userObject;    
+    this.display = {    
       round
     }
 
@@ -37,8 +30,7 @@ const transition = document.getElementById('transition');
 
   // Inicia el Simon
   init() {
-   // this.display.startButton.onclick = () => this.startGame();
-
+   
     this.startGame();    
    
   }
@@ -47,11 +39,11 @@ const transition = document.getElementById('transition');
   startGame() {
 
     transition.innerHTML = "Tu turno";
-    this.display.startButton.disabled = true;
+    
     
     this.updateRound(1);
 
-    this.createUserData();    
+    player.createUserData();    
    
     this.userPosition = 1;
 
@@ -63,15 +55,7 @@ const transition = document.getElementById('transition');
 
   }
   
-  //crea el objeto dond alojaremos los datos del usuario segun la ronda
-  createUserData(){    
-
-    for(let i = 0;i<this.totalRounds;i++) {
-     
-      this.userSequence.push(this.userObject={"Round":i,"Options":[]});
-     
-    }
-  }
+ 
 
   // Actualiza la ronda y el tablero
   updateRound(value) {
@@ -105,7 +89,8 @@ const transition = document.getElementById('transition');
         /*console.log(this.sequence);
         console.log("POSITION->"+this.userPosition)
         console.log("VALUE->"+value);*/
-        this.userSequence[this.round].Options.push(this.userPosition);
+        this.userSequence[this.round].Options.push(value);
+        this.userSequence[this.round].Sequence.push(this.sequence[this.userPosition]);
         console.log( this.userSequence);
         if (this.sequence[this.userPosition] === value && !this.laSequencia_error) {
       
@@ -236,7 +221,7 @@ const transition = document.getElementById('transition');
   // Actualiza el simon cuando el jugador pierde
   gameLost() {
    
-    this.display.startButton.disabled = false;
+    
     this.blockedButtons = true;
     let you = 0;
     let timer1 = setInterval(() => {
@@ -259,18 +244,56 @@ const transition = document.getElementById('transition');
     transition.classList.toggle('Warning');
     transition.innerHTML='🏆';
   }
+
+ /* $('#send').click( function() {
+    alert('Enviando!');
+        $.ajax(
+                {
+                    url: 'get_var.php?var=<?php echo $var; ?>',
+                    success: function( data ) {
+                        alert( 'El servidor devolvio "' + data + '"' );
+                    }
+                }
+            )
+        }*/
+
 }
+
 
 
 class Player{
-  constructor(name, salary) {
-      this.name = name;
-      this.salary = salary;
+  constructor(round,userPosition,totalRounds,sequence,speed,blockedButtons,fallos,userSequence,userObject) {
+      this.round = round;   
+      this.userPosition = userPosition;
+      this.totalRounds = totalRounds;
+      this.sequence = sequence;   
+      this.speed = speed;
+      this.blockedButtons = blockedButtons;    
+      this.fallos = fallos;
+      //this.laSequencia_error=false;   
+      this.userSequence= userSequence;
+      this.userObject= userObject;
+      this.display = {    
+        round
+      }
     }
 
+  //crea el objeto dond alojaremos los datos del usuario segun la ronda
+  createUserData(){    
 
-    
+    for(let i = 0;i<this.totalRounds;i++) {
+     
+      this.userSequence.push(this.userObject={"Round":i,"Options":[],"Sequence":[]});
+     
+    }
+  }
 }
-const player = new Player('Alice',100);
+
+
+
+
+
+
+const player = new Player(0,0,6,[],1000,true,0,[],{  Round:"",  Options:[],  Sequence:[]});
 const simon = new Simon(simonButtons, startButton, round);
 simon.init();
