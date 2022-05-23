@@ -7,7 +7,11 @@
     margin: 0 auto;
     border-radius:10pt;
     background-color:rgb(235, 255, 252);
-    display: flex;
+    display: grid;
+   
+    padding:4vw ;
+    grid-template-columns:  repeat(auto-fit,minmax(100px,25vw)) ;  
+    grid-gap: 2vw;
 }
 .card{
     width:20vw;
@@ -24,12 +28,8 @@
 }
 
 
-    display: grid;
-   
-    padding:4vw ;
-    grid-template-columns:  repeat(auto-fit,minmax(100px,25vw)) ;  
-    grid-gap: 2vw;
-}
+  
+
 @media only screen and (min-width: 1440px)  {
     #game{
         grid-template-columns:  repeat(4, auto) ;  
