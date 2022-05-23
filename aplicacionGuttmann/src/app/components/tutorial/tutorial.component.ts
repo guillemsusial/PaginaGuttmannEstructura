@@ -1,4 +1,5 @@
 import { Component,  OnInit, Input } from '@angular/core';
+import { } from "src/app/components/categories/categories.component";
 
 
 
@@ -7,15 +8,18 @@ import { Component,  OnInit, Input } from '@angular/core';
   templateUrl: './tutorial.component.html',
   styleUrls: ['./tutorial.component.css'],
 
-  template: "<ng-template> </ng-template>"
+
 
 
 
 })
 
 export class TutorialComponent implements OnInit {
-    el_juego=['juego1',''];
-    descripcion=['Observa la secuencia','2','3'];
+    el_juego="";
+    juegos=['juego1',''];
+    descripcion="";
+    descripciones=['Observa la secuencia','2','3'];
+
 
     @Input() idd="0";
 
@@ -28,13 +32,14 @@ export class TutorialComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-
+    this.cargarJuego(0);
 
   }
 
   cargarJuego(id:number){
 
-    this.el_juego[id];
+    this.el_juego=this.juegos[id];
+    this.descripcion=this.descripciones[id]
 
   }
 

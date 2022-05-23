@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CargarScriptsService } from 'src/app/cargar-scripts.service';
+import { CargarScriptsService } from 'src/app/components/service/cargar-scripts.service';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +7,7 @@ import { CargarScriptsService } from 'src/app/cargar-scripts.service';
 export class BooleanSelectorService {
 
   constructor( ) {
-  
+
   }
   trialOrGame:any;
   trialorGame=false;
@@ -16,7 +16,7 @@ export class BooleanSelectorService {
   }
 
   getGame() {
-   
+
     return this.trialOrGame;
   }
 

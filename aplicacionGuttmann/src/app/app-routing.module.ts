@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
+import { SequenceComponent } from './components/sequence/sequence.component';
 import { TemplateComponent } from './components/template/template.component';
 import { TutorialComponent } from './components/tutorial/tutorial.component';
 import { UserComponent } from './components/user/user.component';
@@ -11,6 +12,7 @@ const routes: Routes = [
   { path: 'game', component: TemplateComponent},
   { path: 'user', component: UserComponent},
   { path: 'login', component: LoginComponent},
+  { path: 'sequence', component: SequenceComponent},
   { path: '**', redirectTo: 'home'}
 ];
 

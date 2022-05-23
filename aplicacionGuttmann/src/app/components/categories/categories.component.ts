@@ -10,7 +10,7 @@ declare var $: any;
 
 export class CategoriesComponent implements OnInit {
 
-
+      id:any;
 
   constructor() {}
 
@@ -80,6 +80,13 @@ export class CategoriesComponent implements OnInit {
       $('.button-categories').prop('disabled',false);
     }
     )
+
   }
 
-}
+
+
+  }
+
+
+
+
