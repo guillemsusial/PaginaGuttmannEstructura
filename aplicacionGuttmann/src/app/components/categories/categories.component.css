@@ -1,22 +1,22 @@
 /*CSS de de los div de pruebas y categorias*/
-.div-game{
-    background-color: #8cc9d1;
-    border-radius: 10px;
-    min-height: 200px;
-    display: none;
+.div-game {
+  background-color: #8cc9d1;
+  border-radius: 10px;
+  min-height: 200px;
+  display: none;
 }
 
-.div-categorias{
-    background-color: #60A5E0;
-    height: 60px;
-    border-radius: 10px;
-    font-family: "Koulen", serif;
-    font-size: larger;
+.div-categorias {
+  background-color: #60A5E0;
+  height: 60px;
+  border-radius: 10px;
+  font-family: "Koulen", serif;
+  font-size: larger;
 }
 
 .button-categories:hover {
-    background-color: #2532a1;
-    color: white;
+  background-color: #2532a1;
+  color: white;
 }
 
 .button-categories:active {
@@ -25,14 +25,14 @@
 }
 
 .button-categories-active {
-    background-color: #2532a1;
-    color: white;
+  background-color: #2532a1;
+  color: white;
 }
 
-:disabled{
-    color: black;
+:disabled {
+  color: black;
 }
 
-:disabled.button-categories-active{
-    color: white;
+:disabled.button-categories-active {
+  color: white;
 }

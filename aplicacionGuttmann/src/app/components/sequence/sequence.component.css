@@ -1,64 +1,73 @@
 @import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap');
-#game{
-    width: 80vw;
-    height:40vw;
-    justify-content: start;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    margin: 0 auto;
-    border-radius:10pt;
-    background-color: rgb(37, 159, 163);
-    display: flex;
-}
-.card{
-    width:13vw;
-    height:10vw;
-    background-color:rgb(247, 247, 247);    
-    position: relative;
-    display: flex;
-    min-width: 0;
-    word-wrap: break-word;
-    justify-content: space-evenly;
-    align-items: center;
-}
-#answers>.card{
-    width:10vw;
-    height:8vw;
-}
-.card:hover{
-    background-color:rgba(103, 252, 207, 0.459);
-  
-}
-#sequence{ 
 
-    display: grid;
-    padding:4vw ;
-    grid-template-columns:  repeat(3, auto) ;  
-    grid-gap: 2vw;
+#game {
+  width: 80vw;
+  height: 40vw;
+  justify-content: start;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin: 0 auto;
+  border-radius: 10pt;
+  background-color: rgb(37, 159, 163);
+  display: flex;
 }
-#answers{ 
-    height:10%;
-    display: grid;    
-    padding:1vw ;
-    margin-top: 15%;
-    grid-template-columns:  repeat(2, auto) ;  
-    grid-gap: 2vw;
+
+.card {
+  width: 13vw;
+  height: 10vw;
+  background-color: rgb(247, 247, 247);
+  position: relative;
+  display: flex;
+  min-width: 0;
+  word-wrap: break-word;
+  justify-content: space-evenly;
+  align-items: center;
 }
-#round{ 
-    text-align:center;
-    font-size: 5vw;
-    font-family:'Gloria Hallelujah', cursive ;
-    color:rgb(10, 70, 52);
+
+#answers>.card {
+  width: 10vw;
+  height: 8vw;
 }
-.Active{
-    background-color: green!important;
+
+.card:hover {
+  background-color: rgba(103, 252, 207, 0.459);
+
+}
+
+#sequence {
+
+  display: grid;
+  padding: 4vw;
+  grid-template-columns: repeat(3, auto);
+  grid-gap: 2vw;
+}
+
+#answers {
+  height: 10%;
+  display: grid;
+  padding: 1vw;
+  margin-top: 15%;
+  grid-template-columns: repeat(2, auto);
+  grid-gap: 2vw;
+}
+
+#round {
+  text-align: center;
+  font-size: 5vw;
+  font-family: 'Gloria Hallelujah', cursive;
+  color: rgb(10, 70, 52);
+}
+
+.Active {
+  background-color: green !important;
 }
 
 .buttonContainer {
-    display: inline-grid;
-    grid-gap: 10px;
-    grid-template-columns: auto auto;
-    transform: rotate(45deg);
+  display: inline-grid;
+  grid-gap: 10px;
+  grid-template-columns: auto auto;
+  transform: rotate(45deg);
 }
+
 /*.card:hover{
     background-color:rgba(5, 233, 5, 0.301);
 }*/
@@ -67,71 +76,78 @@
 
 .card:active,
 .active {
-    filter: brightness(125%);
+  filter: brightness(125%);
 }
 
 
 #startButton {
-    width: 75px;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    border: none;
-    font-family: 'Merriweather', serif;
-    cursor: pointer;
-    border-radius: 5px;
-    color: #fff;
-    background-color: #587792;
-    padding: 5px;
+  width: 75px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  font-family: 'Merriweather', serif;
+  cursor: pointer;
+  border-radius: 5px;
+  color: #fff;
+  background-color: #587792;
+  padding: 5px;
 }
 
 #startButton:disabled {
-    background-color: #eee;
+  background-color: #eee;
 }
 
 .title {
-    width: min-content;
+  width: min-content;
 }
 
 .winner {
-    animation: spin 1s ease-in-out;
+  animation: spin 1s ease-in-out;
 }
 
-@keyframes spin { 
-    100% { transform:rotate(180deg) } }
-
-.yourTurn{
-    font-size: 15vw;
-    font-family: 'Courier New', Courier, monospace;
-    color: rgb(14, 66, 59);   
-    position:fixed;    
-    top:0px;    
-    width:100vw;
-    height:100vh;  
-    align-items: center;
-    display: none;
-    justify-content: center;         
-}
-.Active-1{
-    display: flex;
+@keyframes spin {
+  100% {
+    transform: rotate(180deg)
+  }
 }
 
-.Error{
-    background-color: rgba(255, 127, 127, 0.596);
-    display: grid;
+.yourTurn {
+  font-size: 15vw;
+  font-family: 'Courier New', Courier, monospace;
+  color: rgb(14, 66, 59);
+  position: fixed;
+  top: 0px;
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  display: none;
+  justify-content: center;
 }
-.Guess{
-    background-color: rgba(127, 255, 212, 0.596);
+
+.Active-1 {
+  display: flex;
 }
-.Warning{
-    background-color: rgba(255, 189, 127, 0.596);
+
+.Error {
+  background-color: rgba(255, 127, 127, 0.596);
+  display: grid;
 }
-.tryButton{
-    border: none;
-    font-family: 'Merriweather', serif;
-    cursor: pointer;
-    border-radius: 5px;
-    color: #fff;
-    background-color: #587792;
-    padding: 5px;
+
+.Guess {
+  background-color: rgba(127, 255, 212, 0.596);
+}
+
+.Warning {
+  background-color: rgba(255, 189, 127, 0.596);
+}
+
+.tryButton {
+  border: none;
+  font-family: 'Merriweather', serif;
+  cursor: pointer;
+  border-radius: 5px;
+  color: #fff;
+  background-color: #587792;
+  padding: 5px;
 }

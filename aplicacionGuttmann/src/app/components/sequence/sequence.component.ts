@@ -7,7 +7,7 @@ import { CargarScriptsService } from 'src/app/cargar-scripts.service';
 })
 export class SequenceComponent implements OnInit {
 
-  constructor(private _CargarScripts:CargarScriptsService) { 
+  constructor(private _CargarScripts:CargarScriptsService) {
 
     _CargarScripts.Carga(["sequence"])
   }

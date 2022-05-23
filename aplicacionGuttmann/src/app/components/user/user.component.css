@@ -1,32 +1,32 @@
-#foto-user{
-    background-color: rgb(85, 158, 255);
-    border-radius: 15px;
-    background-image: url("../../../assets/img/DefaultUser.png");
-    background-repeat: no-repeat;
-    background-size: cover;
+#foto-user {
+  background-color: rgb(85, 158, 255);
+  border-radius: 15px;
+  background-image: url("../../../assets/img/DefaultUser.png");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-.div-user{
-    border-radius: 15px;
-    background-color: white;
+.div-user {
+  border-radius: 15px;
+  background-color: white;
 }
 
-.contenedor{
-    background-color: #8bc3f7b9;
-    border-radius: 15px;
+.contenedor {
+  background-color: #8bc3f7b9;
+  border-radius: 15px;
 }
 
-.div-categorias{
-    background-color: #60A5E0;
-    height: 60px;
-    border-radius: 10px;
-    font-family: "Koulen", serif;
-    font-size: larger;
+.div-categorias {
+  background-color: #60A5E0;
+  height: 60px;
+  border-radius: 10px;
+  font-family: "Koulen", serif;
+  font-size: larger;
 }
 
 .button-categories:hover {
-    background-color: #2532a1;
-    color: white;
+  background-color: #2532a1;
+  color: white;
 }
 
 .button-categories:active {
@@ -35,6 +35,6 @@
 }
 
 .button-categories-active {
-    background-color: #2532a1;
-    color: white;
+  background-color: #2532a1;
+  color: white;
 }

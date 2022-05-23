@@ -15,13 +15,7 @@ export class TemplateComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    /*$('#juego').click(function (juego:boolean){
-      juego=true;
-      $('app-tutorial').toggle();
-      console.log(juego);
-      return juego;
-    });*/
-    
+
   }
 
 }
