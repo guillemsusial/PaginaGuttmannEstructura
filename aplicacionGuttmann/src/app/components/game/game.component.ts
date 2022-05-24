@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CargarScriptsService } from 'src/app/cargar-scripts.service';
 
+
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
@@ -10,19 +11,20 @@ import { CargarScriptsService } from 'src/app/cargar-scripts.service';
 
 export class GameComponent implements OnInit {
 
-  
 
-   constructor(private _CargarScripts:CargarScriptsService) { 
 
-   _CargarScripts.Carga(["simon"]);  
-     
+   constructor(private _CargarScripts:CargarScriptsService) {
+
+   _CargarScripts.Carga(["simon"]);
+
+
     }
-    
- 
+
+
    ngOnInit(): void {
    }
-   
- 
+
+
   }
 
 
