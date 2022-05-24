@@ -31,4 +31,9 @@ API: string='http://localhost/Users/';
     console.log(userData);
     return this.clientHttp.post(this.API+"?modifyUser="+id,userData,{responseType:'text'});
   }
+
+  LoginUser(userData:any):Observable<any>{
+    console.log(userData);
+    return this.clientHttp.get(this.API+"?login="+userData,userData);
+  }
 }
