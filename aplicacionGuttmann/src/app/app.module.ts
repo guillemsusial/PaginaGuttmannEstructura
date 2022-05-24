@@ -39,13 +39,9 @@ import { HttpClientModule} from '@angular/common/http';
     GameComponent,
     ScoreComponent,
     LoginComponent,
-
     PopupCourseComponent,
     SequenceComponent,
-
     TemplateComponent
-
-
   ],
   imports: [
     BrowserModule,

@@ -8,10 +8,10 @@
         <div>
           <form [formGroup]="userForm" (ngSubmit)="enviarDatos()">
             <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
-              <input type="email" name="email" placeholder="Correo" required />
+              <input formControlName="Email" type="email" name="email" placeholder="Correo" required />
             </div>
             <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
-              <input type="password" name="password" placeholder="Password" required />
+              <input formControlName="Password" type="password" name="password" placeholder="Password" required />
             </div>
             <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
               <input type="password" name="password" placeholder="Repite el password" required />
@@ -19,18 +19,18 @@
             <div class="row clearfix">
               <div class="col_half">
                 <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user"></i></span>
-                  <input type="text" name="name" placeholder="Nombre" />
+                  <input formControlName="Name" type="text" name="name" placeholder="Nombre" />
                 </div>
               </div>
               <div class="col_half">
                 <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user"></i></span>
-                  <input type="text" name="subname" placeholder="Apellidos" required />
+                  <input formControlName="LastName" type="text" name="subname" placeholder="Apellidos" required />
                 </div>
               </div>
             </div>
             <p class="textos">Género</p>
             <div class="input_field select_option">
-              <select>
+              <select formControlName="Sexo">
                 <option>Hombre</option>
                 <option>Mujer</option>
                 <option>Otro</option>
@@ -39,7 +39,7 @@
             </div>
             <p class="textos">Estudios</p>
             <div class="input_field select_option">
-              <select>
+              <select formControlName="Estudios">
                 <option>Sin estudios</option>
                 <option>Estudios primarios</option>
                 <option>Estudios secundarios</option>
@@ -49,7 +49,7 @@
             </div>
             <p class="textos">Año de nacimiento</p>
             <div class="input_field select_option">
-              <select>
+              <select formControlName="anioNacimiento">
                 <option>2022</option>
                 <option>2021</option>
                 <option>2020</option>
