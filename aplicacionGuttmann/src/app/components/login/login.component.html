@@ -5,8 +5,8 @@
         <img class="format guttmann" src="../../../assets/img/logo.svg">
       </div>
       <div class="row clearfix">
-        <div class="">
-          <form>
+        <div>
+          <form [formGroup]="userForm" (ngSubmit)="enviarDatos()">
             <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
               <input type="email" name="email" placeholder="Correo" required />
             </div>

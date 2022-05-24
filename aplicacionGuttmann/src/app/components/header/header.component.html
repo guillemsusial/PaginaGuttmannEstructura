@@ -70,7 +70,7 @@
       <div class="modal-body">
 
 
-        <form formGroup="loginForm"  (ngSubmit)="click(loginForm.value)">
+        <form [formGroup]="loginForm"  (ngSubmit)="click(loginForm.value)">
           <div class="mb-3 form-group">
             <label>Email address</label>
             <input formControlName="email" name="email" [class.is-invalid]="emailField.touched && emailField.invalid" type="email" class="form-control" id="id_email">

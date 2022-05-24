@@ -24,7 +24,8 @@ import { PopupCourseComponent } from './components/popup-course/popup-course.com
 import { SequenceComponent } from './components/sequence/sequence.component';
 
 import { TemplateComponent } from './components/template/template.component';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,10 @@ import { TemplateComponent } from './components/template/template.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
     CargarScriptsService,
