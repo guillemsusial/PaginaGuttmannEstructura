@@ -32,7 +32,7 @@ API: string='http://localhost/Users/';
     return this.clientHttp.post(this.API+"?modifyUser="+id,userData,{responseType:'text'});
   }
 
-  LoginUser(userData:any):Observable<any>{
-    return this.clientHttp.get(this.API+"?login="+userData,{responseType:'text'});
+  LoginUser(userData:User):Observable<any>{
+    return this.clientHttp.post(this.API+"?login=1",userData,{responseType:'text'});
   }
 }
