@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap');
 
+#top{
+  height: 5vw;
+  width: 100%;
+  background-color: white;
+}
 #game {
   width: 80vw;
   height: 40vw;
@@ -28,7 +33,7 @@
   height: 8vw;
 }
 
-.card:hover {
+.r:hover {
   background-color: rgba(103, 252, 207, 0.459);
 
 }
