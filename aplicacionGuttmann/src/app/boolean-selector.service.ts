@@ -7,7 +7,7 @@ import { CargarScriptsService } from 'src/app/cargar-scripts.service';
 export class BooleanSelectorService {
 
   constructor( ) {
-  
+
   }
   trialOrGame:any;
   trialorGame=false;
@@ -17,7 +17,7 @@ export class BooleanSelectorService {
   }
 
   getGame() {
-   
+
     return this.trialOrGame;
   }
 

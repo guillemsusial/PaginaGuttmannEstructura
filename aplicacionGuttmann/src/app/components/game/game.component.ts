@@ -11,21 +11,20 @@ import { CargarScriptsService } from 'src/app/cargar-scripts.service';
 
 export class GameComponent implements OnInit {
 
-  
 
-   constructor(private _CargarScripts:CargarScriptsService) { 
 
-   _CargarScripts.Carga(["simon"]); 
-   
-  
-     
+   constructor(private _CargarScripts:CargarScriptsService) {
+
+   _CargarScripts.Carga(["simon"]);
+
+
     }
-    
- 
+
+
    ngOnInit(): void {
    }
-   
- 
+
+
   }
 
 

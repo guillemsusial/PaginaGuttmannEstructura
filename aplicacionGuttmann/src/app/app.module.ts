@@ -3,8 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 //INICIO DE SERVICIOS
 
-import { CargarScriptsService } from './cargar-scripts.service';
-import { BooleanSelectorService } from './boolean-selector.service';
+import { CargarScriptsService } from 'src/app/cargar-scripts.service';
+import { BooleanSelectorService } from 'src/app/boolean-selector.service';
 
 //FIN DE SERVICIOS
 
@@ -24,7 +24,8 @@ import { PopupCourseComponent } from './components/popup-course/popup-course.com
 import { SequenceComponent } from './components/sequence/sequence.component';
 
 import { TemplateComponent } from './components/template/template.component';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -38,17 +39,16 @@ import { TemplateComponent } from './components/template/template.component';
     GameComponent,
     ScoreComponent,
     LoginComponent,
-
     PopupCourseComponent,
     SequenceComponent,
-
     TemplateComponent
-
-
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
     CargarScriptsService,
