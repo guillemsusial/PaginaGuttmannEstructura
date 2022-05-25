@@ -33,7 +33,6 @@ API: string='http://localhost/Users/';
   }
 
   LoginUser(userData:any):Observable<any>{
-    console.log(userData);
-    return this.clientHttp.get(this.API+"?login="+userData,userData);
+    return this.clientHttp.get(this.API+"?login="+userData,{responseType:'text'});
   }
 }
