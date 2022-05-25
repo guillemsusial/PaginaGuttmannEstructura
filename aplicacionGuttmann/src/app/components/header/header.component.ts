@@ -29,7 +29,6 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
   }
 
   enviarDatos():any{
