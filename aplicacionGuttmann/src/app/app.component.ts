@@ -9,8 +9,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'aplicacionGuttmann';
 
-  constructor(){
-    
-  }
+  constructor() {}
+
 }
 

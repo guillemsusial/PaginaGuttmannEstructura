@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs';
 import { User } from './user';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ import { User } from './user';
 export class CrudService {
   
 API: string='http://localhost/Users/';
-  constructor(private clientHttp:HttpClient) { }
+  constructor(private clientHttp:HttpClient, private cookies: CookieService) { }
 
   AddUser(userData:User):Observable<any>{
     return this.clientHttp.post(this.API+"?addUser=1",userData,{responseType:'text'});
@@ -34,5 +35,17 @@ API: string='http://localhost/Users/';
 
   LoginUser(userData:User):Observable<any>{
     return this.clientHttp.post(this.API+"?login=1",userData,{responseType:'text'});
+  }
+
+  setToken(token: any) {
+    this.cookies.set("token",token);
+  }
+
+  getToken() {
+    return this.cookies.get("token");
+  }
+
+  getUserLogged(){
+    const token = this.getToken();
   }
 }

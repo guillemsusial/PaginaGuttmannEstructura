@@ -15,53 +15,49 @@ import { MessageServiceService } from 'src/app/services/message-service.service'
 
 
 export class HeaderComponent implements OnInit {
-  userForm:FormGroup;
-  logged =false;
-   jsonObject:any;
-  //loginForm!: FormGroup;
+  userForm: FormGroup;
+  logged = false;
+  jsonObject: any;
 
   constructor(
-    public formulario:FormBuilder,
-    private crudService:CrudService,
-    private router:Router,
-    private msgService:MessageServiceService
+    public formulario: FormBuilder,
+    private crudService: CrudService,
+    private router: Router,
+    private msgService: MessageServiceService
   ) {
-    this.userForm=this.formulario.group({
-      Email:[''],
-      Password:['']
+    this.userForm = this.formulario.group({
+      Email: [''],
+      Password: ['']
     });
   }
 
   ngOnInit(): void {
   }
 
-  enviarDatos():any{
+  enviarDatos(): any {
     console.log(this.userForm.value);
 
-     this.crudService.LoginUser(this.userForm.value).subscribe((data)=>{
-       console.log("Obtener data de backend",data);
-      
-       this.jsonObject = JSON.parse(data);
-       
-       if(this.jsonObject.message=="Login Successful"){
-          console.log(this.jsonObject.user)
-          this.logged=true;
-        }else{
-          this.logged=false;        }
+    this.crudService.LoginUser(this.userForm.value).subscribe((data) => {
 
-     },(error) =>{
+      this.jsonObject = JSON.parse(data);
+
+      if (this.jsonObject.message == "Login Successful") {
+        console.log(this.jsonObject.user);
+        this.logged = true;
+      } else {
+        this.logged = false;
+      }
+
+    }, (error) => {
       console.log("error Function");
-     }
-     );
-     
-     
+    }
+    );
+
     this.router.navigateByUrl('');
-   
-    this.msgService.sendMessage(this.jsonObject);
   }
- 
-  
+
+
 }
 
 
- 
+
