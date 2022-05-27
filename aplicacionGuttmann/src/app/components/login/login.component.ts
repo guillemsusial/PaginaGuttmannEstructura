@@ -39,9 +39,7 @@ export class LoginComponent implements OnInit {
     this.crudService.AddUser(this.userForm.value).subscribe();
     this.router.navigateByUrl('');
 
-    let element:HTMLElement = document.getElementById('login') as HTMLElement;
-    console.log(element);
-    element.click();
+    
     
   }
 

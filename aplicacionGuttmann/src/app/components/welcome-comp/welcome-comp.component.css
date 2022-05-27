@@ -2,7 +2,8 @@
   background-color: #8CC9D1;
 }
 
-.usuario {
+.usuario {  
+  font-size: 2vw;
   color: #3D55AD;
 }
 
@@ -16,6 +17,7 @@
 
 .textos {
   margin: auto;
+  font-size: 1vw;
   text-align: justify;
 }
 

@@ -1,19 +1,23 @@
 /*CSS de de los div de pruebas y categorias*/
 .div-game {
   background-color: #8cc9d1;
-  border-radius: 10px;
-  min-height: 200px;
+  border-radius: 0.5vw;
+  min-height: 10vw;
+  font-size:1vw;
   display: none;
 }
 
 .div-categorias {
   background-color: #60A5E0;
-  height: 60px;
-  border-radius: 10px;
+  height: 2.5vw;
+  
+  border-radius: 0.5vw;
   font-family: "Koulen", serif;
-  font-size: larger;
+  font-size:1.5vw;
 }
-
+.button-categories{
+  min-height:5vw;
+}
 .button-categories:hover {
   background-color: #2532a1;
   color: white;
