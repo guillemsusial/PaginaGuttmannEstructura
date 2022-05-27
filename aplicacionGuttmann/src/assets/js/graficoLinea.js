@@ -1,22 +1,30 @@
-const labels = [
-    'Sesion 1',
-    'Sesion 2',
-    'Sesion 3',
-    'Sesion 4',
-    'Sesion 5',
-    'Sesion 6',
-    'Sesion 7',
-    'Sesion 8',
-    'Sesion 9'
-  ];
 
+  
   const data = {
-    labels: labels,
+   
     datasets: [{
       label: 'Numero de aciertos',
       backgroundColor: 'rgb(255, 99, 132)',
       borderColor: 'rgb(255, 99, 132)',
-      data: [1, 4, 10, 6, 15, 9, 11, 16],
+      data: [{
+        x: '2021-11-06 23:39:30',
+        y: 1
+    }, {
+        x: '2021-11-07 01:00:28',
+        y: 3
+    }, {
+        x: '2021-11-07 09:00:28',
+        y: 8
+    },{
+      x: '2021-11-06 23:39:31',
+      y: 1
+  }, {
+      x: '2021-11-07 01:00:22',
+      y: 3
+  }, {
+      x: '2021-11-07 09:00:20',
+      y: 8
+  }],
     }]
   };
 

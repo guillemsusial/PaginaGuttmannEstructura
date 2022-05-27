@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { CargarScriptsService } from 'src/app/cargar-scripts.service';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
+
+import { CrudService } from 'src/app/services/crud.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-header',
@@ -10,41 +14,51 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 
 export class HeaderComponent implements OnInit {
+  userForm:FormGroup;
   logged =false;
   //loginForm!: FormGroup;
 
-  email= new FormControl('', [Validators.required, Validators.email]);
-  password= new FormControl('', [Validators.required]);
-
-
-  loginForm= new FormGroup({
-    email: this.email,
-    password: this.password
-  })
-
-  constructor() {
+  constructor(
+    public formulario:FormBuilder,
+    private crudService:CrudService,
+    private router:Router
+  ) {
+    this.userForm=this.formulario.group({
+      Email:[''],
+      Password:['']
+    });
   }
 
   ngOnInit(): void {
-
   }
 
-  get emailField(): any {
-    return this.loginForm.get('email');
-  }
-  get passwordField(): any {
-    return this.loginForm.get('password');
-  }
-  loginFormSubmit(): void {
-    console.log(this.loginForm.value);
-    // Call Api
-  }
+  enviarDatos():any{
+    console.log(this.userForm.value);
 
-  click(datos:any){
+    
+    
+     this.crudService.LoginUser(this.userForm.value).subscribe((data)=>{
+       console.log("Obtener data de backend",data);
+      
+       let jsonObject = JSON.parse(data);
+       
+       if(jsonObject.message=="Login Successful"){
+          console.log(jsonObject.user)
+          this.logged=true;
+        }else{
+          this.logged=false;        }
 
-    console.log(datos);
-    //this.http.createUser(datos);
-
+     },(error) =>{
+      console.log("error Function");
+     }
+     );
+     
+     
+    this.router.navigateByUrl('');
+    
   }
+ 
 }
 
+
+ 

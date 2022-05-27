@@ -10,7 +10,6 @@ import { TemplateComponent } from './components/template/template.component';
 import { TutorialComponent } from './components/tutorial/tutorial.component';
 import { UserComponent } from './components/user/user.component';
 import { WelcomeCompComponent } from './components/welcome-comp/welcome-comp.component';
-import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
 
@@ -20,7 +19,7 @@ const routes: Routes = [
 
   { path: 'simon', component:GameComponent},
   { path: 'sequence', component:SequenceComponent},
-  { path: 'login', component: LoginComponent},
+  { path: 'register', component: LoginComponent},
 
   { path: '**', redirectTo: 'home'}
 
