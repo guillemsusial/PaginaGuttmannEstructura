@@ -4,6 +4,7 @@ import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms'
 
 import { CrudService } from 'src/app/services/crud.service';
 import { Router } from '@angular/router';
+import { MessageServiceService } from 'src/app/services/message-service.service';
 
 
 @Component({
@@ -16,12 +17,14 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
   userForm:FormGroup;
   logged =false;
+   jsonObject:any;
   //loginForm!: FormGroup;
 
   constructor(
     public formulario:FormBuilder,
     private crudService:CrudService,
-    private router:Router
+    private router:Router,
+    private msgService:MessageServiceService
   ) {
     this.userForm=this.formulario.group({
       Email:[''],
@@ -35,15 +38,13 @@ export class HeaderComponent implements OnInit {
   enviarDatos():any{
     console.log(this.userForm.value);
 
-    
-    
      this.crudService.LoginUser(this.userForm.value).subscribe((data)=>{
        console.log("Obtener data de backend",data);
       
-       let jsonObject = JSON.parse(data);
+       this.jsonObject = JSON.parse(data);
        
-       if(jsonObject.message=="Login Successful"){
-          console.log(jsonObject.user)
+       if(this.jsonObject.message=="Login Successful"){
+          console.log(this.jsonObject.user)
           this.logged=true;
         }else{
           this.logged=false;        }
@@ -55,9 +56,11 @@ export class HeaderComponent implements OnInit {
      
      
     this.router.navigateByUrl('');
-    
+   
+    this.msgService.sendMessage(this.jsonObject);
   }
  
+  
 }
 
 
