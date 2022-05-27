@@ -17,9 +17,9 @@ const routes: Routes = [
   { path: 'game', component: TemplateComponent },
   { path: 'user', component: UserComponent },
 
-  { path: 'simon', component: GameComponent },
-  { path: 'sequence', component: SequenceComponent },
-  { path: 'login', component: LoginComponent },
+  { path: 'simon', component:GameComponent},
+  { path: 'sequence', component:SequenceComponent},
+  { path: 'register', component: LoginComponent},
 
   { path: '**', redirectTo: 'home' }
 
