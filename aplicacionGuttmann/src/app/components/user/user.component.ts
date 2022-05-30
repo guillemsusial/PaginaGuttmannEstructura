@@ -28,13 +28,7 @@ export class UserComponent implements OnInit {
     }
     )
     
-    this.getUserLogged();
     //console.log(this.messageService.getMessage());
-  }
-
-  getUserLogged(){
-    this.token = this.crudService.getToken();
-    console.log(this.token);
   }
 
 }

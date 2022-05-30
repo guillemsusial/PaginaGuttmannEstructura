@@ -6,7 +6,6 @@ import { CrudService } from 'src/app/services/crud.service';
 import { Router } from '@angular/router';
 import { MessageServiceService } from 'src/app/services/message-service.service';
 
-
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -21,7 +20,7 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     public formulario: FormBuilder,
-    private crudService: CrudService,
+    public crudService: CrudService,
     private router: Router,
     private msgService: MessageServiceService
   ) {
@@ -32,31 +31,27 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+  }
+
+  logOut(): void {
+    this.crudService.logout();
   }
 
   enviarDatos(): any {
-    console.log(this.userForm.value);
-
     this.crudService.LoginUser(this.userForm.value).subscribe((data) => {
-
       this.jsonObject = JSON.parse(data);
-
-      if (this.jsonObject.message == "Login Successful") {
-        console.log(this.jsonObject.user);
-        this.logged = true;
+      if (this.jsonObject.message == "success") {
+        this.crudService.saveToken(this.jsonObject.token);
+        this.router.navigateByUrl('');
+        this.crudService.loggedIn.next(true);
       } else {
-        this.logged = false;
+        this.crudService.loggedIn.next(false);
       }
-
     }, (error) => {
       console.log("error Function");
-    }
-    );
-
-    this.router.navigateByUrl('');
+    });
   }
-
-
 }
 
 

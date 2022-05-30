@@ -1,16 +1,24 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from './user';
 import { CookieService } from 'ngx-cookie-service';
+
+import { JwtHelperService } from '@auth0/angular-jwt';
+
+const helper = new JwtHelperService();
 
 @Injectable({
   providedIn: 'root'
 })
 export class CrudService {
-  
-API: string='http://localhost/Users/';
-  constructor(private clientHttp:HttpClient, private cookies: CookieService) { }
+
+  loggedIn = new BehaviorSubject<boolean>(false);
+  API: string='http://localhost/Users/';
+
+  constructor(private clientHttp:HttpClient, private cookies: CookieService) {
+    this.checkToken();
+  }
 
   AddUser(userData:User):Observable<any>{
     return this.clientHttp.post(this.API+"?addUser=1",userData,{responseType:'text'});
@@ -33,19 +41,30 @@ API: string='http://localhost/Users/';
     return this.clientHttp.post(this.API+"?modifyUser="+id,userData,{responseType:'text'});
   }
 
-  LoginUser(userData:User):Observable<any>{
+  LoginUser(userData:User):Observable<any | void>{
     return this.clientHttp.post(this.API+"?login=1",userData,{responseType:'text'});
   }
 
-  setToken(token: any) {
-    this.cookies.set("token",token);
+  checkToken(): void {
+    if(localStorage.getItem('token')){
+    const userToken = localStorage.getItem('token') || "[]";
+    const isExpired = helper.isTokenExpired(userToken);
+    console.log('isExpired',isExpired);
+    isExpired ? this.logout() : this.loggedIn.next(true);}
   }
 
-  getToken() {
-    return this.cookies.get("token");
+  logout(): void {
+    localStorage.removeItem('token');
+    this.loggedIn.next(false);
   }
 
-  getUserLogged(){
-    const token = this.getToken();
+  get isLogged(): Observable<boolean> {
+    return this.loggedIn.asObservable();
+  }
+
+  readToken(): void {}
+
+  saveToken( token: string): void {
+    localStorage.setItem('token', token);
   }
 }

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CrudService } from './services/crud.service';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,13 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'aplicacionGuttmann';
 
-  constructor() {}
+  constructor(private crudService: CrudService) {}
 
+  ngOnInit(){
+    setInterval(()=>
+    {
+      this.crudService.checkToken()
+    },5000);
+  }
 }
 

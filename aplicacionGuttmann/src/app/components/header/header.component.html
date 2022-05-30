@@ -22,7 +22,7 @@
 
       <!-- PERFIL USUARIO LOGGED-->
 
-      <div class="col-2 col-sm-2 pt-4 " *ngIf="logged">
+      <div class="col-2 col-sm-2 pt-4 " *ngIf="crudService.isLogged | async; else loggedOut">
         <div class="dropdown text-center">
           <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1"
             data-bs-toggle="dropdown" aria-expanded="false">
@@ -35,19 +35,21 @@
             <li>
               <hr class="dropdown-divider">
             </li>
-            <li><a class="dropdown-item" href="#">Log out</a></li>
+            <li><a class="dropdown-item" (click)="logOut()">Log out</a></li>
           </ul>
         </div>
       </div>
       <!-- LOGIN SIGN-->
-      <div class="col-2 col-sm-2 text-center pt-5 " *ngIf="!logged">
-        <!-- <button type="button" class="btn btn-lg btn-secondary me-3 mb-2" data-toggle="modal" data-target="#exampleModal">Login</button>-->
-        <button id="login" type="button" class="btn btn-lg btn-secondary me-3 mb-2" data-bs-toggle="modal"
-          data-bs-target="#loginModal">
-          Login
-        </button>
-        <button type="button" class="btn btn-lg btn-iblue mb-2" routerLink="/register">Sign-up</button>
-      </div>
+      <ng-template #loggedOut>
+        <div class="col-2 col-sm-2 text-center pt-5">
+          <!-- <button type="button" class="btn btn-lg btn-secondary me-3 mb-2" data-toggle="modal" data-target="#exampleModal">Login</button>-->
+          <button id="login" type="button" class="btn btn-lg btn-secondary me-3 mb-2" data-bs-toggle="modal"
+            data-bs-target="#loginModal">
+            Login
+          </button>
+          <button type="button" class="btn btn-lg btn-iblue mb-2" routerLink="/register">Sign-up</button>
+        </div>
+      </ng-template>
     </div>
 
     <!--modal Login-->
