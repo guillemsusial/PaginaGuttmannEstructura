@@ -43,10 +43,15 @@ const transition = document.getElementById('transition');
     let timer = setInterval(() => {
       transition.classList.add('Active-1');
      // transition.style.left = '48.5vw'
+     if(sequenceIndex != 0)
       transition.innerHTML=sequenceIndex;
-      transition.innerHTML=sequenceIndex;
-      console.log(sequenceIndex);
-      if (sequenceIndex == 0) {      
+     
+     
+      if(sequenceIndex == 0){     
+        transition.innerHTML="Memoriza la siguiente secuencia";
+       
+      }
+      if (sequenceIndex == -1) {      
       
         transition.classList.remove('Active-1');
         this.startGame(); 
@@ -54,7 +59,7 @@ const transition = document.getElementById('transition');
       }
       sequenceIndex--;
      
-    }, this.speed*1);
+    }, this.speed*1.2);
       
     
   

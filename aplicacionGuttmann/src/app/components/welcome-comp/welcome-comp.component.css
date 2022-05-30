@@ -3,7 +3,7 @@
 }
 
 .usuario {  
-  font-size: 2vw;
+  
   color: #3D55AD;
 }
 
@@ -16,8 +16,7 @@
 }
 
 .textos {
-  margin: auto;
-  font-size: 1vw;
+  margin: auto; 
   text-align: justify;
 }
 
@@ -105,10 +104,12 @@ polygon.arrow-top {
 .reveal{
   position: relative;
   transform: translateY(150px);
+  visibility: hidden;
   opacity: 0;
   transition: 2s all ease;
 }
 .reveal.active{
   transform: translateY(0);
+  visibility: visible;
   opacity: 1;
 }
