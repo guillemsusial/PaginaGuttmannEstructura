@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from './user';
 import { CookieService } from 'ngx-cookie-service';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { Router } from '@angular/router';
 
 const helper = new JwtHelperService();
 
@@ -16,10 +17,10 @@ export class CrudService {
 
   //URL DE LA API EN XAMPP
   API: string='http://localhost/Users/';
-
   constructor(private clientHttp:HttpClient, private cookies: CookieService) {
     //CHEQUEAMOS EL TOKEN SIEMPRE QUE SE RECARGUE LA PÁGINA PARA SABER SI LA SESIÓN SIGUE ACTIVA
     this.checkToken();
+  
   }
 
   //AÑADIR USER (SE USA EN REGISTER/SIGN-UP)
