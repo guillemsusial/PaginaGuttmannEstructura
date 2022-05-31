@@ -13,9 +13,12 @@ import { WelcomeCompComponent } from './components/welcome-comp/welcome-comp.com
 
 const routes: Routes = [
 
-  { path: 'home', component: WelcomeCompComponent },
-  { path: 'game', component: TemplateComponent },
-  { path: 'user', component: UserComponent },
+
+  { path: 'home', component: WelcomeCompComponent},
+  { path: 'game', component: TemplateComponent},
+  { path: 'game/:game', component: TemplateComponent},
+  { path: 'user', component: UserComponent},
+
 
   { path: 'simon', component:GameComponent},
   { path: 'sequence', component:SequenceComponent},
