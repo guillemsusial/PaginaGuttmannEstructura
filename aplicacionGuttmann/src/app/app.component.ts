@@ -16,6 +16,9 @@ export class AppComponent {
     setInterval(()=>
     {
       this.crudService.checkToken()
+      if(this.crudService.checkToken() == null){
+        
+      }
     },5000);
   }
 }
