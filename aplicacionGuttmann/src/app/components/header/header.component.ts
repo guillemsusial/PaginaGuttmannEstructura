@@ -41,6 +41,7 @@ export class HeaderComponent implements OnInit {
   enviarDatos(): any {
     this.crudService.LoginUser(this.userForm.value).subscribe((data) => {
       this.jsonObject = JSON.parse(data);
+      console.log(data);
       if (this.jsonObject.message == "success") {
         this.crudService.saveToken(this.jsonObject.token);
         this.router.navigateByUrl('');
