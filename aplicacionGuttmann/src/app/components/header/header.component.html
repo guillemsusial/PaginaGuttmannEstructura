@@ -1,79 +1,26 @@
-<div id="header" class="container-fluid header m-0">
 
-  <div class="content header">
-    <br>
-    <div class="row">
-      <div class="col-2 col-sm-2">
-        <div class="content">
-          <div class="row">
-            <!-- LOGO DEL SITIO WEB -->
-            <div class="col-1 col-sm-1"></div>
-            <div class="col-9 col-sm-9">
-              <a href="#">
-                <img class="format " src="../../../assets/img/logo.svg" alt="" srcset=""></a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- CENTRO DEL HEADER -->
-      <div class="col-8 col-sm-8">
+  <!--<header id="header" class=" header p-5 text-white">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+        </a>
 
-      </div>
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="#">
+            <img class="format " src="../../../assets/img/logo.svg" alt="" srcset=""></a>
+        </li>
+        </ul>
 
-      <!-- PERFIL USUARIO LOGGED-->
+       
 
-      <div class="col-2 col-sm-2 pt-4 " *ngIf="logged">
-        <div class="dropdown text-center">
-          <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1"
-            data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="https://github.com/mdo.png" alt="mdo" width="64" height="64" class="rounded-circle">
-          </a>
-          <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-            <li><a class="dropdown-item" routerLink="/user">Trayectoria</a></li>
-            <li><a class="dropdown-item" href="#">Ajustes</a></li>
-            <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="#">Log out</a></li>
-          </ul>
-        </div>
-      </div>
-      <!-- LOGIN SIGN-->
-      <div class="col-2 col-sm-2 text-center pt-5 " *ngIf="!logged">
-        <!-- <button type="button" class="btn btn-lg btn-secondary me-3 mb-2" data-toggle="modal" data-target="#exampleModal">Login</button>-->
-        <button id="login" type="button" class="btn btn-lg btn-secondary me-3 mb-2" data-bs-toggle="modal"
-          data-bs-target="#loginModal">
-          Login
-        </button>
-        <button type="button" class="btn btn-lg btn-iblue mb-2" routerLink="/register">Sign-up</button>
-      </div>
-    </div>
-
-    <!--modal Login-->
-    <div class="modal " id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content content form_wrapper">
-          <div class="modal-header title_container pb-4 pt-2 col-12 col-sm-12">
-            <img class="format guttmann imag-fluid" src="../../../assets/img/logo.svg">
-          </div>
-
-          <div class="modal-body">
-
-            <form [formGroup]="userForm" (ngSubmit)="enviarDatos()">
-              <div class="mb-3 form-group">
-                <label>Email address</label>
-                <input formControlName="Email" name="email" type="email" class="form-control" id="id_email">
-              </div>
-              <div class="mb-3 form-group">
-                <label for="id_Password" class="form-label">Password</label>
-                <input formControlName="Password" name="password" type="password" class="form-control" id="id_Password">
-              </div>
-              <button type="submit" class=" mt-3 btn btn-iblue w-100">Iniciar Sesion</button>
-            </form>
-            <button type="button" class="mt-3 btn btn-secondary w-100" data-bs-dismiss="modal" aria-label="Close"
-              routerLink="/register">Sign-up</button>
-          </div>
+        <div class="text-end">
+          <button type="button" class="btn btn-outline-light me-2">Login</button>
+          <button type="button" class="btn btn-primary">Sign-up</button>
         </div>
       </div>
     </div>
+  </header>-->
+
+
+

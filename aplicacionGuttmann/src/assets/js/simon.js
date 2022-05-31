@@ -24,6 +24,7 @@ class Simon {
     this.display = {
       round
     }
+    
 
   }
 
@@ -31,7 +32,36 @@ class Simon {
   // Inicia el Simon
   init() {
 
-    this.startGame();
+   this.countDown();
+      
+   
+  }
+
+  //Contador
+  countDown(){
+   let sequenceIndex=3;
+   
+    let timer = setInterval(() => {
+      transition.classList.add('Active-1');
+     // transition.style.left = '48.5vw'
+     if(sequenceIndex != 0)
+      transition.innerHTML=sequenceIndex;
+     
+     
+      if(sequenceIndex == 0){     
+        transition.innerHTML="Memoriza la siguiente secuencia";
+       
+      }
+      if (sequenceIndex == -1) {      
+      
+        transition.classList.remove('Active-1');
+        this.startGame(); 
+        clearInterval(timer)
+      }
+      sequenceIndex--;
+     
+    }, this.speed*1.2);
+      
 
   }
 
@@ -39,7 +69,6 @@ class Simon {
   startGame() {
 
     transition.innerHTML = "Tu turno";
-
 
     this.updateRound(1);
 
@@ -138,13 +167,15 @@ class Simon {
       const button = this.buttons[this.sequence[sequenceIndex]];
 
       this.toggleButtonStyle(button)
-      setTimeout(() => this.toggleButtonStyle(button), this.speed)
 
-      sequenceIndex++;
+      setTimeout(() => this.toggleButtonStyle(button), this.speed  )
+     
+      sequenceIndex++;  
+      
+      this.stopShowingSequence(sequenceIndex,timer,you)
+     
+    }, this.speed*2);
 
-      this.stopShowingSequence(sequenceIndex, timer, you)
-
-    }, this.speed * 2);
 
   }
 
@@ -161,7 +192,9 @@ class Simon {
         }
 
         you++;
-      }, this.speed * 2);
+
+      }, this.speed*1.2);
+
     }
   }
 
@@ -189,13 +222,13 @@ class Simon {
 
         transition.classList.toggle('Active-1');
         transition.classList.toggle('Warning');
-        transition.style.left = '3vw'
+       // transition.style.left = '3vw'
         transition.innerHTML = "Memoriza la siguiente secuencia"
-        this.updateRound(1);
+        this.updateRound(this.round);
         if (this.fallos == 2) {
           setTimeout(() => this.showSequence(), this.speed * 0.5)
           transition.innerHTML = "Tu Turno"
-          transition.style.left = '38vw'
+        //  transition.style.left = '38vw'
         }
 
         /*SI FALLAS POR SEGUNDA VEZ SE ACABARA EL JUEGO */

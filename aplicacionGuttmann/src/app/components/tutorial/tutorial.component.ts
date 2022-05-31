@@ -1,6 +1,6 @@
 import { Component,  OnInit, Input } from '@angular/core';
 import { } from "src/app/components/categories/categories.component";
-
+import { ActivatedRoute, Params } from '@angular/router';
 
 
 @Component({
@@ -15,7 +15,7 @@ import { } from "src/app/components/categories/categories.component";
 })
 
 export class TutorialComponent implements OnInit {
-    el_juego="";
+   /* el_juego="";
     juegos=['juego1',''];
     descripcion="";
     descripciones=['Observa la secuencia','2','3'];
@@ -24,23 +24,30 @@ export class TutorialComponent implements OnInit {
     @Input() idd="0";
 
     //Datos recibidos del juego seleccionado
-    juegorecibido='';
+    juegorecibido='';*/
+    game: {game: string
+
+    };
 
 
 
 
-  constructor() { }
+  constructor(private rutaActiva: ActivatedRoute) { 
 
-  ngOnInit(): void {
-    this.cargarJuego(0);
 
+    this.game={game:this.rutaActiva.snapshot.params['game']};
   }
 
+  ngOnInit(): void {
+    //this.cargarJuego(0);
+
+  }
+/*
   cargarJuego(id:number){
 
     this.el_juego=this.juegos[id];
     this.descripcion=this.descripciones[id]
 
-  }
+  }*/
 
 }
