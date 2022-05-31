@@ -38,8 +38,6 @@ export class LoginComponent implements OnInit {
 
     this.crudService.AddUser(this.userForm.value).subscribe();
     this.router.navigateByUrl('');
-
-    
     
   }
 

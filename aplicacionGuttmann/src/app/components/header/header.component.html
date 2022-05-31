@@ -11,16 +11,44 @@
             <img class="format " src="../../../assets/img/logo.svg" alt="" srcset=""></a>
         </li>
         </ul>
-
-       
-
+        </div>
+          </header>-->
+      <!--CUANDO EL USER ESTÁ LOGUEADO SE MUESTRA EL MENÚ DE USUARIO-->
+      <div class="col-2 col-sm-2 pt-4 " *ngIf="crudService.isLogged | async; else loggedOut">
+        <div class="dropdown text-center">
+          <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="https://github.com/mdo.png" alt="mdo" width="64" height="64" class="rounded-circle">
+          </a>
+          <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+            <li><a class="dropdown-item" routerLink="/user">Trayectoria</a></li>
+            <li><a class="dropdown-item" href="#">Ajustes</a></li>
+            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <!--CUANDO LE DAS CLICK AL BOTÓN DE LOGOUT LLAMAS A UNA FUNCIÓN QUE ACABA LA SESIÓN isLogged=false -->
+            <li><a class="dropdown-item" (click)="logOut()">Log out</a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- LOGIN SIGN-->
+      <ng-template #loggedOut>
+        <div class="col-2 col-sm-2 text-center pt-5">
+          <!-- <button type="button" class="btn btn-lg btn-secondary me-3 mb-2" data-toggle="modal" data-target="#exampleModal">Login</button>-->
+          <button id="login" type="button" class="btn btn-lg btn-secondary me-3 mb-2" data-bs-toggle="modal"
+            data-bs-target="#loginModal">
+            Login
+          </button>
+          <button type="button" class="btn btn-lg btn-iblue mb-2" routerLink="/register">Sign-up</button>
+        </div>
+      </ng-template>
         <div class="text-end">
           <button type="button" class="btn btn-outline-light me-2">Login</button>
           <button type="button" class="btn btn-primary">Sign-up</button>
         </div>
       </div>
-    </div>
-  </header>-->
+    
 
 
 
