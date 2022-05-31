@@ -22,6 +22,7 @@
 
       <!-- PERFIL USUARIO LOGGED-->
 
+      <!--CUANDO EL USER ESTÁ LOGUEADO SE MUESTRA EL MENÚ DE USUARIO-->
       <div class="col-2 col-sm-2 pt-4 " *ngIf="crudService.isLogged | async; else loggedOut">
         <div class="dropdown text-center">
           <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1"
@@ -35,6 +36,7 @@
             <li>
               <hr class="dropdown-divider">
             </li>
+            <!--CUANDO LE DAS CLICK AL BOTÓN DE LOGOUT LLAMAS A UNA FUNCIÓN QUE ACABA LA SESIÓN isLogged=false -->
             <li><a class="dropdown-item" (click)="logOut()">Log out</a></li>
           </ul>
         </div>
