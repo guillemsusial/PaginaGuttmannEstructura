@@ -1,3 +1,4 @@
+import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import { Injectable } from '@angular/core';
 import { Observable,Subject } from 'rxjs';
 
@@ -7,18 +8,19 @@ import { Observable,Subject } from 'rxjs';
 })
 export class MessageServiceService {
 
-  private subject = new Subject<any>();
+  message:string = "";
 
   sendMessage(message: string) {
-    this.subject.next({ text: message });
+    console.log(message);
+    this.message=message;
   }
 
   clearMessage() {
-    this.subject.next({});
+    this.message="";
   }
 
-  getMessage(): Observable<any> {
-    return this.subject.asObservable();
+  getMessage(): String {
+    return this.message;
   }
 
 }
