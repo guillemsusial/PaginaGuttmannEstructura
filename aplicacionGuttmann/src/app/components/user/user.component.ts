@@ -22,11 +22,11 @@ export class UserComponent implements OnInit {
 
 
   ngOnInit(): void {
-    $('button[category="lineChart"]').click(function lineChart() {
+   /* $('button[category="lineChart"]').click(function lineChart() {
       $('div[category="polarChart"]').toggle();
       $('div[category="lineChart"]').toggle();
     }
-    )
+    )*/
     
     //console.log(this.messageService.getMessage());
   }
