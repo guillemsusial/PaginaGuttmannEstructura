@@ -75,10 +75,17 @@ export class CrudService {
   }
 
   //LEE EL TOKEN ALMACENADO EN LOCAL (NO SE USA ACTUALMENTE)
-  readToken(): void {}
+  readToken() {
+    const token = localStorage.getItem('token');
+    return token;
+  }
 
   //GUARDA EL TOKEN EN ALMACENAMIENTO LOCAL DEL NAVEGADOR EN EL MOMENTO DE INICIAR SESIÓN
   saveToken( token: string): void {
     localStorage.setItem('token', token);
+  }
+
+  decodeToken( token:string ): void{
+    return helper.decodeToken(token);
   }
 }
