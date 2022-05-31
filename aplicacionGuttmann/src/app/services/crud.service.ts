@@ -17,7 +17,7 @@ export class CrudService {
 
   //URL DE LA API EN XAMPP
   API: string='http://localhost/Users/';
-  constructor(private clientHttp:HttpClient, private cookies: CookieService) {
+  constructor(private clientHttp:HttpClient, private cookies: CookieService,private router: Router) {
     //CHEQUEAMOS EL TOKEN SIEMPRE QUE SE RECARGUE LA PÁGINA PARA SABER SI LA SESIÓN SIGUE ACTIVA
     this.checkToken();
   
@@ -60,13 +60,14 @@ export class CrudService {
     const userToken = localStorage.getItem('token') || "[]";
     const isExpired = helper.isTokenExpired(userToken);
     console.log('isExpired',isExpired);
-    isExpired ? this.logout() : this.loggedIn.next(true);}
+    isExpired ? this.logout()  this.router.navigateByUrl('/') : this.loggedIn.next(true);}
   }
 
   //SE USA EN EL MENÚ DE USUARIO EN EL HEADER HABIENDO INICIADO SESIÓN PARA HACER LOG OUT (ELIMINA EL TOKEN)
   logout(): void {
     localStorage.removeItem('token');
     this.loggedIn.next(false);
+
   }
 
   //MÉTODO PARA SABER EL ESTADO DE LA VARIABLE QUE DICE SI EL USER ESTÁ LOGUEADO
