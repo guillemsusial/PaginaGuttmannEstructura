@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 
+
 import { CrudService } from 'src/app/services/crud.service';
 import { Router } from '@angular/router';
 
@@ -34,7 +35,9 @@ export class LoginComponent implements OnInit {
   }
 
   enviarDatos(): any {
-    console.log(this.userForm.value);
+    console.log(this.userForm.value.Password);
+    
+    
 
     this.crudService.AddUser(this.userForm.value).subscribe();
     this.router.navigateByUrl('');
