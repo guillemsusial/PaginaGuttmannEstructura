@@ -12,6 +12,7 @@ declare var $: any;
 })
 export class UserComponent implements OnInit {
   token:any;
+  decodedToken:any;
   constructor(
     private _CargarScripts: CargarScriptsService,
     private messageService:MessageServiceService,
@@ -20,7 +21,6 @@ export class UserComponent implements OnInit {
     this._CargarScripts.Carga(["graficoLinea", "graficoPolar"])
   }
 
-
   ngOnInit(): void {
    /* $('button[category="lineChart"]').click(function lineChart() {
       $('div[category="polarChart"]').toggle();
@@ -28,7 +28,15 @@ export class UserComponent implements OnInit {
     }
     )*/
     
+    this.token = this.crudService.readToken();
+    console.log(this.token);
+    this.decodeToken(this.token);
+    
     //console.log(this.messageService.getMessage());
   }
 
+  decodeToken(token:string){
+    this.decodedToken = this.decodeToken(token);
+    console.log(this.decodedToken);
+  };
 }

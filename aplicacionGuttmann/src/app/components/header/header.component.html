@@ -12,7 +12,6 @@
       </ul>
 
       <!-- PERFIL USUARIO LOGGED-->
-
       <!--CUANDO EL USER ESTÁ LOGUEADO SE MUESTRA EL MENÚ DE USUARIO-->
       <div class="col-2 col-sm-2 pt-4 " *ngIf="crudService.isLogged | async; else loggedOut">
         <div class="dropdown text-center">
@@ -32,7 +31,9 @@
           </ul>
         </div>
       </div>
+      
       <!-- LOGIN SIGN-->
+      <!--USER NO LOGGED MENU LOGIN/REGISTER-->
       <ng-template #loggedOut>
         <div class="text-end">
           <button id="login" type="button" class="btn btn-outline-light me-2" data-bs-toggle="modal"
@@ -68,9 +69,3 @@
         </div>
       </div>
     </div>
-
-
-
-
-
-
