@@ -1,5 +1,4 @@
 <div id="header" class="container-fluid header m-0">
-
   <div class="content header">
     <br>
     <div class="row">
@@ -17,12 +16,12 @@
       </div>
       <!-- CENTRO DEL HEADER -->
       <div class="col-8 col-sm-8">
-
       </div>
 
       <!-- PERFIL USUARIO LOGGED-->
 
-      <div class="col-2 col-sm-2 pt-4 " *ngIf="logged">
+      <!--CUANDO EL USER ESTÁ LOGUEADO SE MUESTRA EL MENÚ DE USUARIO-->
+      <div class="col-2 col-sm-2 pt-4 " *ngIf="crudService.isLogged | async; else loggedOut">
         <div class="dropdown text-center">
           <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1"
             data-bs-toggle="dropdown" aria-expanded="false">
@@ -35,21 +34,25 @@
             <li>
               <hr class="dropdown-divider">
             </li>
-            <li><a class="dropdown-item" href="#">Log out</a></li>
+            <!--CUANDO LE DAS CLICK AL BOTÓN DE LOGOUT LLAMAS A UNA FUNCIÓN QUE ACABA LA SESIÓN isLogged=false -->
+            <li><a class="dropdown-item" (click)="logOut()">Log out</a></li>
           </ul>
         </div>
       </div>
+      
       <!-- LOGIN SIGN-->
-      <div class="col-2 col-sm-2 text-center pt-5 " *ngIf="!logged">
-        <!-- <button type="button" class="btn btn-lg btn-secondary me-3 mb-2" data-toggle="modal" data-target="#exampleModal">Login</button>-->
-        <button id="login" type="button" class="btn btn-lg btn-secondary me-3 mb-2" data-bs-toggle="modal"
-          data-bs-target="#loginModal">
-          Login
-        </button>
-        <button type="button" class="btn btn-lg btn-iblue mb-2" routerLink="/register">Sign-up</button>
-      </div>
+      <!--USER NO LOGGED MENU LOGIN/REGISTER-->
+      <ng-template #loggedOut>
+        <div class="col-2 col-sm-2 text-center pt-5">
+          <!-- <button type="button" class="btn btn-lg btn-secondary me-3 mb-2" data-toggle="modal" data-target="#exampleModal">Login</button>-->
+          <button id="login" type="button" class="btn btn-lg btn-secondary me-3 mb-2" data-bs-toggle="modal"
+            data-bs-target="#loginModal">
+            Login
+          </button>
+          <button type="button" class="btn btn-lg btn-iblue mb-2" routerLink="/register">Sign-up</button>
+        </div>
+      </ng-template>
     </div>
-
     <!--modal Login-->
     <div class="modal " id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
@@ -57,9 +60,7 @@
           <div class="modal-header title_container pb-4 pt-2 col-12 col-sm-12">
             <img class="format guttmann imag-fluid" src="../../../assets/img/logo.svg">
           </div>
-
           <div class="modal-body">
-
             <form [formGroup]="userForm" (ngSubmit)="enviarDatos()">
               <div class="mb-3 form-group">
                 <label>Email address</label>

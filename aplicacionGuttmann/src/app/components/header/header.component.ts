@@ -4,7 +4,7 @@ import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms'
 
 import { CrudService } from 'src/app/services/crud.service';
 import { Router } from '@angular/router';
-
+import { MessageServiceService } from 'src/app/services/message-service.service';
 
 @Component({
   selector: 'app-header',
@@ -14,51 +14,53 @@ import { Router } from '@angular/router';
 
 
 export class HeaderComponent implements OnInit {
-  userForm:FormGroup;
-  logged =false;
-  //loginForm!: FormGroup;
+  userForm: FormGroup;
+  logged = false;
+  jsonObject: any;
 
   constructor(
-    public formulario:FormBuilder,
-    private crudService:CrudService,
-    private router:Router
+    public formulario: FormBuilder,
+    public crudService: CrudService,
+    private router: Router,
+    private msgService: MessageServiceService
   ) {
-    this.userForm=this.formulario.group({
-      Email:[''],
-      Password:['']
+    this.userForm = this.formulario.group({
+      Email: [''],
+      Password: ['']
     });
   }
 
   ngOnInit(): void {
+
   }
 
-  enviarDatos():any{
-    console.log(this.userForm.value);
+  logOut(): void {
+    this.crudService.logout();
+  }
 
-    
-    
-     this.crudService.LoginUser(this.userForm.value).subscribe((data)=>{
-       console.log("Obtener data de backend",data);
-      
-       let jsonObject = JSON.parse(data);
-       
-       if(jsonObject.message=="Login Successful"){
-          console.log(jsonObject.user)
-          this.logged=true;
-        }else{
-          this.logged=false;        }
-
-     },(error) =>{
+  //FUNCIÓN PARA ENVIAR LOS DATOS DEL LOGIN
+  enviarDatos(): any {
+    //LLAMADA AL SERVICIO CRUD CON LOS DATOS DEL LOGIN
+    this.crudService.LoginUser(this.userForm.value).subscribe((data) => {
+      //RECOGEMOS LOS DATOS DEL USUARIO ENCRIPTADOS QUE NOS DEVUELVE EL LOGIN Y LO CONVERTIMOS A JSON
+      this.jsonObject = JSON.parse(data);
+      //SI EL MENSAJE ES "success" HACEMOS LO SIGUENTE:
+      if (this.jsonObject.message == "success") {
+        //GUARDAMOS EL TOKEN EN LOCAL CON EL SERVICIO DE CRUD
+        this.crudService.saveToken(this.jsonObject.token);
+        //REDIRIGIMOS AL USUARIO A LA PAGINA PRINCIPAL
+        this.router.navigateByUrl('');
+        //LE DECIMOS A LA VARIABLE loggedIn QUE ES true
+        this.crudService.loggedIn.next(true);
+      } else {
+        //SI NO ES CORRECTO EL LOGIN LE DECIMOS QUE LA VARIABLE loggedIn ES false
+        this.crudService.loggedIn.next(false);
+      }
+    }, (error) => {
       console.log("error Function");
-     }
-     );
-     
-     
-    this.router.navigateByUrl('');
-    
+    });
   }
- 
 }
 
 
- 
+
