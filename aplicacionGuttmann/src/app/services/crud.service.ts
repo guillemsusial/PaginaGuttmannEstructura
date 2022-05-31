@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http'
 import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from './user';
 import { CookieService } from 'ngx-cookie-service';
-
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 const helper = new JwtHelperService();
