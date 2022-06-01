@@ -6,6 +6,8 @@ import { CrudService } from 'src/app/services/crud.service';
 import { Router } from '@angular/router';
 import { MessageServiceService } from 'src/app/services/message-service.service';
 
+declare var $: any;
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -36,6 +38,7 @@ export class HeaderComponent implements OnInit {
   }
 
   logOut(): void {
+    
     this.crudService.logout();
     this.router.navigateByUrl('/home');
   }
