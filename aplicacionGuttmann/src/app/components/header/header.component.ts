@@ -41,6 +41,8 @@ export class HeaderComponent implements OnInit {
     if(confirm==true){
     this.crudService.logout();
     window.location.reload();
+    } else {
+      window.location.reload();
     }
   }
 
