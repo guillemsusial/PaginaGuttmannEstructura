@@ -26,7 +26,8 @@ export class HeaderComponent implements OnInit {
   ) {
     this.userForm = this.formulario.group({
       Email: [''],
-      Password: ['']
+      Password: [''],
+      Identificador: ['']
     });
   }
 
@@ -36,7 +37,6 @@ export class HeaderComponent implements OnInit {
 
   logOut(): void {
     this.crudService.logout();
-    this.crudService.checkToken();
   }
 
   //FUNCIÓN PARA ENVIAR LOS DATOS DEL LOGIN
@@ -50,7 +50,7 @@ export class HeaderComponent implements OnInit {
         //GUARDAMOS EL TOKEN EN LOCAL CON EL SERVICIO DE CRUD
         this.crudService.saveToken(this.jsonObject.token);
         //REDIRIGIMOS AL USUARIO A LA PAGINA PRINCIPAL
-        this.router.navigateByUrl('');
+        window.location.reload();
         //LE DECIMOS A LA VARIABLE loggedIn QUE ES true
         this.crudService.loggedIn.next(true);
       } else {
