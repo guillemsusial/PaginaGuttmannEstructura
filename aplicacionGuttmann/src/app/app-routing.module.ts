@@ -11,19 +11,19 @@ import { TutorialComponent } from './components/tutorial/tutorial.component';
 import { UserComponent } from './components/user/user.component';
 import { WelcomeCompComponent } from './components/welcome-comp/welcome-comp.component';
 
+import { AuthGuardService as AuthGuard } from './services/auth-guard.service';
+
 const routes: Routes = [
 
-
   { path: 'home', component: WelcomeCompComponent },
-  { path: 'game', component: TemplateComponent },
-  { path: 'game/:game', component: TemplateComponent },
-  { path: 'user', component: UserComponent },
-
-
-  { path: 'simon', component: GameComponent },
-  { path: 'simon/:game', component: GameComponent },
-  { path: 'sequence', component: SequenceComponent },
+  { path: 'game', component: TemplateComponent, canActivate: [AuthGuard] },
+  { path: 'game/:game', component: TemplateComponent, canActivate: [AuthGuard] },
+  { path: 'user', component: UserComponent, canActivate: [AuthGuard] },
+  { path: 'simon', component: GameComponent, canActivate: [AuthGuard] },
+  { path: 'simon/:game', component: GameComponent, canActivate: [AuthGuard] },
+  { path: 'sequence', component: SequenceComponent, canActivate: [AuthGuard] },
   { path: 'register', component: LoginComponent },
+  { path: 'game/:game/:mode', component:  GameComponent, canActivate: [AuthGuard] },
 
   { path: '**', redirectTo: 'home' }
 

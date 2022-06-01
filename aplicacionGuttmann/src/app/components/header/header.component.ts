@@ -36,7 +36,7 @@ export class HeaderComponent implements OnInit {
 
   logOut(): void {
     this.crudService.logout();
-    this.crudService.checkToken();
+    this.router.navigateByUrl('/home');
   }
 
   //FUNCIÓN PARA ENVIAR LOS DATOS DEL LOGIN
