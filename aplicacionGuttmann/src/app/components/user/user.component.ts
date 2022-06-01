@@ -10,6 +10,7 @@ declare var $: any;
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css']
 })
+
 export class UserComponent implements OnInit {
   token:any;
   decodedToken:any;
