@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CrudService } from './services/crud.service';
 
 @Component({
@@ -10,15 +11,12 @@ import { CrudService } from './services/crud.service';
 export class AppComponent {
   title = 'aplicacionGuttmann';
 
-  constructor(private crudService: CrudService) {}
+  constructor(private crudService: CrudService, private router:Router) {}
 
   ngOnInit(){
     setInterval(()=>
     {
       this.crudService.checkToken()
-      if(this.crudService.checkToken() == null){
-        
-      }
     },5000);
   }
 }

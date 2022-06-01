@@ -16,15 +16,11 @@ export class CrudService {
   loggedIn = new BehaviorSubject<boolean>(false);
 
   //URL DE LA API EN XAMPP
-
-  
-
-  API: string='http://localhost/Users/';
-  constructor(private clientHttp:HttpClient, private cookies: CookieService) {
-
+  API: string = 'http://localhost/Users/';
+  constructor(private clientHttp: HttpClient, private cookies: CookieService, private router: Router) {
     //CHEQUEAMOS EL TOKEN SIEMPRE QUE SE RECARGUE LA PÁGINA PARA SABER SI LA SESIÓN SIGUE ACTIVA
     this.checkToken();
-  
+
   }
 
   //AÑADIR USER (SE USA EN REGISTER/SIGN-UP)
@@ -64,7 +60,8 @@ export class CrudService {
       const userToken = localStorage.getItem('token') || "[]";
       const isExpired = helper.isTokenExpired(userToken);
       console.log('isExpired', isExpired);
-      isExpired ? this.logout() : this.loggedIn.next(true);
+      //isExpired ? this.logout()  this.router.navigateByUrl('/') : this.loggedIn.next(true);
+
     }
   }
 
@@ -72,6 +69,7 @@ export class CrudService {
   logout(): void {
     localStorage.removeItem('token');
     this.loggedIn.next(false);
+
   }
 
   //MÉTODO PARA SABER EL ESTADO DE LA VARIABLE QUE DICE SI EL USER ESTÁ LOGUEADO
@@ -92,7 +90,7 @@ export class CrudService {
     localStorage.setItem('token', token);
   }
 
-  decodeToken( token:string ): void{
+  decodeToken(token: string): void {
     return helper.decodeToken(token);
   }
 }
