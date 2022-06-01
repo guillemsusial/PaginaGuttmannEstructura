@@ -13,40 +13,20 @@
       </div>
     </div>
     <div class="col-lg-5 col-md-5 ml-4 col-sm-12">
-      
+      <img src="../../../assets/img/simon.png" class=" img-fluid mx-0 d-block rounded-3">
     </div>
     <div class="col-lg-1 col-md-1 d-sm-none d-md-block"></div>
   </div>
   <div class="row mb-5 mt-0 ">
-
-    <!--<div class="col-lg-6 col-md-12 d-block d-sm-none d-md-block d-lg-none mb-5">
-      <button id="tutorial" type="button" class="btn btn-primary mx-auto d-block">Tutorial</button>
-    </div>
-
-
-<div class="row">
-
-  <div class="col-lg-6 col-md-12 col-sm-12">
-    <button id="tutorial" type="button"  class="btn btn-primary mx-auto d-block">Tutorial</button>
-  </div>
-
-  <div class="col-lg-6 col-md-12 col-sm-12">
-    <button id="juego" type="button" routerLink="/simon" class="btn btn-primary mx-auto d-block">Juego</button>
-
-
-    <div class="col-lg-6 col-md-12 col-sm-12">
-      <img src="../../../assets/img/guttmann2.jpg" class="imagenes sombra mx-auto d-block rounded-3">
-    </div>
-    -->
     <div class="col-lg-1 col-md-1 d-sm-none d-md-block"></div>
-    <h1>{{game.game }}</h1>
     <div class="col-lg-5 col-md-5">
-      <button id="tutorial" type="button" class="btn btn-lg btn-primary mx-auto  d-none d-sm-none d-md-block"
-        data-bs-toggle="modal" data-bs-target="#videoModal">Tutorial</button>
+      <button id="juego" routerLink="/game/{{game.game}}/{{game.game}}-trial" type="button"
+        class="btn btn-lg btn-primary mx-auto d-block">Tutorial</button>
     </div>
 
     <div class="col-lg-5 col-md-5 col-sm-12">
-      <button id="juego" type="button" class="btn btn-lg btn-primary mx-auto d-block">Juego</button>
+      <button id="juego" routerLink="/game/{{game.game}}/{{game.game}}" type="button"
+        class="btn btn-lg btn-primary mx-auto d-block">Juego</button>
     </div>
     <div class="col-lg-1 col-md-1 d-sm-none d-md-block"></div>
   </div>
@@ -57,15 +37,8 @@
   aria-hidden="true">
   <div class="modal-dialog modal-xl modal-dialog-centered " role="document">
     <div class="modal-content ">
-
       <video src="../../../assets/img/tutorial1.mp4" autoplay loop
         class="img-fluid d-block rounded-1 m-0 border border-dark"></video>
-
     </div>
-
-
   </div>
-
 </div>
-
-

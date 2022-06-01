@@ -3,14 +3,15 @@
 #game{
     width: 90vw;
     height:100%;
-    justify-content: center;   
+    justify-content: center;
     margin: 0 auto;
     border-radius:10pt;
     background-color:rgb(235, 255, 252);
     display: grid;
-   
+
     padding:4vw ;
-    grid-template-columns:  repeat(auto-fit,minmax(100px,25vw)) ;  
+    padding-bottom: 2vw !important;
+    grid-template-columns:  repeat(auto-fit,minmax(100px,25vw)) ;
     grid-gap: 2vw;
 }
 .card{
@@ -19,7 +20,7 @@
     margin: auto;
     background-color:rgb(247, 247, 247);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    
+
 
 }
 
@@ -28,21 +29,31 @@
 }
 
 
-  
+
 
 @media only screen and (min-width: 1440px)  {
     #game{
-        grid-template-columns:  repeat(4, auto) ;  
+        grid-template-columns:  repeat(4, auto) ;
     }
-    
+
 }
-#round{ 
+#round{
     text-align:end;
     padding-right: 2vw;
     font-size: 3vw;
     font-family:'Gloria Hallelujah', cursive ;
     color:rgb(10, 70, 52);
 
+}
+
+#intentos{
+    margin-top: 1vw;
+
+    padding-right: 2vw;
+    font-size: 2vw;
+    font-family:'Gloria Hallelujah', cursive ;
+    color:rgb(10, 70, 52);
+    margin-bottom: 0vw;
 }
 
 .Active {
@@ -95,41 +106,46 @@
     animation: spin 1s ease-in-out;
 }
 
-@keyframes spin { 
+@keyframes spin {
     100% { transform:rotate(180deg) } }
 
 .yourTurn{
     font-size: 5vw;
     text-align: center;
-    
+
     font-family: 'Courier New', Courier, monospace;
-    color: rgb(92, 0, 76);   
-    position:fixed;    
-    top:0;    
-    width:100vw;
-    height: 50vw;
+
+    color: rgb(92, 0, 76);
+    position:fixed;
+    top:20vw;
+    left:38vw;
+
     align-items: center;
-    display: none;     
-    justify-content: center;   
-          
+    display: none;
+    justify-content: center;
+
 }
 @media only screen and (max-width: 1440px)  {
     .yourTurn{
-        height: 65vw;    
+
+
+
+        height: 65vw;
     }
-    
+
 }
 @media only screen and (max-width: 410px)  {
     .yourTurn{
-        height: 85vw;    
+        height: 85vw;
     }
-    
+
 }
 @media only screen and (max-width: 250px)  {
     .yourTurn{
-        height: 160vw;    
+        height: 160vw;
+
     }
-    
+
 }
 .Active-1{
     display: flex;
@@ -150,7 +166,7 @@
     font-size:1vw;
     font-family: 'Merriweather', serif;
     cursor: pointer;
-    border-radius: 5px;    
+    border-radius: 5px;
     color: #fff;
     background-color: #587792;
     padding: 5px;
