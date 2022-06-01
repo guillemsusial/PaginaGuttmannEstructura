@@ -1,26 +1,26 @@
 <app-header></app-header>
 
-<div class="container-flex contenedor mt-5 mb-5 ms-5 me-5">
+<div class="container-flex contenedor mt-5 mb-5 ms-5 me-5" >
   <div class="row">
     <div class="col-3 offset-2 div-user mt-5 mb-5" id="foto-user">
     </div>
     <div class="col-5 pt-5 pb-5 ps-4 pe-4">
-    
         <div>
-          <p>Email:</p>
-        </div>
-        <div>
-          <p>Nombre:</p>
+          <p>Nombre: {{decodedToken.data.Name}}</p>
         </div>   
         <div>
-          <p>Apellidos:</p>
-        </div> 
+          <p>Apellidos: {{decodedToken.data.LastName}}</p>
+        </div>
         <div>
-          <p>Genero:</p>
+          <p>Email: {{decodedToken.data.Email}}</p>
+        </div>
+        <div>
+          <p>Año de Nacimiento: {{decodedToken.data.anioNacimiento}}</p>
+        </div>
+        <div>
+          <p>Genero: {{decodedToken.data.Sexo}}</p>
         </div>  
-        <div>
-          <p>Año de Nacimiento:</p>
-        </div>       
+               
     </div>
   </div>
 

@@ -36,17 +36,25 @@ export class HeaderComponent implements OnInit {
 
   logOut(): void {
     this.crudService.logout();
+    this.crudService.checkToken();
   }
 
+  //FUNCIÓN PARA ENVIAR LOS DATOS DEL LOGIN
   enviarDatos(): any {
+    //LLAMADA AL SERVICIO CRUD CON LOS DATOS DEL LOGIN
     this.crudService.LoginUser(this.userForm.value).subscribe((data) => {
+      //RECOGEMOS LOS DATOS DEL USUARIO ENCRIPTADOS QUE NOS DEVUELVE EL LOGIN Y LO CONVERTIMOS A JSON
       this.jsonObject = JSON.parse(data);
-      console.log(data);
+      //SI EL MENSAJE ES "success" HACEMOS LO SIGUENTE:
       if (this.jsonObject.message == "success") {
+        //GUARDAMOS EL TOKEN EN LOCAL CON EL SERVICIO DE CRUD
         this.crudService.saveToken(this.jsonObject.token);
+        //REDIRIGIMOS AL USUARIO A LA PAGINA PRINCIPAL
         this.router.navigateByUrl('');
+        //LE DECIMOS A LA VARIABLE loggedIn QUE ES true
         this.crudService.loggedIn.next(true);
       } else {
+        //SI NO ES CORRECTO EL LOGIN LE DECIMOS QUE LA VARIABLE loggedIn ES false
         this.crudService.loggedIn.next(false);
       }
     }, (error) => {
