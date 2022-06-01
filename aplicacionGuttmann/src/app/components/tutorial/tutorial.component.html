@@ -13,8 +13,7 @@
       </div>
     </div>
     <div class="col-lg-5 col-md-5 ml-4 col-sm-12">
-      <h4>{{el_juego}}</h4>
-      <p>{{descripcion}}</p>
+      
     </div>
     <div class="col-lg-1 col-md-1 d-sm-none d-md-block"></div>
   </div>
@@ -26,6 +25,7 @@
 
 
 <div class="row">
+
   <div class="col-lg-6 col-md-12 col-sm-12">
     <button id="tutorial" type="button"  class="btn btn-primary mx-auto d-block">Tutorial</button>
   </div>
@@ -33,12 +33,13 @@
   <div class="col-lg-6 col-md-12 col-sm-12">
     <button id="juego" type="button" routerLink="/simon" class="btn btn-primary mx-auto d-block">Juego</button>
 
+
     <div class="col-lg-6 col-md-12 col-sm-12">
       <img src="../../../assets/img/guttmann2.jpg" class="imagenes sombra mx-auto d-block rounded-3">
     </div>
     -->
     <div class="col-lg-1 col-md-1 d-sm-none d-md-block"></div>
-
+    <h1>{{game.game }}</h1>
     <div class="col-lg-5 col-md-5">
       <button id="tutorial" type="button" class="btn btn-lg btn-primary mx-auto  d-none d-sm-none d-md-block"
         data-bs-toggle="modal" data-bs-target="#videoModal">Tutorial</button>
@@ -62,7 +63,9 @@
 
     </div>
 
+
   </div>
+
 </div>
 
-<app-footer></app-footer>
+
