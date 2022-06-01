@@ -16,12 +16,14 @@ import { AuthGuardService as AuthGuard } from './services/auth-guard.service';
 const routes: Routes = [
 
   { path: 'home', component: WelcomeCompComponent },
+
   { path: 'game', component: TemplateComponent, canActivate: [AuthGuard] },
   { path: 'game/:game', component: TemplateComponent, canActivate: [AuthGuard] },
   { path: 'user', component: UserComponent, canActivate: [AuthGuard] },
   { path: 'simon', component: GameComponent, canActivate: [AuthGuard] },
   { path: 'simon/:game', component: GameComponent, canActivate: [AuthGuard] },
   { path: 'sequence', component: SequenceComponent, canActivate: [AuthGuard] },
+
   { path: 'register', component: LoginComponent },
   { path: 'game/:game/:mode', component:  GameComponent, canActivate: [AuthGuard] },
 
