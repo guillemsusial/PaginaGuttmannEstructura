@@ -16,12 +16,13 @@ const routes: Routes = [
 
   { path: 'home', component: WelcomeCompComponent },
   { path: 'game', component: TemplateComponent },
-  { path: 'game/:game', component: TemplateComponent },
+  { path: 'game/:game', component: TemplateComponent }, 
+  { path: 'game/:game/:mode', component:  GameComponent },
   { path: 'user', component: UserComponent },
 
 
-  { path: 'simon', component: GameComponent },
-  { path: 'simon/:game', component: GameComponent },
+ // { path: 'simon', component: GameComponent },
+ // { path: 'simon/:mode', component: GameComponent },
   { path: 'sequence', component: SequenceComponent },
   { path: 'register', component: LoginComponent },
 
