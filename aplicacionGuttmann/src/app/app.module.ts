@@ -24,7 +24,10 @@ import { PopupCourseComponent } from './components/popup-course/popup-course.com
 import { SequenceComponent } from './components/sequence/sequence.component';
 
 import { TemplateComponent } from './components/template/template.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule} from '@angular/common/http';
 
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -38,21 +41,21 @@ import { TemplateComponent } from './components/template/template.component';
     GameComponent,
     ScoreComponent,
     LoginComponent,
-
     PopupCourseComponent,
     SequenceComponent,
-
     TemplateComponent
-
-
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
     CargarScriptsService,
-    BooleanSelectorService
+    BooleanSelectorService,
+    CookieService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CargarScriptsService } from 'src/app/cargar-scripts.service';
+import { MessageServiceService } from 'src/app/services/message-service.service';
+import { CrudService } from 'src/app/services/crud.service';
 
 declare var $: any;
 
@@ -9,21 +11,26 @@ declare var $: any;
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-
-  constructor(private _CargarScripts: CargarScriptsService) {
-    this._CargarScripts.Carga(["graficoLinea", "graficoPolar"])
-  }
-
-
-  ngOnInit(): void {
-
-
-
-    $('button[category="lineChart"]').click(function lineChart() {
-      $('div[category="polarChart"]').toggle();
-      $('div[category="lineChart"]').toggle();
-    }
+  token:any;
+  decodedToken:any;
+ 
+  constructor(
+    private _CargarScripts: CargarScriptsService,
+    public crudService:CrudService
     )
+   {
+    
+    this._CargarScripts.Carga(["graficoPolar"])
+  }
+  
+  ngOnInit(): void {
+    this.token = this.crudService.readToken();
+    console.log(this.token);
+    this.decodeToken(this.token);
   }
 
+  decodeToken(token:string){
+    this.decodedToken = this.crudService.decodeToken(token);
+    console.log(this.decodedToken.data);
+  };
 }

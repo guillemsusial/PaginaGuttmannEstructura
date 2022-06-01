@@ -2,7 +2,8 @@
   background-color: #8CC9D1;
 }
 
-.usuario {
+.usuario {  
+  
   color: #3D55AD;
 }
 
@@ -15,7 +16,7 @@
 }
 
 .textos {
-  margin: auto;
+  margin: auto; 
   text-align: justify;
 }
 
@@ -100,3 +101,15 @@ polygon.arrow-top {
   cursor: pointer;
 }
 
+.reveal{
+  position: relative;
+  transform: translateY(150px);
+  visibility: hidden;
+  opacity: 0;
+  transition: 2s all ease;
+}
+.reveal.active{
+  transform: translateY(0);
+  visibility: visible;
+  opacity: 1;
+}

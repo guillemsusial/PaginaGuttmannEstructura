@@ -5,7 +5,7 @@ const simonButtons = document.getElementsByClassName('card');
 const transition = document.getElementById('transition');
 
 
- class Simon {
+class Simon {
 
   constructor(simonButtons, startButton, round) {
 
@@ -25,13 +25,47 @@ const transition = document.getElementById('transition');
       round
     }
 
+
   }
 
 
   // Inicia el Simon
   init() {
 
+
     this.startGame();
+
+   this.countDown();
+
+
+  }
+
+  //Contador
+  countDown(){
+   let sequenceIndex=3;
+
+    let timer = setInterval(() => {
+      transition.classList.add('Active-1');
+     // transition.style.left = '48.5vw'
+     if(sequenceIndex != 0)
+      transition.innerHTML=sequenceIndex;
+
+
+      if(sequenceIndex == 0){
+        transition.innerHTML="Memoriza la siguiente secuencia";
+
+      }
+      if (sequenceIndex == -1) {
+
+        transition.classList.remove('Active-1');
+        this.startGame();
+        clearInterval(timer)
+      }
+      sequenceIndex--;
+
+    }, this.speed*1.2);
+
+
 
   }
 
@@ -39,7 +73,6 @@ const transition = document.getElementById('transition');
   startGame() {
 
     transition.innerHTML = "Tu turno";
-
 
     this.updateRound(1);
 
@@ -84,39 +117,40 @@ const transition = document.getElementById('transition');
   }
 
   // Valida si el boton que toca el usuario corresponde a al valor de la secuencia
-   validateChosenColor(value) {
 
-        /*console.log(this.sequence);
-        console.log("POSITION->"+this.userPosition)
-        console.log("VALUE->"+value);*/
-        this.userSequence[this.round].Options.push(value);
-        this.userSequence[this.round].Sequence.push(this.sequence[this.userPosition]);
-        console.log( this.userSequence);
-        if (this.sequence[this.userPosition] === value && !this.laSequencia_error) {
+  validateChosenColor(value) {
 
-            if (0 === this.userPosition) {
-              this.round++;
-              this.updateRound(this.round);
-              this.userPosition = this.round;
-              this.speed /= 1.02;
-              this.isGameOver();
-            } else {
+    /*console.log(this.sequence);
+    console.log("POSITION->"+this.userPosition)
+    console.log("VALUE->"+value);*/
+    this.userSequence[this.round].Options.push(value);
+    this.userSequence[this.round].Sequence.push(this.sequence[this.userPosition]);
+    console.log(this.userSequence);
+    if (this.sequence[this.userPosition] === value && !this.laSequencia_error) {
 
-              this.userPosition--
-            }
-        }else {
+      if (0 === this.userPosition) {
+        this.round++;
+        this.updateRound(this.round);
+        this.userPosition = this.round;
+        this.speed /= 1.02;
+        this.isGameOver();
+      } else {
 
-         this.laSequencia_error =true
+        this.userPosition--
+      }
+    } else {
 
-          if(0 === this.userPosition && this.laSequencia_error){
+      this.laSequencia_error = true
 
-          this.gameLost();
-          this.userPosition = this.round;
-          this.laSequencia_error =false
-          }
-          this.userPosition--
-        }
-  }
+      if (0 === this.userPosition && this.laSequencia_error) {
+
+        this.gameLost();
+        this.userPosition = this.round;
+        this.laSequencia_error = false
+      }
+      this.userPosition--
+    }
+    }
 
 
   // Verifica que no haya acabado el juego
@@ -130,7 +164,7 @@ const transition = document.getElementById('transition');
 
   // Muestra la secuencia de botones que va a tener que tocar el usuario
   showSequence() {
-    this.sequence=this.createSequence();
+    this.sequence = this.createSequence();
     this.blockedButtons = true;
     let sequenceIndex = 0;
     let you = 0;
@@ -138,7 +172,9 @@ const transition = document.getElementById('transition');
       const button = this.buttons[this.sequence[sequenceIndex]];
 
       this.toggleButtonStyle(button)
-      setTimeout(() => this.toggleButtonStyle(button), this.speed   )
+
+
+      setTimeout(() => this.toggleButtonStyle(button), this.speed  )
 
       sequenceIndex++;
 
@@ -146,10 +182,11 @@ const transition = document.getElementById('transition');
 
     }, this.speed*2);
 
+
   }
 
   //Cuando la sequencia[i] llegue al numero de la ronda esta parara el Intervalo
-  stopShowingSequence(sequenceIndex,timer,you){
+  stopShowingSequence(sequenceIndex, timer, you) {
     if (sequenceIndex > this.round) {
       this.blockedButtons = false;
       clearInterval(timer)
@@ -161,7 +198,9 @@ const transition = document.getElementById('transition');
         }
 
         you++;
-      }, this.speed*2);
+
+      }, this.speed*1.2);
+
     }
   }
 
@@ -189,13 +228,13 @@ const transition = document.getElementById('transition');
 
         transition.classList.toggle('Active-1');
         transition.classList.toggle('Warning');
-        transition.style.left = '3vw'
+       // transition.style.left = '3vw'
         transition.innerHTML = "Memoriza la siguiente secuencia"
-        this.updateRound(1);
+        this.updateRound(this.round);
         if (this.fallos == 2) {
           setTimeout(() => this.showSequence(), this.speed * 0.5)
           transition.innerHTML = "Tu Turno"
-          transition.style.left = '38vw'
+        //  transition.style.left = '38vw'
         }
 
         /*SI FALLAS POR SEGUNDA VEZ SE ACABARA EL JUEGO */
@@ -207,7 +246,9 @@ const transition = document.getElementById('transition');
         transition.innerHTML = "FALLASTE";
         if (this.fallos == 4) {
           var divNota = document.createElement("button")
+
           divNota.setAttribute("id","startButton")
+
           divNota.setAttribute("Style", " width: 50%;margin: auto; height: 100%; font-size: 50%;border: none;font-family: 'Merriweather', serif;cursor: pointer;border-radius: 10pt; color:rgb(92, 0, 76);border:solid rgb(92, 0, 76) ;padding: 5px;");
           setTimeout(() => transition.appendChild(divNota), divNota.textContent = "Try Again", this.speed * 0.5);
           divNota.onclick = () => window.location.reload();
@@ -242,20 +283,20 @@ const transition = document.getElementById('transition');
 
     transition.classList.toggle('Active-1');
     transition.classList.toggle('Warning');
-    transition.innerHTML='🏆';
+    transition.innerHTML = '🏆';
   }
 
- /* $('#send').click( function() {
-    alert('Enviando!');
-        $.ajax(
-                {
-                    url: 'get_var.php?var=<?php echo $var; ?>',
-                    success: function( data ) {
-                        alert( 'El servidor devolvio "' + data + '"' );
-                    }
-                }
-            )
-        }*/
+  /* $('#send').click( function() {
+     alert('Enviando!');
+         $.ajax(
+                 {
+                     url: 'get_var.php?var=<?php echo $var; ?>',
+                     success: function( data ) {
+                         alert( 'El servidor devolvio "' + data + '"' );
+                     }
+                 }
+             )
+         }*/
 
 }
 
@@ -276,9 +317,12 @@ class Player{
       this.display = {
         round
       }
+
     }
 
+
   //crea el objeto dond alojaremos los datos del usuario segun la ronda
+
   createUserData(){
 
     for(let i = 0;i<this.totalRounds;i++) {
@@ -294,6 +338,10 @@ class Player{
 
 
 
-const player = new Player(0,0,6,[],1000,true,0,[],{  Round:"",  Options:[],  Sequence:[]});
+const player = new Player(0, 0, 6, [], 1000, true, 0, [], {
+  Round: "",
+  Options: [],
+  Sequence: []
+});
 const simon = new Simon(simonButtons, startButton, round);
 simon.init();

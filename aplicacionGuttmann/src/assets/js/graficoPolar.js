@@ -1,28 +1,41 @@
 const polarData = {
   labels: [
-    'Categoria 1',
-    'Categoria 2',
-    'Categoria 3',
-    'Categoria 4',
-    'Categoria 5'
+    'LLums Inverses',
+    'Memoria Curt Termini',
+    'Reconeixament',
+    'Series Logiques',
+    'Matriu de Figures',
+    'Inhibicio',
+    'Velocitat Visuomotora',
+    'Figures Rotades',
+    'Memoria a llarg termini'
   ],
   datasets: [{
-    label: 'Pruebas jugadas de cada categoria',
-    data: [7, 5, 3, 1, 13],
-    backgroundColor: [
-      'rgb(255, 99, 132)',
-      'rgb(75, 192, 192)',
-      'rgb(255, 205, 86)',
-      'rgb(201, 203, 207)',
-      'rgb(54, 162, 235)'
-    ]
+    label: 'YOUR DATA',
+    data: [80, 70, 65, 50, 90, 70,50,70,90],
+    fill: true,
+    backgroundColor: 'rgba(0, 142, 115, 0.2)',
+    borderColor: 'rgb(99, 255, 222)',   
+    pointBackgroundColor: 'rgb(0, 116, 91)',
+    pointBorderColor: '#fff',
+    pointHoverBackgroundColor: '#fff',
+    pointHoverBorderColor: 'rgb(0, 142, 115)'
   }]
 };
 
 const polarConfig = {
-  type: 'polarArea',
-  data: polarData,
-  options: {}
+  type: 'radar',
+  data: 
+    polarData
+  ,
+  options: {
+      scales: {
+          r: {
+              suggestedMin: 0,
+              suggestedMax: 100
+          }
+      }
+  }
 };
 
 const polarChart = new Chart(
