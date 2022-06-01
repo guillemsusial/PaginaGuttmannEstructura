@@ -18,13 +18,13 @@ class Simon {
     this.blockedButtons = player.blockedButtons;
     this.buttons = Array.from(simonButtons);
     this.fallos = player.fallos;
-    this.laSequencia_error = player.laSequencia_error;
-    this.userSequence = player.userSequence;
-    this.userObject = player.userObject;
+    this.laSequencia_error= player.laSequencia_error;
+    this.userSequence= player.userSequence;
+    this.userObject= player.userObject;
     this.display = {
       round
     }
-    
+
 
   }
 
@@ -32,36 +32,40 @@ class Simon {
   // Inicia el Simon
   init() {
 
+
+    this.startGame();
+
    this.countDown();
-      
-   
+
+
   }
 
   //Contador
   countDown(){
    let sequenceIndex=3;
-   
+
     let timer = setInterval(() => {
       transition.classList.add('Active-1');
      // transition.style.left = '48.5vw'
      if(sequenceIndex != 0)
       transition.innerHTML=sequenceIndex;
-     
-     
-      if(sequenceIndex == 0){     
+
+
+      if(sequenceIndex == 0){
         transition.innerHTML="Memoriza la siguiente secuencia";
-       
+
       }
-      if (sequenceIndex == -1) {      
-      
+      if (sequenceIndex == -1) {
+
         transition.classList.remove('Active-1');
-        this.startGame(); 
+        this.startGame();
         clearInterval(timer)
       }
       sequenceIndex--;
-     
+
     }, this.speed*1.2);
-      
+
+
 
   }
 
@@ -113,6 +117,7 @@ class Simon {
   }
 
   // Valida si el boton que toca el usuario corresponde a al valor de la secuencia
+
   validateChosenColor(value) {
 
     /*console.log(this.sequence);
@@ -145,7 +150,7 @@ class Simon {
       }
       this.userPosition--
     }
-  }
+    }
 
 
   // Verifica que no haya acabado el juego
@@ -168,12 +173,13 @@ class Simon {
 
       this.toggleButtonStyle(button)
 
+
       setTimeout(() => this.toggleButtonStyle(button), this.speed  )
-     
-      sequenceIndex++;  
-      
+
+      sequenceIndex++;
+
       this.stopShowingSequence(sequenceIndex,timer,you)
-     
+
     }, this.speed*2);
 
 
@@ -240,7 +246,9 @@ class Simon {
         transition.innerHTML = "FALLASTE";
         if (this.fallos == 4) {
           var divNota = document.createElement("button")
-          divNota.setAttribute("id", "startButton")
+
+          divNota.setAttribute("id","startButton")
+
           divNota.setAttribute("Style", " width: 50%;margin: auto; height: 100%; font-size: 50%;border: none;font-family: 'Merriweather', serif;cursor: pointer;border-radius: 10pt; color:rgb(92, 0, 76);border:solid rgb(92, 0, 76) ;padding: 5px;");
           setTimeout(() => transition.appendChild(divNota), divNota.textContent = "Try Again", this.speed * 0.5);
           divNota.onclick = () => window.location.reload();
@@ -294,33 +302,32 @@ class Simon {
 
 
 
-class Player {
-  constructor(round, userPosition, totalRounds, sequence, speed, blockedButtons, fallos, userSequence, userObject) {
-    this.round = round;
-    this.userPosition = userPosition;
-    this.totalRounds = totalRounds;
-    this.sequence = sequence;
-    this.speed = speed;
-    this.blockedButtons = blockedButtons;
-    this.fallos = fallos;
-    //this.laSequencia_error=false;   
-    this.userSequence = userSequence;
-    this.userObject = userObject;
-    this.display = {
-      round
+class Player{
+  constructor(round,userPosition,totalRounds,sequence,speed,blockedButtons,fallos,userSequence,userObject) {
+      this.round = round;
+      this.userPosition = userPosition;
+      this.totalRounds = totalRounds;
+      this.sequence = sequence;
+      this.speed = speed;
+      this.blockedButtons = blockedButtons;
+      this.fallos = fallos;
+      //this.laSequencia_error=false;
+      this.userSequence= userSequence;
+      this.userObject= userObject;
+      this.display = {
+        round
+      }
+
     }
-  }
+
 
   //crea el objeto dond alojaremos los datos del usuario segun la ronda
-  createUserData() {
 
-    for (let i = 0; i < this.totalRounds; i++) {
+  createUserData(){
 
-      this.userSequence.push(this.userObject = {
-        "Round": i,
-        "Options": [],
-        "Sequence": []
-      });
+    for(let i = 0;i<this.totalRounds;i++) {
+
+      this.userSequence.push(this.userObject={"Round":i,"Options":[],"Sequence":[]});
 
     }
   }
