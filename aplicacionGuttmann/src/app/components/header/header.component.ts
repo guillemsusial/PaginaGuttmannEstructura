@@ -37,10 +37,11 @@ export class HeaderComponent implements OnInit {
 
   }
 
-  logOut(): void {
-    
+  logOut(confirm:boolean): void {
+    if(confirm==true){
     this.crudService.logout();
-    this.router.navigateByUrl('/home');
+    window.location.reload();
+    }
   }
 
   //FUNCIÓN PARA ENVIAR LOS DATOS DEL LOGIN
