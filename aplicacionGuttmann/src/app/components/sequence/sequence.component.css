@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap');
 
 #top{
-  height: 5vw;
+  height: 4vw;
   width: 100%;
   background-color: white;
 }
 #game {
-  width: 80vw;
+  width: 85vw;
   height: 40vw;
   justify-content: start;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -14,6 +14,13 @@
   border-radius: 10pt;
   background-color: rgb(37, 159, 163);
   display: flex;
+}
+
+.bad{
+  border-color:red; background-color: rgba(177, 68, 68, 0.801);
+}
+.good{
+  border-color:green;
 }
 
 .card {
@@ -35,6 +42,11 @@
 
 .r:hover {
   background-color: rgba(103, 252, 207, 0.459);
+  border-width: 2px;
+  border-color: black;
+  box-shadow: 1px 2px #072f3554;
+
+
 
 }
 
@@ -50,14 +62,16 @@
   height: 10%;
   display: grid;
   padding: 1vw;
-  margin-top: 15%;
+  margin-top: 12%;
   grid-template-columns: repeat(2, auto);
   grid-gap: 2vw;
 }
 
 #round {
+  padding-left: 2vw;
+  padding-top: 32vw;
   text-align: center;
-  font-size: 5vw;
+  font-size: 4vw;
   font-family: 'Gloria Hallelujah', cursive;
   color: rgb(10, 70, 52);
 }
@@ -155,4 +169,18 @@
   color: #fff;
   background-color: #587792;
   padding: 5px;
+}
+
+#startTransition{
+  font-size: 5vw;
+  text-align: center;
+
+  font-family: 'Courier New', Courier, monospace;
+  color: rgb(92, 0, 76);
+  position:fixed;
+  top:20vw;
+  left:38vw;
+  align-items: center;
+  display: none;
+  justify-content: center;
 }

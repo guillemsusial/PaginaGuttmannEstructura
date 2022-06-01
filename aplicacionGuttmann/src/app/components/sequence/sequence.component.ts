@@ -9,7 +9,7 @@ export class SequenceComponent implements OnInit {
 
   constructor(private _CargarScripts:CargarScriptsService) {
 
-    _CargarScripts.Carga(["sequence"])
+    _CargarScripts.Carga(["sequence"]);
   }
 
   ngOnInit(): void {

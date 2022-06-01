@@ -3,8 +3,8 @@ import { HttpClient } from '@angular/common/http'
 import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from './user';
 import { CookieService } from 'ngx-cookie-service';
-
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { Router } from '@angular/router';
 
 const helper = new JwtHelperService();
 
@@ -16,11 +16,15 @@ export class CrudService {
   loggedIn = new BehaviorSubject<boolean>(false);
 
   //URL DE LA API EN XAMPP
-  API: string = 'http://localhost/Users/';
 
-  constructor(private clientHttp: HttpClient, private cookies: CookieService) {
+  
+
+  API: string='http://localhost/Users/';
+  constructor(private clientHttp:HttpClient, private cookies: CookieService) {
+
     //CHEQUEAMOS EL TOKEN SIEMPRE QUE SE RECARGUE LA PÁGINA PARA SABER SI LA SESIÓN SIGUE ACTIVA
     this.checkToken();
+  
   }
 
   //AÑADIR USER (SE USA EN REGISTER/SIGN-UP)
@@ -76,10 +80,19 @@ export class CrudService {
   }
 
   //LEE EL TOKEN ALMACENADO EN LOCAL (NO SE USA ACTUALMENTE)
-  readToken(): void { }
+
+  readToken() {
+    const token = localStorage.getItem('token');
+    return token;
+  }
+
 
   //GUARDA EL TOKEN EN ALMACENAMIENTO LOCAL DEL NAVEGADOR EN EL MOMENTO DE INICIAR SESIÓN
   saveToken(token: string): void {
     localStorage.setItem('token', token);
+  }
+
+  decodeToken( token:string ): void{
+    return helper.decodeToken(token);
   }
 }
