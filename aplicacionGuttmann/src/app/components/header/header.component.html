@@ -29,7 +29,7 @@
               <hr class="dropdown-divider">
             </li>
             <!--CUANDO LE DAS CLICK AL BOTÓN DE LOGOUT LLAMAS A UNA FUNCIÓN QUE ACABA LA SESIÓN isLogged=false -->
-            <li><a class="dropdown-item" (click)="logOut()">Log out</a></li>
+            <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#logOutModal" (click)="logOut()">Log out</a></li>
           </ul>
         </div>
       </div>
@@ -75,5 +75,22 @@
         </div>
       </div>
     </div>
+    <!--fin modal Login-->
+    <!--modal LogOut-->
+    <div class="modal" id="logOutModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content content form_wrapper">
+          <div class="modal-header title_container pb-4 pt-2 col-12 col-sm-12">
+            <h3>¿Quieres cerrar sesión?</h3>
+          </div>
+          <div class="modal-body">
+            
+            <button type="button" class="btn btn-primary">Confirmar</button>
+            <button type="button" class="btn btn-danger">Cancelar</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+  <!--fin modal LogOut-->
 </header>
