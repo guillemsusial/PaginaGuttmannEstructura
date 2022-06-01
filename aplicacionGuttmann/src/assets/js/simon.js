@@ -33,7 +33,7 @@ class Simon {
   init() {
 
 
-    this.startGame();
+    
 
    this.countDown();
 
