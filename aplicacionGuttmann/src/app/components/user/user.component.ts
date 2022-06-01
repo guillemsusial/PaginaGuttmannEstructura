@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { CargarScriptsService } from 'src/app/cargar-scripts.service';
 import { MessageServiceService } from 'src/app/services/message-service.service';
 import { CrudService } from 'src/app/services/crud.service';
@@ -11,7 +11,8 @@ declare var $: any;
   styleUrls: ['./user.component.css']
 })
 
-export class UserComponent implements OnInit {
+export class UserComponent implements OnInit, OnDestroy {
+
   token:any;
   decodedToken:any;
  
@@ -34,4 +35,11 @@ export class UserComponent implements OnInit {
     this.decodedToken = this.crudService.decodeToken(token);
     console.log(this.decodedToken.data);
   };
+
+  @HostListener('unloaded')
+  ngOnDestroy(): void {
+    console.log("Se ha destruido el componente");
+    this._CargarScripts.removeScript('graficoPolar');
+    window.location.reload();
+  }
 }
