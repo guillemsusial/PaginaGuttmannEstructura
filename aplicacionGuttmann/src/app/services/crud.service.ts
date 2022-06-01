@@ -61,6 +61,7 @@ export class CrudService {
       const isExpired = helper.isTokenExpired(userToken);
       console.log('isExpired', isExpired);
       //isExpired ? this.logout()  this.router.navigateByUrl('/') : this.loggedIn.next(true);
+
     }
   }
 
@@ -77,10 +78,12 @@ export class CrudService {
   }
 
   //LEE EL TOKEN ALMACENADO EN LOCAL (NO SE USA ACTUALMENTE)
+
   readToken() {
     const token = localStorage.getItem('token');
     return token;
   }
+
 
   //GUARDA EL TOKEN EN ALMACENAMIENTO LOCAL DEL NAVEGADOR EN EL MOMENTO DE INICIAR SESIÓN
   saveToken(token: string): void {

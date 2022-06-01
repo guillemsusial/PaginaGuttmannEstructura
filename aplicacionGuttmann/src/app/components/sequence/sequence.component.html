@@ -1,3 +1,6 @@
+<div id="startTransition"  class="yourTurn">
+  <button id="startButton" Style="display: none;">Start</button>
+</div>
 
 <div id="top"></div>
 <div id="game">
@@ -19,10 +22,11 @@
     <div class="card r" id="answer11"></div>
     <div class="card r" id="answer12"></div>
   </div>
+  <div id="round">1/6</div>
 </div>
 
 
-<div id="transition" class="yourTurn">YOU</div>
+
 
 
 <!--Popup Start -->
@@ -36,6 +40,28 @@
       </div>
       <div class="modal-body">
         A continuacion apareceran una serie de figuras con un patron, deberas indicar cual es la figura faltante
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-success"  aria-label="Close" data-bs-toggle="modal" data-bs-dismiss="modal">Empezar</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="finishModal" aria-hidden="true" aria-labelledby="finishModalLabel" tabindex="0">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header ">
+        <h5 class="modal-title " id="finishModalToggleLabel">Resultados</h5>
+      </div>
+      <div class="modal-body">
+        <table>
+          <tr>
+            <th class="HRound tf"></th> <th class="HResuesta tf"></th><th class="HIncognito tf"></th>
+          </tr>
+        </table>
       </div>
       <div class="modal-footer">
         <button class="btn btn-success"  aria-label="Close" data-bs-toggle="modal" data-bs-dismiss="modal">Empezar</button>
