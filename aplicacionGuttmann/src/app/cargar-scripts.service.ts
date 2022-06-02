@@ -19,8 +19,10 @@ export class CargarScriptsService {
         script.id = archivos[i]
         let body = document.getElementsByTagName("body")[0];
         body.appendChild(script);
+      
       } else {
-        window.location.reload;
+      
+        setTimeout(() =>{window.location.reload();},100);
       }
     }
   }

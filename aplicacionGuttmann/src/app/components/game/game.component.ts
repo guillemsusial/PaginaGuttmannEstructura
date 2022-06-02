@@ -12,23 +12,25 @@ import { ActivatedRoute, Params } from '@angular/router';
 export class GameComponent implements OnInit {
 
   game: {
-    game: string
     mode: string
+   
 
   };
 
   constructor(private _CargarScripts: CargarScriptsService, private rutaActiva: ActivatedRoute) {
 
-    this.game = { game:'',mode: this.rutaActiva.snapshot.params['mode'] };
+    this.game = { mode: this.rutaActiva.snapshot.params['mode'] };
 
-    _CargarScripts.Carga([this.game.mode]);
+    _CargarScripts.Carga([(this.game.mode)]);
 
   }
 
 
   ngOnInit(): void {
   }
-
+  ngOnDestroy(): void{
+    this._CargarScripts.removeScript((this.game.mode));
+  }
 
 }
 

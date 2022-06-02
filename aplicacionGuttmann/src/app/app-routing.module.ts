@@ -18,7 +18,9 @@ const routes: Routes = [
   { path: 'home', component: WelcomeCompComponent }, 
   { path: 'game', component: TemplateComponent, canActivate: [AuthGuard] },  
   { path: 'game/:game', component: TemplateComponent , canActivate: [AuthGuard]}, 
-  { path: 'game/:game/:mode', component:  GameComponent, canActivate: [AuthGuard] },
+  { path: 'game/simon/:mode', component:  GameComponent, canActivate: [AuthGuard] },
+  { path: 'game/sequence/:mode', component:  SequenceComponent, canActivate: [AuthGuard] },
+
   { path: 'user', component: UserComponent, canActivate: [AuthGuard] },  
   { path: 'sequence', component: SequenceComponent, canActivate: [AuthGuard] },
   { path: 'register', component: LoginComponent },
