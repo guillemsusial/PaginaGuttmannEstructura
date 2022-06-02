@@ -19,7 +19,9 @@ declare var $: any;
 export class HeaderComponent implements OnInit {
   userForm: FormGroup;
   logged = false;
+  userid: any;
   jsonObject: any;
+  sessionObject: any;
 
   constructor(
     public formulario: FormBuilder,
@@ -33,25 +35,23 @@ export class HeaderComponent implements OnInit {
       Password: [''],
       Identificador: ['']
     });
+
   }
 
   ngOnInit(): void {
   }
 
-  logOut(): void {
-    
-    this.crudService.logout();
-    this.router.navigateByUrl('/home');
+  logOut(confirm: boolean): void {
+    if (confirm == true) {
+      this.crudService.logout();
+      window.location.reload();
+    } else {
+      window.location.reload();
+    }
   }
+
   is_touch_enabled() {
-    return ( 'ontouchstart' in window ) || 
-           ( navigator.maxTouchPoints > 0 );
-  }
-  //Recuperar el Id del usuario por su correo (ha der unico)
-  GetUserIdByEmail(){
-    let userid = this.crudService.GetIdByEmail(this.userForm.value["Email"]);
-    console.log(userid);
-    return userid;
+    return ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
   }
 
   //FUNCIÓN PARA ENVIAR LOS DATOS DEL LOGIN
@@ -63,26 +63,35 @@ export class HeaderComponent implements OnInit {
       this.jsonObject = JSON.parse(data);
       //SI EL MENSAJE ES "success" HACEMOS LO SIGUENTE:
       if (this.jsonObject.message == "success") {
-        //ANadimos la sesion del usuario
+        //Añadimos la sesion del usuario
 
+        this.crudService.GetIdByEmail(this.userForm.value["Email"]).subscribe((data) => {
+          this.sessionObject = JSON.parse(data);
 
-        let sesion = new Sesion();
-        sesion.idUsuario = this.GetUserIdByEmail() + "";
-        if(this.is_touch_enabled()){
-          sesion.dispositivo = "tactil";
-        }else{
-          sesion.dispositivo = "teclado/raton";
-        }
-        sesion.fecha = new Date();
-        sesion.version = "1.0";
-        sesion.identificador = this.userForm.value["Identificador"];
-        this.crudService.AddSesion(sesion);
+          let sesion = new Sesion();
+          sesion.idUsuario = this.sessionObject.id + "";
+          console.log(this.sessionObject.id);
+          if (this.is_touch_enabled()) {
+            sesion.dispositivo = "tactil";
+          } else {
+            sesion.dispositivo = "teclado/raton";
+          }
+          
+          //PROBLEMA DE PARSE DATE
+          
+          sesion.fecha = new Date();
+          sesion.version = "1.0";
+          sesion.identificador = this.userForm.value["Identificador"];
 
+          this.crudService.AddSesion(sesion);
+        });
 
         //GUARDAMOS EL TOKEN EN LOCAL CON EL SERVICIO DE CRUD
         this.crudService.saveToken(this.jsonObject.token);
         //REDIRIGIMOS AL USUARIO A LA PAGINA PRINCIPAL
-        window.location.reload();
+
+        //window.location.reload();
+
         //LE DECIMOS A LA VARIABLE loggedIn QUE ES true
         this.crudService.loggedIn.next(true);
       } else {

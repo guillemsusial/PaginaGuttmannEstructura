@@ -1,8 +1,8 @@
 /**https://www.lawebdelprogramador.com/foros/JavaScript/1344396-secuencia-de-imagenes.html */
 
-const round = document.getElementById('round');
-const simonButtons = document.getElementsByClassName('card');
-const transition = document.getElementById('transition');
+let round = document.getElementById('round');
+let simonButtons = document.getElementsByClassName('card');
+let transition = document.getElementById('transition');
 
 
 class Simon {
@@ -33,8 +33,8 @@ class Simon {
   init() {
 
 
-    this.startGame();
-
+    
+  round.innerHTML='1/6';
    this.countDown();
 
 
@@ -169,7 +169,7 @@ class Simon {
     let sequenceIndex = 0;
     let you = 0;
     let timer = setInterval(() => {
-      const button = this.buttons[this.sequence[sequenceIndex]];
+      let button = this.buttons[this.sequence[sequenceIndex]];
 
       this.toggleButtonStyle(button)
 
@@ -338,10 +338,10 @@ class Player{
 
 
 
-const player = new Player(0, 0, 6, [], 1000, true, 0, [], {
+let player = new Player(0, 0, 6, [], 1000, true, 0, [], {
   Round: "",
   Options: [],
   Sequence: []
 });
-const simon = new Simon(simonButtons, startButton, round);
+let simon = new Simon(simonButtons, startButton, round);
 simon.init();

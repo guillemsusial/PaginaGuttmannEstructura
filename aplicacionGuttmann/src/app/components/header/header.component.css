@@ -9,6 +9,10 @@
   --header-color: #8CC9D1!important;
 }
 
+.boton{
+  text-align: center;
+}
+
 .header {
   background-color: var(--header-color);
   border-color: var(--header-color);
