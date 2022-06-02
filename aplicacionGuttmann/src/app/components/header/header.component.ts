@@ -6,6 +6,8 @@ import { CrudService } from 'src/app/services/crud.service';
 import { Router } from '@angular/router';
 import { MessageServiceService } from 'src/app/services/message-service.service';
 
+declare var $: any;
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -26,7 +28,8 @@ export class HeaderComponent implements OnInit {
   ) {
     this.userForm = this.formulario.group({
       Email: [''],
-      Password: ['']
+      Password: [''],
+      Identificador: ['']
     });
   }
 
@@ -34,9 +37,13 @@ export class HeaderComponent implements OnInit {
 
   }
 
-  logOut(): void {
+  logOut(confirm:boolean): void {
+    if(confirm==true){
     this.crudService.logout();
-    this.router.navigateByUrl('/home');
+    window.location.reload();
+    } else {
+      window.location.reload();
+    }
   }
 
   //FUNCIÓN PARA ENVIAR LOS DATOS DEL LOGIN
@@ -50,7 +57,7 @@ export class HeaderComponent implements OnInit {
         //GUARDAMOS EL TOKEN EN LOCAL CON EL SERVICIO DE CRUD
         this.crudService.saveToken(this.jsonObject.token);
         //REDIRIGIMOS AL USUARIO A LA PAGINA PRINCIPAL
-        this.router.navigateByUrl('');
+        window.location.reload();
         //LE DECIMOS A LA VARIABLE loggedIn QUE ES true
         this.crudService.loggedIn.next(true);
       } else {

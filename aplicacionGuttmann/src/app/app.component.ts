@@ -20,8 +20,4 @@ export class AppComponent implements OnInit {
       this.crudService.checkToken();
     },5000);
   }
-
-  
-
 }
-

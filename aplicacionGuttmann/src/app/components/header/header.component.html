@@ -29,7 +29,7 @@
               <hr class="dropdown-divider">
             </li>
             <!--CUANDO LE DAS CLICK AL BOTÓN DE LOGOUT LLAMAS A UNA FUNCIÓN QUE ACABA LA SESIÓN isLogged=false -->
-            <li><a class="dropdown-item" (click)="logOut()">Log out</a></li>
+            <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#logOutModal">Log out</a></li>
           </ul>
         </div>
       </div>
@@ -56,12 +56,16 @@
           <div class="modal-body">
             <form [formGroup]="userForm" (ngSubmit)="enviarDatos()">
               <div class="mb-3 form-group">
-                <label>Email address</label>
+                <label style="color: black">Email address</label>
                 <input formControlName="Email" name="email" type="email" class="form-control" id="id_email">
               </div>
               <div class="mb-3 form-group">
-                <label for="id_Password" class="form-label">Password</label>
+                <label for="id_Password" class="form-label" style="color: black">Password</label>
                 <input formControlName="Password" name="password" type="password" class="form-control" id="id_Password">
+              </div>
+              <div class="mb-3 form-group">
+                <label for="id_Identificador" class="form-label" style="color: black">Identificador</label>
+                <input formControlName="Identificador" name="Identificador" type="text" class="form-control" id="id_Identificador">
               </div>
               <button type="submit" class=" mt-3 btn btn-iblue w-100">Iniciar Sesion</button>
             </form>
@@ -71,5 +75,21 @@
         </div>
       </div>
     </div>
+    <!--fin modal Login-->
+    <!--modal LogOut-->
+    <div class="modal" id="logOutModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content content form_wrapper">
+          <div class="modal-header title_container pb-4 pt-2 col-12 col-sm-12">
+            <h3 style="color: black">¿Quieres cerrar sesión?</h3>
+          </div>
+          <div class="modal-body">
+            <button type="button" class="btn btn-primary" (click)="logOut(true)">Confirmar</button>
+            <button type="button" class="btn btn-danger" (click)="logOut(false)">Cancelar</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+  <!--fin modal LogOut-->
 </header>
