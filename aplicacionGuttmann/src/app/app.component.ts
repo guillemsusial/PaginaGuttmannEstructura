@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { CrudService } from './services/crud.service';
+import { CargarScriptsService } from './cargar-scripts.service';
 
 @Component({
   selector: 'app-root',
@@ -8,16 +9,15 @@ import { CrudService } from './services/crud.service';
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'aplicacionGuttmann';
 
-  constructor(private crudService: CrudService, private router:Router) {}
+  constructor(private crudService: CrudService, private router:Router, private _cargarScripts:CargarScriptsService) {}
 
   ngOnInit(){
     setInterval(()=>
     {
-      this.crudService.checkToken()
+      this.crudService.checkToken();
     },5000);
   }
 }
-

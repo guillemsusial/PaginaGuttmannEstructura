@@ -60,16 +60,25 @@ export class CrudService {
       const userToken = localStorage.getItem('token') || "[]";
       const isExpired = helper.isTokenExpired(userToken);
       console.log('isExpired', isExpired);
-      //isExpired ? this.logout()  this.router.navigateByUrl('/') : this.loggedIn.next(true);
-
+      if (isExpired == true) {
+        this.logout();
+      } else {
+        this.loggedIn.next(true);
+      }
     }
   }
 
+  isAuthenticated(): any  {
+    if (localStorage.getItem('token')) {
+      const userToken = localStorage.getItem('token') || "[]";
+      return !helper.isTokenExpired(userToken);
+    }
+  }
   //SE USA EN EL MENÚ DE USUARIO EN EL HEADER HABIENDO INICIADO SESIÓN PARA HACER LOG OUT (ELIMINA EL TOKEN)
   logout(): void {
     localStorage.removeItem('token');
     this.loggedIn.next(false);
-
+    this.checkToken();
   }
 
   //MÉTODO PARA SABER EL ESTADO DE LA VARIABLE QUE DICE SI EL USER ESTÁ LOGUEADO
