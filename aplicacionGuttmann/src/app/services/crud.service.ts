@@ -17,8 +17,8 @@ export class CrudService {
   loggedIn = new BehaviorSubject<boolean>(false);
 
   //URL DE LA API EN XAMPP
-  API: string='http://localhost/API/users.php';
-  APISesion: string='http://localhost/API/sesion.php';
+  API: string='http://localhost/API/users.php/';
+  APISesion: string='http://localhost/API/sesion.php/';
   constructor(private clientHttp: HttpClient, private cookies: CookieService, private router: Router) {
     //CHEQUEAMOS EL TOKEN SIEMPRE QUE SE RECARGUE LA PÁGINA PARA SABER SI LA SESIÓN SIGUE ACTIVA
     this.checkToken();
@@ -32,7 +32,8 @@ export class CrudService {
   //AÑADIR SESION (SE USA EN EL LOGIN)
   AddSesion(sesionData: Sesion): Observable<any> {
     console.log(sesionData);
-    return this.clientHttp.post(this.APISesion + "?addSesion=1", sesionData, { responseType: 'text'});
+    console.log(this.APISesion + "?addSesion=1", sesionData, { responseType: 'text' });
+    return this.clientHttp.post(this.APISesion + "?addSesion=1", sesionData, { responseType: 'text' });
   }
 
   //Recuperar la id de un usuario por su email que ha de ser unico
