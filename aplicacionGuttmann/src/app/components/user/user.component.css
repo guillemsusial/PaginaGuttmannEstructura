@@ -1,25 +1,29 @@
 #foto-user {
-  background-color: rgb(85, 158, 255);
+  
   border-radius: 15px;
   background-image: url("../../../assets/img/DefaultUser.png");
   background-repeat: no-repeat;
   background-size: cover;
 }
-
+hr{
+  height: 5px;
+}
 .div-user {
-  border-radius: 15px;
+ 
   background: rgb(255,0,0);
   background: radial-gradient(circle, rgba(255,0,0,1) 0%, rgba(70,252,79,1) 49%, rgba(70,252,79,0) 64%);
 
 }
+ #div_User{
+  background-color: #0000001c;
+  /* margin: 20px; */
+  margin-top: 50px;
+  margin-left: 80px;
+ }
 
-.contenedor {
-  background-color: #8bc3f7b9;
-  border-radius: 15px;
-}
 
 .div-categorias {
-  background-color: #60A5E0;
+  
   height: 60px;
   border-radius: 10px;
   font-family: "Koulen", serif;
