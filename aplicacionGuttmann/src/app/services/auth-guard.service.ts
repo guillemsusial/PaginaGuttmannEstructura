@@ -13,6 +13,7 @@ export class AuthGuardService implements CanActivate {
   canActivate(): boolean {
     if (!this.crud.isAuthenticated()) {
       this.router.navigateByUrl('/home');
+      window.alert("Inicia sesión por favor");
       return false;
     }
     return true;
