@@ -2,8 +2,8 @@
   background-color: #8CC9D1;
 }
 
-.usuario {  
-  
+.usuario {
+
   color: #3D55AD;
 }
 
@@ -11,12 +11,30 @@
   color: #13B1BB;
 }
 
+.tituloImg{
+  font-family: Arial, Verdana, sans-serif;
+  letter-spacing: -0.64px;
+  font-weight: bold;
+}
+
+.textoImg{
+  font-family: Arial, Verdana, sans-serif;
+}
+
+hr.style {
+  border: 0;
+  height: 2px;
+  width: 75%;
+  background: linear-gradient(90deg, rgba(19,177,187,1) 0%, rgba(9,9,121,1) 50%, rgba(19,177,187,1) 100%);
+  margin: auto;
+}
+
 .flex {
   display: flex;
 }
 
 .textos {
-  margin: auto; 
+  margin: auto;
   text-align: justify;
 }
 
@@ -101,14 +119,15 @@ polygon.arrow-top {
   cursor: pointer;
 }
 
-.reveal{
+.reveal {
   position: relative;
   transform: translateY(150px);
   visibility: hidden;
   opacity: 0;
   transition: 2s all ease;
 }
-.reveal.active{
+
+.reveal.active {
   transform: translateY(0);
   visibility: visible;
   opacity: 1;

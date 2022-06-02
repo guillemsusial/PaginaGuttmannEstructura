@@ -5,6 +5,7 @@ import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms'
 import { CrudService } from 'src/app/services/crud.service';
 import { Router } from '@angular/router';
 import { MessageServiceService } from 'src/app/services/message-service.service';
+import { Sesion } from '../../services/sesion';
 
 declare var $: any;
 
@@ -18,13 +19,16 @@ declare var $: any;
 export class HeaderComponent implements OnInit {
   userForm: FormGroup;
   logged = false;
+  userid: any;
   jsonObject: any;
+  sessionObject: any;
 
   constructor(
     public formulario: FormBuilder,
     public crudService: CrudService,
     private router: Router,
-    private msgService: MessageServiceService
+    private msgService: MessageServiceService,
+
   ) {
     this.userForm = this.formulario.group({
       Email: [''],
@@ -34,7 +38,6 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
   }
 
   logOut(confirm:boolean): void {
@@ -46,18 +49,56 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+  is_touch_enabled() {
+    return ( 'ontouchstart' in window ) || ( navigator.maxTouchPoints > 0 );
+  }
+
+  //Recuperar el Id del usuario por su correo (ha der unico)
+  GetUserIdByEmail():any{
+    
+    this.crudService.GetIdByEmail(this.userForm.value["Email"]).subscribe((data)=> {
+      this.sessionObject = JSON.parse(data);
+      this.userid = this.sessionObject.id;
+      console.log(this.sessionObject.id);
+      
+    });
+
+    //setInterval
+    
+    return this.userid;
+   
+    
+  }
+
   //FUNCIÓN PARA ENVIAR LOS DATOS DEL LOGIN
   enviarDatos(): any {
     //LLAMADA AL SERVICIO CRUD CON LOS DATOS DEL LOGIN
+
     this.crudService.LoginUser(this.userForm.value).subscribe((data) => {
       //RECOGEMOS LOS DATOS DEL USUARIO ENCRIPTADOS QUE NOS DEVUELVE EL LOGIN Y LO CONVERTIMOS A JSON
       this.jsonObject = JSON.parse(data);
       //SI EL MENSAJE ES "success" HACEMOS LO SIGUENTE:
       if (this.jsonObject.message == "success") {
+        //Añadimos la sesion del usuario
+
+        let sesion = new Sesion();
+        sesion.idUsuario = this.GetUserIdByEmail() + "";
+        if(this.is_touch_enabled()){
+          sesion.dispositivo = "tactil";
+        }else{
+          sesion.dispositivo = "teclado/raton";
+        }
+        sesion.fecha = new Date();
+        sesion.version = "1.0";
+        sesion.identificador = this.userForm.value["Identificador"];
+        this.crudService.AddSesion(sesion);
+
         //GUARDAMOS EL TOKEN EN LOCAL CON EL SERVICIO DE CRUD
         this.crudService.saveToken(this.jsonObject.token);
         //REDIRIGIMOS AL USUARIO A LA PAGINA PRINCIPAL
-        window.location.reload();
+
+        //window.location.reload();
+        
         //LE DECIMOS A LA VARIABLE loggedIn QUE ES true
         this.crudService.loggedIn.next(true);
       } else {
