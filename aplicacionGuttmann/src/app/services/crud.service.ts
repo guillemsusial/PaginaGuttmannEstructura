@@ -5,6 +5,7 @@ import { User } from './user';
 import { CookieService } from 'ngx-cookie-service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
+import { Sesion } from './sesion';
 
 const helper = new JwtHelperService();
 
@@ -16,7 +17,8 @@ export class CrudService {
   loggedIn = new BehaviorSubject<boolean>(false);
 
   //URL DE LA API EN XAMPP
-  API: string = 'http://localhost/Users/';
+  API: string='http://localhost/API/users.php';
+  APISesion: string='http://localhost/API/sesion.php';
   constructor(private clientHttp: HttpClient, private cookies: CookieService, private router: Router) {
     //CHEQUEAMOS EL TOKEN SIEMPRE QUE SE RECARGUE LA PÁGINA PARA SABER SI LA SESIÓN SIGUE ACTIVA
     this.checkToken();
@@ -28,6 +30,21 @@ export class CrudService {
     return this.clientHttp.post(this.API + "?addUser=1", userData, { responseType: 'text' });
   }
 
+
+  //AÑADIR SESION (SE USA EN EL LOGIN)
+  AddSesion(sesionData: Sesion): Observable<any> {
+    
+    console.log(sesionData);
+    alert("were");
+    return this.clientHttp.post(this.APISesion + "?addSesion=1", sesionData, { responseType: 'text'});
+  }
+
+  //Recuperar la id de un usuario por su email que ha de ser unico
+  GetIdByEmail(Email: string): string {
+    let id =this.clientHttp.get(this.API + "?getIdByEmail=" + Email , { responseType: 'text'});
+
+    return "1";
+  }
   //MOSTRAR TODOS LOS USERS EN BBDD (NO SE USA ACTUALMENTE)
   ShowAllUsers() {
     return this.clientHttp.get(this.API);
