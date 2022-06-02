@@ -22,7 +22,6 @@ export class CrudService {
   constructor(private clientHttp: HttpClient, private cookies: CookieService, private router: Router) {
     //CHEQUEAMOS EL TOKEN SIEMPRE QUE SE RECARGUE LA PÁGINA PARA SABER SI LA SESIÓN SIGUE ACTIVA
     this.checkToken();
-
   }
 
   //AÑADIR USER (SE USA EN REGISTER/SIGN-UP)
@@ -30,21 +29,17 @@ export class CrudService {
     return this.clientHttp.post(this.API + "?addUser=1", userData, { responseType: 'text' });
   }
 
-
   //AÑADIR SESION (SE USA EN EL LOGIN)
   AddSesion(sesionData: Sesion): Observable<any> {
-    
     console.log(sesionData);
-    alert("were");
     return this.clientHttp.post(this.APISesion + "?addSesion=1", sesionData, { responseType: 'text'});
   }
 
   //Recuperar la id de un usuario por su email que ha de ser unico
-  GetIdByEmail(Email: string): string {
-    let id =this.clientHttp.get(this.API + "?getIdByEmail=" + Email , { responseType: 'text'});
-
-    return "1";
+  GetIdByEmail(Email: string): Observable<any> {
+    return this.clientHttp.get(this.API + "?getIdByEmail=" + Email , { responseType: 'text'});
   }
+
   //MOSTRAR TODOS LOS USERS EN BBDD (NO SE USA ACTUALMENTE)
   ShowAllUsers() {
     return this.clientHttp.get(this.API);
@@ -91,7 +86,7 @@ export class CrudService {
       return !helper.isTokenExpired(userToken);
     }
   }
-  //SE USA EN EL MENÚ DE USUARIO EN EL HEADER HABIENDO INICIADO SESIÓN PARA HACER LOG OUT (ELIMINA EL TOKEN)
+  //SE USA EN EL MENÚ DE USUARIO EN EL HEADER CON LA SESIÓN INICIADA PARA HACER LOG OUT (ELIMINA EL TOKEN)
   logout(): void {
     localStorage.removeItem('token');
     this.loggedIn.next(false);
@@ -103,13 +98,12 @@ export class CrudService {
     return this.loggedIn.asObservable();
   }
 
-  //LEE EL TOKEN ALMACENADO EN LOCAL (NO SE USA ACTUALMENTE)
+  //LEE EL TOKEN ALMACENADO EN LOCAL
 
   readToken() {
     const token = localStorage.getItem('token');
     return token;
   }
-
 
   //GUARDA EL TOKEN EN ALMACENAMIENTO LOCAL DEL NAVEGADOR EN EL MOMENTO DE INICIAR SESIÓN
   saveToken(token: string): void {

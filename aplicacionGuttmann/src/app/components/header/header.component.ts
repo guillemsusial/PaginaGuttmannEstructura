@@ -19,7 +19,9 @@ declare var $: any;
 export class HeaderComponent implements OnInit {
   userForm: FormGroup;
   logged = false;
+  userid: any;
   jsonObject: any;
+  sessionObject: any;
 
   constructor(
     public formulario: FormBuilder,
@@ -46,15 +48,26 @@ export class HeaderComponent implements OnInit {
       window.location.reload();
     }
   }
+
   is_touch_enabled() {
-    return ( 'ontouchstart' in window ) || 
-           ( navigator.maxTouchPoints > 0 );
+    return ( 'ontouchstart' in window ) || ( navigator.maxTouchPoints > 0 );
   }
+
   //Recuperar el Id del usuario por su correo (ha der unico)
-  GetUserIdByEmail(){
-    let userid = this.crudService.GetIdByEmail(this.userForm.value["Email"]);
-    console.log(userid);
-    return userid;
+  GetUserIdByEmail():any{
+    
+    this.crudService.GetIdByEmail(this.userForm.value["Email"]).subscribe((data)=> {
+      this.sessionObject = JSON.parse(data);
+      this.userid = this.sessionObject.id;
+      console.log(this.sessionObject.id);
+      
+    });
+
+    //setInterval
+    
+    return this.userid;
+   
+    
   }
 
   //FUNCIÓN PARA ENVIAR LOS DATOS DEL LOGIN
@@ -66,8 +79,7 @@ export class HeaderComponent implements OnInit {
       this.jsonObject = JSON.parse(data);
       //SI EL MENSAJE ES "success" HACEMOS LO SIGUENTE:
       if (this.jsonObject.message == "success") {
-        //ANadimos la sesion del usuario
-
+        //Añadimos la sesion del usuario
 
         let sesion = new Sesion();
         sesion.idUsuario = this.GetUserIdByEmail() + "";
@@ -81,11 +93,12 @@ export class HeaderComponent implements OnInit {
         sesion.identificador = this.userForm.value["Identificador"];
         this.crudService.AddSesion(sesion);
 
-
         //GUARDAMOS EL TOKEN EN LOCAL CON EL SERVICIO DE CRUD
         this.crudService.saveToken(this.jsonObject.token);
         //REDIRIGIMOS AL USUARIO A LA PAGINA PRINCIPAL
-        window.location.reload();
+
+        //window.location.reload();
+        
         //LE DECIMOS A LA VARIABLE loggedIn QUE ES true
         this.crudService.loggedIn.next(true);
       } else {
