@@ -1,6 +1,7 @@
 import { Component,  OnInit, Input } from '@angular/core';
 import { } from "src/app/components/categories/categories.component";
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+
 
 
 @Component({
@@ -32,22 +33,35 @@ export class TutorialComponent implements OnInit {
 
 
 
-  constructor(private rutaActiva: ActivatedRoute) { 
+  constructor(private rutaActiva: ActivatedRoute,public router: Router) { 
 
 
-    this.game={game:this.rutaActiva.snapshot.params['game']};
+    this.game={
+      game:this.rutaActiva.snapshot.params['game']
+    };
+    
   }
 
   ngOnInit(): void {
-    //this.cargarJuego(0);
+   
 
+  
   }
-/*
-  cargarJuego(id:number){
 
-    this.el_juego=this.juegos[id];
-    this.descripcion=this.descripciones[id]
+  cargarJuego(game:number){
 
-  }*/
+    switch ( this.game.game+game) {
+      case  this.game.game+1 :
+        
+          this.router.navigate(['/game/'+this.game.game+'/'+this.game.game+'-juego']);
+        break;
+        case  this.game.game+2:
+         
+          this.router.navigate(['/game/'+this.game.game+'/'+this.game.game+'-trial']);
+        break;
+    
+     
+    }
+  }
 
 }
