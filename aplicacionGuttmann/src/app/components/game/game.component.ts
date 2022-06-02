@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CargarScriptsService } from 'src/app/cargar-scripts.service';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params,Router } from '@angular/router';
 
 @Component({
   selector: 'app-game',
@@ -17,7 +17,7 @@ export class GameComponent implements OnInit {
 
   };
 
-  constructor(private _CargarScripts: CargarScriptsService, private rutaActiva: ActivatedRoute) {
+  constructor(private _CargarScripts: CargarScriptsService, private rutaActiva: ActivatedRoute,private router: Router) {
 
     this.game = { mode: this.rutaActiva.snapshot.params['mode'] };
 
@@ -27,10 +27,13 @@ export class GameComponent implements OnInit {
 
 
   ngOnInit(): void {
+   
   }
-  ngOnDestroy(): void{
-    this._CargarScripts.removeScript((this.game.mode));
+  cargar(){
+    setTimeout(() =>{window.location.reload();},100);
   }
+
+  
 
 }
 

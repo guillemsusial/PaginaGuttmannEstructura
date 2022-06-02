@@ -1,11 +1,11 @@
 /**https://www.lawebdelprogramador.com/foros/JavaScript/1344396-secuencia-de-imagenes.html */
 
-let round = document.getElementById('round');
-let simonButtons = document.getElementsByClassName('card');
-let transition = document.getElementById('transition');
+var round = document.getElementById('round');
+var simonButtons = document.getElementsByClassName('card');
+var transition = document.getElementById('transition');
 
 
-class Simon {
+export class Simon {
 
   constructor(simonButtons, startButton, round) {
 
@@ -34,7 +34,7 @@ class Simon {
 
 
     
-  round.innerHTML='1/6';
+
    this.countDown();
 
 
@@ -301,7 +301,6 @@ class Simon {
 }
 
 
-
 class Player{
   constructor(round,userPosition,totalRounds,sequence,speed,blockedButtons,fallos,userSequence,userObject) {
       this.round = round;
@@ -334,14 +333,16 @@ class Player{
 }
 
 
+export function hola(){
+  console.log("HOLLLAAAAA")
+}
 
 
 
-
-let player = new Player(0, 0, 6, [], 1000, true, 0, [], {
+var player = new Player(0, 0, 6, [], 1000, true, 0, [], {
   Round: "",
   Options: [],
   Sequence: []
 });
-let simon = new Simon(simonButtons, startButton, round);
+var simon = new Simon(simonButtons, startButton, round);
 simon.init();
