@@ -31,10 +31,10 @@ export class UserComponent implements OnInit, OnDestroy {
     this.token = this.crudService.readToken();
     console.log(this.token);
     this.decodeToken(this.token);
-    var grafico = new graficoPolar();
-     var result:any=grafico.init();
-    console.log(result);
-   const polarChart = new Chart(this.graficoPolar , result );
+   var grafico = new graficoPolar();
+    var result:Chart=grafico.init();
+ //    console.log(result.config);
+  // const polarChart = new Chart(this.graficoPolar,result.config._config);
   }
 
   decodeToken(token:string){
