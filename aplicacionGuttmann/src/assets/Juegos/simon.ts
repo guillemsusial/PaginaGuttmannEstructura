@@ -89,6 +89,7 @@ export class Simon {
   
       this.buttons.forEach((element: any, i: any) => {
         element.onclick = () => this.buttonClick(i);
+        
       });
   
       this.showSequence();
