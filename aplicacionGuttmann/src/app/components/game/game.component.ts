@@ -3,6 +3,7 @@ import { CargarScriptsService } from 'src/app/cargar-scripts.service';
 import { ActivatedRoute, Params,Router } from '@angular/router';
 import {Simon} from '../../../assets/Juegos/simon';
 import {Player } from "../../../assets/Juegos/player";
+import { CrudService } from 'src/app/services/crud.service';
 
 @Component({
   selector: 'app-game',
@@ -21,7 +22,7 @@ export class GameComponent implements OnInit {
  
   
 
-  constructor(private _CargarScripts: CargarScriptsService, private rutaActiva: ActivatedRoute,private router: Router) {
+  constructor(private _CargarScripts: CargarScriptsService, private rutaActiva: ActivatedRoute,private router: Router, crudService:CrudService) {
 
     this.game = { mode: this.rutaActiva.snapshot.params['mode'] };
     
@@ -47,7 +48,8 @@ export class GameComponent implements OnInit {
     });
    
   }
-    var simon = new Simon(player);
+    
+  var simon = new Simon(player);
     simon.init();
       
    
