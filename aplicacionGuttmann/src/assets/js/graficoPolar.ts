@@ -31,7 +31,7 @@ const polarData = {
     }]
   };
   
-  const polarConfig:any =  {
+  const polarConfig:Chart = new Chart('', {
     type: 'radar',
     data: 
       polarData
@@ -44,8 +44,8 @@ const polarData = {
             }
         }
     }
-  };
-
+  });
+console.log(polarConfig.config);
   return polarConfig;
 }
 }
