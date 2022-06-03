@@ -1,25 +1,49 @@
 #foto-user {
-  background-color: rgb(85, 158, 255);
+
   border-radius: 15px;
   background-image: url("../../../assets/img/DefaultUser.png");
   background-repeat: no-repeat;
   background-size: cover;
 }
 
+hr {
+  height: 5px;
+}
+
 .div-user {
-  border-radius: 15px;
-  background: rgb(255,0,0);
-  background: radial-gradient(circle, rgba(255,0,0,1) 0%, rgba(70,252,79,1) 49%, rgba(70,252,79,0) 64%);
+
+  background: rgb(255, 0, 0);
+  background: radial-gradient(circle, rgba(255, 0, 0, 1) 0%, rgba(70, 252, 79, 1) 49%, rgba(70, 252, 79, 0) 64%);
 
 }
 
-.contenedor {
-  background-color: #8bc3f7b9;
+.informacion{
+  margin-left: 150px;
+}
+
+#div_User {
+  background-color: #aae8f3;
+  margin-top: 50px;
+  margin-left: 150px;
+  margin-bottom: 50px;
+  margin-right: 150px;
   border-radius: 15px;
+}
+
+hr.style {
+  border: 0;
+  height: 2px;
+  width: 75%;
+  background: linear-gradient(90deg, rgba(19, 177, 187, 1) 0%, rgba(9, 9, 121, 1) 50%, rgba(19, 177, 187, 1) 100%);
+  margin: auto;
+}
+
+#titulo {
+  text-align: center;
 }
 
 .div-categorias {
-  background-color: #60A5E0;
+
   height: 60px;
   border-radius: 10px;
   font-family: "Koulen", serif;

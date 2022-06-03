@@ -20,12 +20,12 @@
   <div class="row mb-5 mt-0 ">
     <div class="col-lg-1 col-md-1 d-sm-none d-md-block"></div>
     <div class="col-lg-5 col-md-5">
-      <button id="juego" routerLink="/game/{{game.game}}/{{game.game}}-trial" type="button"
+      <button id="juego" (click)="cargarJuego(2)" type="button"
         class="btn btn-lg btn-primary mx-auto d-block">Tutorial</button>
     </div>
 
     <div class="col-lg-5 col-md-5 col-sm-12">
-      <button id="juego" routerLink="/game/{{game.game}}/{{game.game}}" type="button"
+      <button id="juego" (click)="cargarJuego(1)" type="button"
         class="btn btn-lg btn-primary mx-auto d-block">Juego</button>
     </div>
     <div class="col-lg-1 col-md-1 d-sm-none d-md-block"></div>
@@ -42,3 +42,5 @@
     </div>
   </div>
 </div>
+
+<app-footer></app-footer>
