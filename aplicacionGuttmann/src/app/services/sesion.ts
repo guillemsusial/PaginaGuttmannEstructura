@@ -2,7 +2,7 @@ export class Sesion{
     id!:string;
     idUsuario!:string;
     dispositivo!:string;
-    fecha!:Date;
+    fecha!:string;
     version!:string;
     identificador!:string;
 }

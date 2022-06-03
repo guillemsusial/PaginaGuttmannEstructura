@@ -55,45 +55,43 @@ export class HeaderComponent implements OnInit {
   }
 
   //FUNCIÓN PARA ENVIAR LOS DATOS DEL LOGIN
-  enviarDatos(): any {
-    //LLAMADA AL SERVICIO CRUD CON LOS DATOS DEL LOGIN
+  enviarDatosLogin(): any {
 
+    //LLAMADA AL SERVICIO CRUD CON LOS DATOS DEL LOGIN
     this.crudService.LoginUser(this.userForm.value).subscribe((data) => {
+
       //RECOGEMOS LOS DATOS DEL USUARIO ENCRIPTADOS QUE NOS DEVUELVE EL LOGIN Y LO CONVERTIMOS A JSON
       this.jsonObject = JSON.parse(data);
+
       //SI EL MENSAJE ES "success" HACEMOS LO SIGUENTE:
       if (this.jsonObject.message == "success") {
-        //Añadimos la sesion del usuario
 
+        //Añadimos la sesion del usuario
         this.crudService.GetIdByEmail(this.userForm.value["Email"]).subscribe((data) => {
           this.sessionObject = JSON.parse(data);
 
+          //Añadimos nueva sesión a la base de datos
           let sesion = new Sesion();
-          sesion.idUsuario = this.sessionObject.id + "";
-          console.log(this.sessionObject.id);
-          if (this.is_touch_enabled()) {
-            sesion.dispositivo = "tactil";
-          } else {
-            sesion.dispositivo = "teclado/raton";
-          }
-          
-          //PROBLEMA DE PARSE DATE
-          
-          sesion.fecha = new Date();
-          sesion.version = "1.0";
-          sesion.identificador = this.userForm.value["Identificador"];
-
+            sesion.idUsuario = this.sessionObject.id + "";
+            console.log(this.sessionObject.id);
+            if (this.is_touch_enabled()) {
+              sesion.dispositivo = "tactil";
+            } else {
+              sesion.dispositivo = "teclado/raton";
+            }
+            sesion.fecha = new Date().toJSON().slice(0, 19).replace('T', ' ');
+            sesion.version = "1.0";
+            sesion.identificador = this.userForm.value["Identificador"];
           this.crudService.AddSesion(sesion);
         });
 
         //GUARDAMOS EL TOKEN EN LOCAL CON EL SERVICIO DE CRUD
         this.crudService.saveToken(this.jsonObject.token);
-        //REDIRIGIMOS AL USUARIO A LA PAGINA PRINCIPAL
+        window.location.reload();
 
-        //window.location.reload();
-
-        //LE DECIMOS A LA VARIABLE loggedIn QUE ES true
+        //VARIABLE loggedIn = true
         this.crudService.loggedIn.next(true);
+
       } else {
         //SI NO ES CORRECTO EL LOGIN LE DECIMOS QUE LA VARIABLE loggedIn ES false
         this.crudService.loggedIn.next(false);

@@ -1,3 +1,4 @@
+import { CrudService } from "src/app/services/crud.service";
 import {Player } from "./player";
 export class Simon {
   
@@ -16,6 +17,8 @@ export class Simon {
       roundHTML :any;
       simonButtons :any;
       transition:any;
+      crudService!: CrudService;
+
     constructor(player:Player) {
       
       this.roundHTML =  document.getElementById('round');
@@ -32,9 +35,8 @@ export class Simon {
       this.laSequencia_error= player.laSequencia_error;
       this.userSequence= player.userSequence;
       this.userObject= player.userObject;
-      
       player.createUserData();
-  
+
     }
   
   
@@ -89,9 +91,11 @@ export class Simon {
   
       this.buttons.forEach((element: any, i: any) => {
         element.onclick = () => this.buttonClick(i);
-        
+        console.log(this.userObject);
+        //ENVIO DE DATOS DEL JUEGO CADA CLICK
+        this.crudService.AddSerieLuces(this.userObject);
       });
-  
+      
       this.showSequence();
   
     }
