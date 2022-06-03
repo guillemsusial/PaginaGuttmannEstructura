@@ -39,6 +39,7 @@ export class TutorialComponent implements OnInit {
     this.game={
       game:this.rutaActiva.snapshot.params['game']
     };
+   
     
   }
 
@@ -46,6 +47,9 @@ export class TutorialComponent implements OnInit {
    
 
   
+  }
+  onload(): void {
+   
   }
 
   cargarJuego(game:number){
@@ -63,5 +67,6 @@ export class TutorialComponent implements OnInit {
      
     }
   }
+  
 
 }
