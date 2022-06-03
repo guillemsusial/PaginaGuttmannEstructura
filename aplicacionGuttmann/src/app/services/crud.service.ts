@@ -6,6 +6,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
 import { Sesion } from './sesion';
+import { serieLuces } from './serieLuces';
 
 const helper = new JwtHelperService();
 
@@ -19,21 +20,30 @@ export class CrudService {
   //URL DE LA API EN XAMPP
   API: string='http://localhost/API/users.php/';
   APISesion: string='http://localhost/API/sesion.php/';
+  APILuces: string='http://localhost/API/serie_luces.php/';
   constructor(private clientHttp: HttpClient, private cookies: CookieService, private router: Router) {
     //CHEQUEAMOS EL TOKEN SIEMPRE QUE SE RECARGUE LA PÁGINA PARA SABER SI LA SESIÓN SIGUE ACTIVA
     this.checkToken();
   }
 
-  //AÑADIR USER (SE USA EN REGISTER/SIGN-UP)
-  AddUser(userData: User): Observable<any> {
-    return this.clientHttp.post(this.API + "?addUser=1", userData, { responseType: 'text' });
-  }
+//--------------------------------APARTADO SESION DE JUEGO--------------------------------
 
   //AÑADIR SESION (SE USA EN EL LOGIN)
   AddSesion(sesionData: Sesion): Observable<any> {
-    console.log(sesionData);
-    console.log(this.APISesion + "?addSesion=1", sesionData, { responseType: 'text' });
     return this.clientHttp.post(this.APISesion + "?addSesion=1", sesionData, { responseType: 'text' });
+  }
+
+  AddSerieLuces(dataLuces: serieLuces): Observable<any> {
+    return this.clientHttp.post(this.APILuces + "?addRegistroLuces=1", dataLuces, { responseType: 'text' });
+  }
+
+//--------------------------------FIN APARTADO SESION DE JUEGO--------------------------------
+
+//--------------------------------------APARTADO USER--------------------------------------
+
+  //AÑADIR USER (SE USA EN REGISTER/SIGN-UP)
+  AddUser(userData: User): Observable<any> {
+    return this.clientHttp.post(this.API + "?addUser=1", userData, { responseType: 'text' });
   }
 
   //Recuperar la id de un usuario por su email que ha de ser unico
@@ -100,7 +110,6 @@ export class CrudService {
   }
 
   //LEE EL TOKEN ALMACENADO EN LOCAL
-
   readToken() {
     const token = localStorage.getItem('token');
     return token;
@@ -114,4 +123,6 @@ export class CrudService {
   decodeToken(token: string): void {
     return helper.decodeToken(token);
   }
+
+//----------------------------------FIN APARTADO USER--------------------------------------
 }
