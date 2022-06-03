@@ -55,6 +55,7 @@
 
 #sequence {
   border-radius: 1vw;
+  margin:1vh;
   background-color: rgba(30, 30, 140, 0.432);
   display: grid;
   padding: 2vw;

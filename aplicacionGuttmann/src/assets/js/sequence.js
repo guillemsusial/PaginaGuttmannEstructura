@@ -42,15 +42,12 @@ class test {
 
 
     }
- //inicia la Sequencia
+  //inicia la Sequencia
     init() {
-
-
         this.startGame();
-
     }
 
-  //Empieza el Juego
+  //##Empieza el Juego
     startGame() {
       let aciertos=this.aciertos;
       this.updateRound(this.round);
@@ -59,8 +56,7 @@ class test {
       this.cargarCartas();
 
     };
-
-
+  //##Cargar Preguntas
     cargarCartas(){
        //## VARIABLES DE RECORRIDO
 
