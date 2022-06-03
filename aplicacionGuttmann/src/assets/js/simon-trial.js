@@ -1,8 +1,8 @@
 /**https://www.lawebdelprogramador.com/foros/JavaScript/1344396-secuencia-de-imagenes.html */
 
-let round = document.getElementById('round');
-let simonButtons = document.getElementsByClassName('card');
-let transition = document.getElementById('transition');
+var round = document.getElementById('round');
+var simonButtons = document.getElementsByClassName('card');
+var transition = document.getElementById('transition');
 
 
 class Simon {
@@ -120,9 +120,7 @@ round.innerHTML='1/1';
 
   validateChosenColor(value) {
 
-    /*console.log(this.sequence);
-    console.log("POSITION->"+this.userPosition)
-    console.log("VALUE->"+value);*/
+  
     this.userSequence[this.round].Options.push(value);
     this.userSequence[this.round].Sequence.push(this.sequence[this.userPosition]);
     console.log(this.userSequence);
@@ -214,13 +212,13 @@ round.innerHTML='1/1';
   //Añade y quita classes segun el resultado del usuario
   toggleTurnStyle(value) {
 
-    /*ACIERTAS */
+    //ACIERTAS 
     if (value) {
       transition.classList.toggle('Active-1');
       transition.classList.toggle('Guess');
     }
 
-    /*SI FALLAS TE DA 1 OPORTUNIDAD MAS */
+    //SI FALLAS TE DA 1 OPORTUNIDAD MAS 
 
     if (!value) {
       this.fallos++;
@@ -237,7 +235,7 @@ round.innerHTML='1/1';
         //  transition.style.left = '38vw'
         }
 
-        /*SI FALLAS POR SEGUNDA VEZ SE ACABARA EL JUEGO */
+        //SI FALLAS POR SEGUNDA VEZ SE ACABARA EL JUEGO 
 
       } else {
 
@@ -286,7 +284,11 @@ round.innerHTML='1/1';
     transition.innerHTML = '🏆';
   }
 
-  /* $('#send').click( function() {
+  
+
+}
+
+/* $('#send').click( function() {
      alert('Enviando!');
          $.ajax(
                  {
@@ -297,10 +299,6 @@ round.innerHTML='1/1';
                  }
              )
          }*/
-
-}
-
-
 
 class Player{
   constructor(round,userPosition,totalRounds,sequence,speed,blockedButtons,fallos,userSequence,userObject) {
@@ -338,10 +336,10 @@ class Player{
 
 
 
-let player = new Player(0, 0, 1, [], 1000, true, 0, [], {
+var player = new Player(0, 0, 1, [], 1000, true, 0, [], {
   Round: "",
   Options: [],
   Sequence: []
 });
-let simon = new Simon(simonButtons, startButton, round);
+var simon = new Simon(simonButtons, startButton, round);
 simon.init();
