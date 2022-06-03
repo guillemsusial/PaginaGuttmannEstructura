@@ -22,7 +22,7 @@ export class HeaderComponent implements OnInit {
   userid: any;
   jsonObject: any;
   sessionObject: any;
-
+ 
   constructor(
     public formulario: FormBuilder,
     public crudService: CrudService,
@@ -35,6 +35,7 @@ export class HeaderComponent implements OnInit {
       Password: [''],
       Identificador: ['']
     });
+    
   }
 
   ngOnInit(): void {

@@ -34,7 +34,7 @@ export class Simon {
 
 
     
-
+    round.innerHTML='0/6';
    this.countDown();
 
 
