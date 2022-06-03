@@ -78,8 +78,7 @@ export class HeaderComponent implements OnInit {
           }
           
           //PROBLEMA DE PARSE DATE
-          
-          sesion.fecha = new Date();
+          sesion.fecha = new Date().toJSON().slice(0, 19).replace('T', ' ');
           sesion.version = "1.0";
           sesion.identificador = this.userForm.value["Identificador"];
 
