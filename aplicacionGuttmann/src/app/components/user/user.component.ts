@@ -17,24 +17,31 @@ export class UserComponent implements OnInit, OnDestroy {
 
   token:any;
   decodedToken:any;
-  graficoPolar:any =document.getElementById('polarChart');
+  graficoPolar:any ;
+
   constructor(
     private _CargarScripts: CargarScriptsService,
     public crudService:CrudService
     )
    {
     
-    //this._CargarScripts.Carga(["graficoPolar"])
+    this._CargarScripts.Carga(["graficoPolar"])
   }
   
   ngOnInit(): void {
+    
+    //this.graficoPolar = document.getElementById('polarChart');
     this.token = this.crudService.readToken();
     console.log(this.token);
     this.decodeToken(this.token);
-   var grafico = new graficoPolar();
-    var result:Chart=grafico.init();
- //    console.log(result.config);
-  // const polarChart = new Chart(this.graficoPolar,result.config._config);
+   /* this.graficoPolar =this.graficoPolar?.getContext('2d');
+     var grafico = new graficoPolar();
+    var result:any=grafico.init();
+    this.graficoPolar;
+  
+    console.log(result);
+    console.log(this.graficoPolar);
+   const polarChart = new Chart(this.graficoPolar,result);*/
   }
 
   decodeToken(token:string){

@@ -108,9 +108,10 @@ export class Simon {
   // Valida si el boton que toca el usuario corresponde a al valor de la secuencia
 
   validateChosenColor(value: any) {
-    /*console.log(this.sequence);
+     /* console.log(this.sequence);
       console.log("POSITION->"+this.userPosition)
-      console.log("VALUE->"+value);*/
+      console.log("VALUE->"+value);
+      console.log(this.laSequencia_error);*/
     this.userSequence[this.round].Options.push(value);
     this.userSequence[this.round].Sequence.push(
       this.sequence[this.userPosition]
@@ -136,6 +137,7 @@ export class Simon {
         this.gameLost();
         this.userPosition = this.round;
         this.laSequencia_error = false;
+        this.userPosition++;
       }
       this.userPosition--;
     }
