@@ -18,7 +18,7 @@ declare var $: any;
 
 export class HeaderComponent implements OnInit {
   userForm: FormGroup;
-  logged = false;
+  loginFailed: boolean;
   userid: any;
   jsonObject: any;
   sessionObject: any;
@@ -35,7 +35,7 @@ export class HeaderComponent implements OnInit {
       Password: [''],
       Identificador: ['']
     });
-
+    this.loginFailed = false;
   }
 
   ngOnInit(): void {
@@ -45,6 +45,7 @@ export class HeaderComponent implements OnInit {
     if (confirm == true) {
       this.crudService.logout();
       window.location.reload();
+      this.loginFailed = false;
     } else {
       window.location.reload();
     }
@@ -52,6 +53,10 @@ export class HeaderComponent implements OnInit {
 
   is_touch_enabled() {
     return ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+  }
+
+  get getLoginFailed(): boolean {
+    return this.loginFailed;
   }
 
   //FUNCIÓN PARA ENVIAR LOS DATOS DEL LOGIN
@@ -95,6 +100,8 @@ export class HeaderComponent implements OnInit {
       } else {
         //SI NO ES CORRECTO EL LOGIN LE DECIMOS QUE LA VARIABLE loggedIn ES false
         this.crudService.loggedIn.next(false);
+        this.loginFailed = true;
+        this.userForm.reset();
       }
     }, (error) => {
       console.log("error Function");
