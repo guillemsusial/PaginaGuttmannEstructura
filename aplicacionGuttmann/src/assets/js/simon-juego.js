@@ -1,11 +1,11 @@
 /**https://www.lawebdelprogramador.com/foros/JavaScript/1344396-secuencia-de-imagenes.html */
 
-const round = document.getElementById('round');
-const simonButtons = document.getElementsByClassName('card');
-const transition = document.getElementById('transition');
+var round = document.getElementById('round');
+var simonButtons = document.getElementsByClassName('card');
+var transition = document.getElementById('transition');
 
 
-class Simon {
+export class Simon {
 
   constructor(simonButtons, startButton, round) {
 
@@ -33,8 +33,8 @@ class Simon {
   init() {
 
 
-    this.startGame();
-
+    
+    round.innerHTML='0/6';
    this.countDown();
 
 
@@ -169,7 +169,7 @@ class Simon {
     let sequenceIndex = 0;
     let you = 0;
     let timer = setInterval(() => {
-      const button = this.buttons[this.sequence[sequenceIndex]];
+      let button = this.buttons[this.sequence[sequenceIndex]];
 
       this.toggleButtonStyle(button)
 
@@ -301,7 +301,6 @@ class Simon {
 }
 
 
-
 class Player{
   constructor(round,userPosition,totalRounds,sequence,speed,blockedButtons,fallos,userSequence,userObject) {
       this.round = round;
@@ -334,14 +333,16 @@ class Player{
 }
 
 
+export function hola(){
+  console.log("HOLLLAAAAA")
+}
 
 
 
-
-const player = new Player(0, 0, 6, [], 1000, true, 0, [], {
+var player = new Player(0, 0, 6, [], 1000, true, 0, [], {
   Round: "",
   Options: [],
   Sequence: []
 });
-const simon = new Simon(simonButtons, startButton, round);
+var simon = new Simon(simonButtons, startButton, round);
 simon.init();

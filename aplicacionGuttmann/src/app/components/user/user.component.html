@@ -1,40 +1,49 @@
 <app-header></app-header>
 
-<div class="container-flex contenedor mt-5 mb-5 ms-5 me-5" >
-  <div class="row">
-    <div class="col-3 offset-2 div-user mt-5 mb-5" id="foto-user">
+
+<div class="container-flex contenedor mt-4">
+  <h3 class="informacion mt-5">INFORMACIÓN SOBRE EL USUARIO </h3>
+
+  <div id="div_User" class="row">
+    <div class="col-3  div-user " id="foto-user">
+
     </div>
     <div class="col-5 pt-5 pb-5 ps-4 pe-4">
-        <div>
-          <p>Nombre: {{decodedToken.data.Name}}</p>
-        </div>   
-        <div>
-          <p>Apellidos: {{decodedToken.data.LastName}}</p>
-        </div>
-        <div>
-          <p>Email: {{decodedToken.data.Email}}</p>
-        </div>
-        <div>
-          <p>Año de Nacimiento: {{decodedToken.data.anioNacimiento}}</p>
-        </div>
-        <div>
-          <p>Genero: {{decodedToken.data.Sexo}}</p>
-        </div>  
-               
+      <div>
+        <p><b>Nombre: </b>{{decodedToken.data.Name}}</p>
+      </div>
+      <div>
+        <p><b>Apellidos: </b>{{decodedToken.data.LastName}}</p>
+      </div>
+      <div>
+        <p><b>Email: </b>{{decodedToken.data.Email}}</p>
+      </div>
+      <div>
+        <p><b>Año de Nacimiento: </b>{{decodedToken.data.anioNacimiento}}</p>
+      </div>
+      <div>
+        <p><b>Genero: </b>{{decodedToken.data.Sexo}}</p>
+      </div>
+
     </div>
   </div>
 
+  <div class="col-lg-12 mb-5">
+    <hr class="style">
+  </div>
+
+  <h3 id="titulo">DATOS SOBRE EL USUARIO</h3>
   <div class="row">
-   
+
     <div
-    class="col-10 col-sm-8 col-md-8 col-lg-8 col-xxl-6 offset-xxl-3 offset-md-2 offset-sm-2 offset-1 div-user mt-5 mb-5 "
-    category="polarChart">
-    <!--GRAFICO AREA POLAR tipos de categorias jugadas-->   
-    <canvas id="polarChart" style="height:50;">
-    </canvas>
-    <!--FIN GRAFICO AREA POLAR-->
+      class="col-10 col-sm-8 col-md-8 col-lg-8 col-xxl-6 offset-xxl-3 offset-md-2 offset-sm-2 offset-1 div-user mt-5 mb-5 "
+      category="polarChart">
+      <!--GRAFICO AREA POLAR tipos de categorias jugadas-->
+      <canvas id="polarChart" width="400" height="400">
+      </canvas>
+      <!--FIN GRAFICO AREA POLAR-->
     </div>
-    
+
   </div>
 </div>
 
