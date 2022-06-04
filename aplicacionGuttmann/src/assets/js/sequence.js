@@ -1,14 +1,16 @@
 /*const { default: _default } = require("@popperjs/core/lib/modifiers/popperOffsets");*/
 
 
+
+
 const sequenceButtons = document.getElementsByClassName('card');
 const answerButtons =document.getElementsByClassName('r');
-const table = document.getElementsByClassName('tf');
+const acerts = document.getElementById('tAcertsN');
 const round = document.getElementById('round');
 const transition = document.getElementById('transition');
 const startTransition = document.getElementById('startTransition');
-var startModal = new bootstrap.Modal(document.getElementById('startModalToggle'), { keyboard: false});
-var finishModal = new bootstrap.Modal(document.getElementById('finishModal'),{keyboard: false});
+const startModal = new bootstrap.Modal(document.getElementById('startModalToggle'), { keyboard: false});
+const finishModal = new bootstrap.Modal(document.getElementById('finishModal'),{keyboard: false});
 
 
 
@@ -22,46 +24,42 @@ class test {
         //this.order = randomOrder();
         this.buttons = Array.from(sequenceButtons);
         this.ansButtons = Array.from(answerButtons);
-        this.fTable = Array.from(table);
+
         this.totalRounds = player.totalRounds;
         this.round= player.round;
+
 
         this.userSequence= player.userSequence;
         this.userObject= player.userObject;
         this.userPosition= player.userPosition;
         this.display = {
           round
-        };
+
+        }
 
 
 
 
 
     }
- //inicia la Sequencia
+  //inicia la Sequencia
     init() {
-
-
         this.startGame();
-
     }
 
-  //Empieza el Juego
-
-
-
-
+  //##Empieza el Juego
     startGame() {
+      let aciertos=this.aciertos;
       this.updateRound(this.round);
       player.createUserData();
       this.userPosition = 1;
-
       this.cargarCartas();
 
     };
-
+  //##Cargar Preguntas
     cargarCartas(){
        //## VARIABLES DE RECORRIDO
+
        var y=0, z=0, w=0, x=0;
        var v=0;
        let pregsOrder=[,,,];
@@ -73,8 +71,13 @@ class test {
        //## POSICION RANDOM PARA MEZCLAR LAS RESPUESTAS
        const order = randomOrder();
        this.updateRound(this.round);
-
        this.userPosition ++;
+
+
+      //## Incrementa una ronda
+      this.round++;
+      this.updateRound(this.round);
+      this.userPosition = this.round;
 
        //## inserta los datos en las cartas
       this.buttons.forEach((element, i) => {
@@ -84,15 +87,13 @@ class test {
            element.classList.add('visible');
            element.innerHTML=this.preguntas[i];
 
-       //## SEPARA EL ELEMENTO SELECCIONADO COMO INCOGNITO LO MUESTRA/ESCONDE
+       //## SEPARA EL ELEMENTO SELECCIONADO COMO INCOGNITO LO ESCONDE
          }else if(element.id==i && element.id==Incognito){
            element.classList.remove('visible');
            element.classList.add('invisible');
 
 
          }else if(element.id=="answer"+i){
-
-
              //## INSERTA EL INCOGNITO EN UNA POSICION ALEATORIA DEL 1-4
              if(w==0){
                v= (order[z]-1);
@@ -119,6 +120,7 @@ class test {
          };
        });
 
+
        //## RESPUESTAS A LAS PREGUNTAS INSERTAMOS LA POSICION EN LA QUE SE ENCUENTRA LA INCOGNITA(V)
        this.ansButtons.forEach((element,i)=>{
          element.onclick = () => this.buttonClickValidate(i,v);
@@ -128,6 +130,29 @@ class test {
 
     }
 
+    resultadosAciertos(){
+      //filas de la tabla respuestas
+      var aciertos=0;
+
+      for(var i=0; i<=this.totalRounds;i++){
+        if(this.userSequence[i].Respuesta[0]==1){
+          aciertos++;
+        }
+
+
+        // for(var x=0; x<=2; x++){
+        //   console.log(this.userSequence.)
+
+        // }
+
+      };
+      acerts.innerHTML+=aciertos;
+      console.log("Aciertos totales: ", aciertos,'| Aciertos de Ronda: ',  this.userSequence[i].Respuesta[0]);
+
+
+
+  }
+
       // Ejecuta una función cuando se hace click en un botón
     buttonClickValidate(value,ref) {
 
@@ -136,101 +161,56 @@ class test {
       var es='';
       //## SI EL VALOR SELECCIONADO ES EL CORRECTO VERIFICALO
       if(value == ref){
-        acierto++;
-        es='bueno';
+
+        es='acierto';
+
+
+        acierto =1;
+
+
+        console.log(this.aciertos);
 
       }else{
-        es='malo';
+        es='fallo';
         acierto=0;}
+
+
+      //## AÑADIR DATOS AL OBJETO PLAYER
       this.userSequence[this.round].Respuesta.push(acierto);
-      this.userSequence[this.round].Incognito.push(this.Incognito);
+      this.userSequence[this.round].Incognito.push(ref);
       console.log( this.userSequence);
       console.log('pulsed: '+es);
 
-      //## Incrementa una ronda
-      this.round++;
-      this.updateRound(this.round);
-      this.userPosition = this.round;
-        if(this.round<2){
-
-          this.cargarCartas();
-        }else{ this.gameFinish();}
-
-    };
+        if(this.round<6){
+        this.cargarCartas();
 
 
+        }else{
 
+          this.gameFinish();}
+
+    }
+
+
+    //Actualiza la Ronda
     updateRound(value){
 
       this.round = value;
       this.display.round.textContent = `${this.round}/${this.totalRounds}`;
     }
 
-    gameWon() {
-
-    }
-
-
+    //PoPup Conforme juego Finalizado
     gameFinish(){
       finishModal.show();
-      console.log(player.userObject)
-      this.fTable.forEach((element,i)=>{
-        element.innerHTML= player.userObject[i];
-      })
+      this.resultadosAciertos();
+
+
+      console.log(this.userSequence[this.round].Respuesta[0], this.userSequence[this.round]);
+
     }
 
-    // Pinta los botones para cuando se está mostrando la secuencia
 
-        toggleButtonStyle(button) {
 
-          button.classList.toggle('Active');
-        }
-
-        //Añade y quita classes segun el resultado del usuario
-        toggleTurnStyle(value) {
-
-          /*ACIERTAS */
-          if (value) {
-            transition.classList.toggle('Active-1');
-            transition.classList.toggle('Guess');
-          }
-
-        /*SI FALLAS TE DA 1 OPORTUNIDAD MAS */
-
-        if (!value) {
-          this.fallos++;
-          if (this.fallos <= 2) {
-
-            transition.classList.toggle('Active-1');
-            transition.classList.toggle('Warning');
-            transition.style.left = '3vw'
-            transition.innerHTML = "Memoriza la siguiente secuencia"
-            this.updateRound(1);
-            if (this.fallos == 2) {
-              setTimeout(() => this.showSequence(), this.speed * 0.5)
-              transition.innerHTML = "Tu Turno"
-              transition.style.left = '38vw'
-            }
-
-            /*SI FALLAS POR SEGUNDA VEZ SE ACABARA EL JUEGO */
-
-          } else {
-
-            transition.classList.add('Active-1');
-            transition.classList.add('Error');
-            transition.innerHTML = "FALLASTE";
-            if (this.fallos == 4) {
-              var divNota = document.createElement("button")
-              divNota.setAttribute("id","startButton")
-              divNota.setAttribute("Style", " width: 50%;margin: auto; height: 100%; font-size: 50%;border: none;font-family: 'Merriweather', serif;cursor: pointer;border-radius: 10pt; color:rgb(92, 0, 76);border:solid rgb(92, 0, 76) ;padding: 5px;");
-              setTimeout(() => transition.appendChild(divNota), divNota.textContent = "Try Again", this.speed * 0.5);
-              divNota.onclick = () => window.location.reload();
-
-            }
-          }
-
-        }
-      };
 
     funcionIincognita(){
 
@@ -284,6 +264,7 @@ while (n <= 3);
 class Player{
   constructor(round,userPosition,totalRounds,fallos,userSequence,userObject,Incognito){
     this.round=round;
+
     this.userPosition=userPosition;
     this.totalRounds=totalRounds;
     this.userObject=userObject;
@@ -292,13 +273,14 @@ class Player{
     this.Incognito = Incognito;
     this.display = {
       round
+
     }
 
   };
    //crea el objeto dond alojaremos los datos del usuario segun la ronda
    createUserData(){
 
-    for(let i = 0;i<this.totalRounds;i++) {
+    for(let i = 0;i<=this.totalRounds;i++) {
 
       this.userSequence.push(this.userObject={"Round":i,"Respuesta":[],"Incognito":[]});
 
