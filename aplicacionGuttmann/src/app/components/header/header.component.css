@@ -1,6 +1,7 @@
 .format {
-  width: 250px;
-  height: 100px;
+  width: 65%;
+  min-width: 200px;
+  height: auto;
   margin: 0%;
   padding: 0%;
 }
