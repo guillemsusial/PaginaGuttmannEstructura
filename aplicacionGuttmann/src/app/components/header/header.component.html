@@ -55,6 +55,9 @@
           </div>
           <div class="modal-body">
             <form [formGroup]="userForm" (ngSubmit)="enviarDatosLogin()">
+              <div class="text-danger" *ngIf="getLoginFailed">
+                  Usuario o contraseña incorrectos
+              </div>
               <div class="mb-3 form-group">
                 <label style="color: black">Email address</label>
                 <input formControlName="Email" name="email" type="email" class="form-control" id="id_email">
