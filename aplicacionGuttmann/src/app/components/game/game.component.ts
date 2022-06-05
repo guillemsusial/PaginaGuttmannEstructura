@@ -41,7 +41,7 @@ export class GameComponent implements OnInit {
     });
    
   }
-  var simon = new Simon(player);
+  var simon = new Simon(player,this.crudService);
 
   this.token = this.crudService.readToken();
   this.decodeToken(this.token);
@@ -52,12 +52,17 @@ export class GameComponent implements OnInit {
 
     simon.getSesionId(this.sesionID[0]["id"]);
     simon.init();
+    
   });
 
+  console.log(simon);
+
   }
+
   decodeToken(token:string){
     this.decodedToken = this.crudService.decodeToken(token);
   };
+
 }
 
 

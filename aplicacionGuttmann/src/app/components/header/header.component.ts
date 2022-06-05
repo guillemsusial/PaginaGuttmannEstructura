@@ -89,16 +89,16 @@ export class HeaderComponent implements OnInit {
             sesion=JSON.parse(JSON.stringify(sesion));
 
           this.crudService.AddSesion(sesion).subscribe((data) =>{
-            console.log(data);
+            //console.log(data);
           });
         });
 
         //GUARDAMOS EL TOKEN EN LOCAL CON EL SERVICIO DE CRUD
         this.crudService.saveToken(this.jsonObject.token);
-        window.location.reload();
-
+        
         //VARIABLE loggedIn = true
         this.crudService.loggedIn.next(true);
+        //window.location.reload();
 
       } else {
         //SI NO ES CORRECTO EL LOGIN LE DECIMOS QUE LA VARIABLE loggedIn ES false
