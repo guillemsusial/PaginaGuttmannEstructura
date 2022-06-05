@@ -30,11 +30,15 @@ export class CrudService {
 
   //AÑADIR SESION (SE USA EN EL LOGIN)
   AddSesion(sesionData: Sesion): Observable<any> {
-   console.log(sesionData);
-    return this.clientHttp.post('http://localhost/API/sesion.php/?addSesion=1',sesionData, { responseType: 'text' });
+
+    //console.log(sesionData);
+    return this.clientHttp.post(this.APISesion + "?addSesion=1", sesionData, { responseType: 'text' });
   }
 
-  
+  GetSesionId(id: any):Observable<any>{
+    console.log(id);
+    return this.clientHttp.get(this.APISesion + "?getSessionId="+id, { responseType: 'text' });
+  }
 
   AddSerieLuces(dataLuces: serieLuces): Observable<any> {
     return this.clientHttp.post(this.APILuces + "?addRegistroLuces=1", dataLuces, { responseType: 'text' });
@@ -86,8 +90,9 @@ export class CrudService {
     if (localStorage.getItem('token')) {
       const userToken = localStorage.getItem('token') || "[]";
       const isExpired = helper.isTokenExpired(userToken);
-      console.log('isExpired', isExpired);
+      //console.log('isExpired', isExpired);
       if (isExpired == true) {
+        window.alert("Vuelve a iniciar sesión, el token ha expirado.");
         this.logout();
       } else {
         this.loggedIn.next(true);
