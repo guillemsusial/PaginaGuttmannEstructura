@@ -32,7 +32,7 @@ export class UserComponent implements OnInit, OnDestroy {
     
     //this.graficoPolar = document.getElementById('polarChart');
     this.token = this.crudService.readToken();
-    console.log(this.token);
+    //console.log(this.token);
     this.decodeToken(this.token);
    /* this.graficoPolar =this.graficoPolar?.getContext('2d');
      var grafico = new graficoPolar();
@@ -46,7 +46,7 @@ export class UserComponent implements OnInit, OnDestroy {
 
   decodeToken(token:string){
     this.decodedToken = this.crudService.decodeToken(token);
-    console.log(this.decodedToken.data);
+    //console.log(this.decodedToken.data);
   };
 
   @HostListener('unloaded')

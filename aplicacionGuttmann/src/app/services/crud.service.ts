@@ -7,6 +7,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
 import { Sesion } from './sesion';
 import { serieLuces } from './serieLuces';
+import { resultadosLuces } from './resultadosLuces';
 
 const helper = new JwtHelperService();
 
@@ -30,7 +31,6 @@ export class CrudService {
 
   //AÑADIR SESION (SE USA EN EL LOGIN)
   AddSesion(sesionData: Sesion): Observable<any> {
-
     //console.log(sesionData);
     return this.clientHttp.post(this.APISesion + "?addSesion=1", sesionData, { responseType: 'text' });
   }
@@ -41,8 +41,13 @@ export class CrudService {
   }
 
   AddSerieLuces(dataLuces: serieLuces): Observable<any> {
-    console.log(dataLuces);
+    //console.log(dataLuces);
     return this.clientHttp.post(this.APILuces + "?addRegistroLuces=1", dataLuces, { responseType: 'text' });
+  }
+
+  AddResultadosLuces(resultsLuces: resultadosLuces): Observable<any>{
+    console.log(resultsLuces);
+    return this.clientHttp.post(this.APILuces + "?addResultadosLuces=1", resultsLuces, { responseType: 'text' });
   }
 
 //--------------------------------FIN APARTADO SESION DE JUEGO--------------------------------
@@ -51,7 +56,7 @@ export class CrudService {
 
   //AÑADIR USER (SE USA EN REGISTER/SIGN-UP)
   AddUser(userData: User): Observable<any> {
-    console.log(userData);
+    //console.log(userData);
     return this.clientHttp.post(this.API + "?addUser=1", userData, { responseType: 'text' });
   }
 
