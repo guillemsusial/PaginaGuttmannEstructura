@@ -18,6 +18,6 @@ export class AppComponent implements OnInit {
     setInterval(()=>
     {
       this.crudService.checkToken();
-    },5000);
+    },300000);
   }
 }

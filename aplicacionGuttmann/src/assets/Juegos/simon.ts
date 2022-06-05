@@ -1,4 +1,5 @@
 import { CrudService } from 'src/app/services/crud.service';
+import { serieLuces } from 'src/app/services/serieLuces';
 import { Player } from './player';
 export class Simon {
   round: any;
@@ -16,9 +17,15 @@ export class Simon {
   roundHTML: any;
   simonButtons: any;
   transition: any;
-  crudService!: CrudService;
+  coordUser: any;
+  crudService: CrudService;
 
-  constructor(player: Player) {
+  pruebaUser:any;
+  pruebaSecuence:any;
+
+  sesionID:any;
+
+  constructor(player: Player,crudservice:CrudService) {
     this.roundHTML = document.getElementById('round');
     this.simonButtons = document.getElementsByClassName('card');
     this.transition = document.getElementById('transition');
@@ -33,6 +40,9 @@ export class Simon {
     this.laSequencia_error = player.laSequencia_error;
     this.userSequence = player.userSequence;
     this.userObject = player.userObject;
+    this.pruebaUser = "";
+    this.pruebaSecuence = "";
+    this.crudService = crudservice;
     player.createUserData();
   }
 
@@ -40,6 +50,11 @@ export class Simon {
   init() {
     this.roundHTML.innerHTML = '0/' + this.totalRounds;
     this.countDown();
+  }
+
+  
+  getSesionId(sesionID:any){
+    this.sesionID = sesionID;
   }
 
   //Contador
@@ -108,20 +123,43 @@ export class Simon {
   // Valida si el boton que toca el usuario corresponde a al valor de la secuencia
 
   validateChosenColor(value: any) {
-     /* console.log(this.sequence);
-      console.log("POSITION->"+this.userPosition)
+      console.log(this.userSequence);
+     /*userSconsole.log("POSITION->"+this.userPosition)
       console.log("VALUE->"+value);
       console.log(this.laSequencia_error);*/
+
     this.userSequence[this.round].Options.push(value);
     this.userSequence[this.round].Sequence.push(
       this.sequence[this.userPosition]
     );
 
-    console.log(this.userSequence[this.round]["Options"].pop());
-    console.log(this.userSequence[this.round]["Sequence"].pop());
-    
+      this.pruebaUser += ("-"+this.userSequence[this.round].Options.pop());
+      this.pruebaSecuence += ("-"+this.userSequence[this.round].Sequence.pop());
+
     if (this.sequence[this.userPosition] === value && !this.laSequencia_error) {
+     
       if (0 === this.userPosition) {
+
+        // console.log(this.pruebaUser.slice(1));
+        // console.log((this.pruebaSecuence.slice(1)));
+
+        let objetoLuces = new serieLuces();
+        objetoLuces.idSesion = this.sesionID;
+        objetoLuces.ronda = this.round;
+        objetoLuces.coordenadasPresentadas = this.pruebaSecuence.slice(1);
+        objetoLuces.coordenadasUsuario = this.pruebaUser.slice(1);
+        objetoLuces=JSON.parse(JSON.stringify(objetoLuces));
+
+        console.log(objetoLuces);
+        this.crudService.AddSerieLuces(objetoLuces).subscribe((data) => {
+          console.log(data);
+        });
+        
+        //LLAMAR A ALGO
+
+        this.pruebaUser="";
+        this.pruebaSecuence="";
+
         this.round++;
         this.updateRound(this.round);
         this.userPosition = this.round;
@@ -131,17 +169,41 @@ export class Simon {
         this.userPosition--;
       }
     } else {
+      
       this.laSequencia_error = true;
-
       if (0 === this.userPosition && this.laSequencia_error) {
+
+        // console.log(this.pruebaUser.slice(1));
+        // console.log((this.pruebaSecuence.slice(1)));
+
+        let objetoLuces = new serieLuces();
+        objetoLuces.idSesion = this.sesionID;
+        objetoLuces.ronda = this.round;
+        objetoLuces.coordenadasPresentadas = this.pruebaSecuence.slice(1);
+        objetoLuces.coordenadasUsuario = this.pruebaUser.slice(1);
+        objetoLuces=JSON.parse(JSON.stringify(objetoLuces));
+
+        console.log(objetoLuces);
+
+        this.crudService.AddSerieLuces(objetoLuces);
+
+        this.pruebaUser="";
+        this.pruebaSecuence="";
+
+        //crud
         this.gameLost();
         this.userPosition = this.round;
-        this.laSequencia_error = false;
+        this.laSequencia_error = false; 
+        
+        
         this.userPosition++;
       }
       this.userPosition--;
     }
   }
+//////////////////////////////////////////////////////////////////////////////
+  
+//////////////////////////////////////////////////////////////////////////////
 
   // Verifica que no haya acabado el juego
   isGameOver() {
@@ -244,7 +306,7 @@ export class Simon {
 
   // Actualiza el simon cuando el jugador pierde
   gameLost() {
-    console.log("a");
+    console.log("Has perdido");
     this.blockedButtons = true;
     let you = 0;
     let timer1 = setInterval(() => {
