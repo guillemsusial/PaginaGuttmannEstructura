@@ -147,8 +147,10 @@ export class Simon {
         objetoLuces.coordenadasUsuario = this.pruebaUser.slice(1);
         objetoLuces=JSON.parse(JSON.stringify(objetoLuces));
 
-        this.crudService.AddSerieLuces(objetoLuces);
         console.log(objetoLuces);
+        this.crudService.AddSerieLuces(objetoLuces);
+        
+        //LLAMAR A ALGO
 
         this.pruebaUser="";
         this.pruebaSecuence="";
@@ -175,8 +177,9 @@ export class Simon {
         objetoLuces.coordenadasUsuario = this.pruebaUser.slice(1);
         objetoLuces=JSON.parse(JSON.stringify(objetoLuces));
 
-        this.crudService.AddSerieLuces(objetoLuces);
         console.log(objetoLuces);
+        this.crudService.AddSerieLuces(objetoLuces);
+        
 
         this.pruebaUser="";
         this.pruebaSecuence="";

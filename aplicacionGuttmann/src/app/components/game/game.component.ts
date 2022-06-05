@@ -17,6 +17,8 @@ export class GameComponent implements OnInit {
   game: {
     mode: string
   };
+  token:any;
+  decodedToken:any;
  
   constructor(private _CargarScripts: CargarScriptsService, private rutaActiva: ActivatedRoute,private router: Router, public crudService:CrudService) {
     this.game = { mode: this.rutaActiva.snapshot.params['mode'] };
@@ -41,13 +43,21 @@ export class GameComponent implements OnInit {
   }
   var simon = new Simon(player);
 
-  this.crudService.GetSesionId().subscribe((data) => {
-    this.sesionID = data.slice(8,10);
-    simon.getSesionId(this.sesionID);
+  this.token = this.crudService.readToken();
+  this.decodeToken(this.token);
+
+  this.crudService.GetSesionId(this.decodedToken.data.id).subscribe((data) => {
+    this.sesionID = JSON.parse(data);
+    console.log(this.sesionID[0]["id"]);
+
+    simon.getSesionId(this.sesionID[0]["id"]);
     simon.init();
-    console.log(this.sesionID);
   });
+
   }
+  decodeToken(token:string){
+    this.decodedToken = this.crudService.decodeToken(token);
+  };
 }
 
 

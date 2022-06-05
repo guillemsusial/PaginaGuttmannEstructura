@@ -34,8 +34,9 @@ export class CrudService {
     return this.clientHttp.post(this.APISesion + "?addSesion=1", sesionData, { responseType: 'text' });
   }
 
-  GetSesionId(){
-    return this.clientHttp.get(this.APISesion + "?getSessionId", { responseType: 'text' });
+  GetSesionId(id: any):Observable<any>{
+    console.log(id);
+    return this.clientHttp.get(this.APISesion + "?getSessionId="+id, { responseType: 'text' });
   }
 
   AddSerieLuces(dataLuces: serieLuces): Observable<any> {
