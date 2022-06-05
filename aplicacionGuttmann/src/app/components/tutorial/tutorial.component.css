@@ -7,7 +7,13 @@
 
 }
 
-.video{
+.title_ {
+  font-family: Arial, Verdana, sans-serif;
+  color: #006fc1;
+
+}
+
+.video {
   margin: auto;
   border-radius: 10px;
   width: 100%;
@@ -26,7 +32,7 @@
 
 
 /*POPU VIDEO*/
-.crack{
+.crack {
   position: static;
   width: 100%;
   height: 100vh;
@@ -36,6 +42,7 @@
   background-position: center center;
   background-size: cover;
 }
+
 #back {
   position: static;
   width: 100%;
@@ -45,6 +52,18 @@
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
+}
+.clase
+{
+  padding: 50px;
+  padding-left: 200px;
+}
+
+.boton {
+  box-shadow: none;
+  border-radius: 70px;
+  background-color: #ee6500;
+  color: #ffffff;
 }
 
 .guttmann {
@@ -513,4 +532,3 @@
     padding-bottom: 20px;
   }
 }
-
