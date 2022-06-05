@@ -122,10 +122,10 @@ export class Simon {
   // Valida si el boton que toca el usuario corresponde a al valor de la secuencia
 
   validateChosenColor(value: any) {
-    //  console.log(this.sequence);
-    //   console.log("POSITION->"+this.userPosition)
-    //   console.log("VALUE->"+value);
-    //   console.log(this.laSequencia_error);
+      console.log(this.userSequence);
+     /*userSconsole.log("POSITION->"+this.userPosition)
+      console.log("VALUE->"+value);
+      console.log(this.laSequencia_error);*/
 
     this.userSequence[this.round].Options.push(value);
     this.userSequence[this.round].Sequence.push(
@@ -136,6 +136,7 @@ export class Simon {
       this.pruebaSecuence += ("-"+this.userSequence[this.round].Sequence.pop());
 
     if (this.sequence[this.userPosition] === value && !this.laSequencia_error) {
+     
       if (0 === this.userPosition) {
 
         // console.log(this.pruebaUser.slice(1));
@@ -165,6 +166,7 @@ export class Simon {
         this.userPosition--;
       }
     } else {
+      
       this.laSequencia_error = true;
       if (0 === this.userPosition && this.laSequencia_error) {
 
@@ -180,7 +182,6 @@ export class Simon {
 
         console.log(objetoLuces);
         //this.crudService.AddSerieLuces(objetoLuces);
-        
 
         this.pruebaUser="";
         this.pruebaSecuence="";
@@ -188,7 +189,9 @@ export class Simon {
         //crud
         this.gameLost();
         this.userPosition = this.round;
-        this.laSequencia_error = false;
+        this.laSequencia_error = false; 
+        
+        
         this.userPosition++;
       }
       this.userPosition--;

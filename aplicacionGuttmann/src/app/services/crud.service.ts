@@ -30,6 +30,7 @@ export class CrudService {
 
   //AÑADIR SESION (SE USA EN EL LOGIN)
   AddSesion(sesionData: Sesion): Observable<any> {
+
     //console.log(sesionData);
     return this.clientHttp.post(this.APISesion + "?addSesion=1", sesionData, { responseType: 'text' });
   }
@@ -49,6 +50,7 @@ export class CrudService {
 
   //AÑADIR USER (SE USA EN REGISTER/SIGN-UP)
   AddUser(userData: User): Observable<any> {
+    console.log(userData);
     return this.clientHttp.post(this.API + "?addUser=1", userData, { responseType: 'text' });
   }
 

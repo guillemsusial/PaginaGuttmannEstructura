@@ -76,14 +76,17 @@ export class HeaderComponent implements OnInit {
 
           //Añadimos nueva sesión a la base de datos
           let sesion = new Sesion();
+
             sesion.idUsuario = this.emailID.id + "";
+
             if (this.is_touch_enabled()) {
-              sesion.dispositivo = "tactil";
+              sesion.dispositivo ="tactil";
             } else {
-              sesion.dispositivo = "teclado/raton";
+              sesion.dispositivo ="teclado/raton";
             }
             sesion.fecha = new Date().toJSON().slice(0, 19).replace('T', ' ');
             sesion.version = "1.0";
+
             sesion.identificador = this.userForm.value["Identificador"];
 
             sesion=JSON.parse(JSON.stringify(sesion));
@@ -91,11 +94,12 @@ export class HeaderComponent implements OnInit {
           this.crudService.AddSesion(sesion).subscribe((data) =>{
             console.log(data);
           });
+
         });
 
         //GUARDAMOS EL TOKEN EN LOCAL CON EL SERVICIO DE CRUD
         this.crudService.saveToken(this.jsonObject.token);
-        window.location.reload();
+        //window.location.reload();
 
         //VARIABLE loggedIn = true
         this.crudService.loggedIn.next(true);
