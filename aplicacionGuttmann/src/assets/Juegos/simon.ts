@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { CrudService } from 'src/app/services/crud.service';
 import { serieLuces } from 'src/app/services/serieLuces';
 import { Player } from './player';
@@ -282,19 +283,21 @@ export class Simon {
         this.transition.classList.add('Error');
         this.transition.innerHTML = 'FALLASTE';
         if (this.fallos == 4) {
-          var divNota = document.createElement('button');
+          
 
-          divNota.setAttribute('id', 'startButton');
+          // var divNota = document.createElement('button');
 
-          divNota.setAttribute(
-            'Style',
-            " width: 50%;margin: auto; height: 100%; font-size: 50%;border: none;font-family: 'Merriweather', serif;cursor: pointer;border-radius: 10pt; color:rgb(92, 0, 76);border:solid rgb(92, 0, 76) ;padding: 5px;"
-          );
-          setTimeout(
-            () => this.transition.appendChild(divNota),
-            /*divNota.innerHTML = "Try Again",*/ this.speed * 0.5
-          );
-          divNota.onclick = () => window.location.reload();
+          // divNota.setAttribute('id', 'startButton');
+
+          // divNota.setAttribute(
+          //   'Style',
+          //   " width: 50%;margin: auto; height: 100%; font-size: 50%;border: none;font-family: 'Merriweather', serif;cursor: pointer;border-radius: 10pt; color:rgb(92, 0, 76);border:solid rgb(92, 0, 76) ;padding: 5px;"
+          // );
+          // setTimeout(
+          //   () => this.transition.appendChild(divNota),
+          //   /*divNota.innerHTML = "Try Again",*/ this.speed * 0.5
+          // );
+          // divNota.onclick = () => window.location.reload();
         }
       }
     }

@@ -23,8 +23,8 @@
           </a>
           <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
             <li><a class="dropdown-item" routerLink="/user">Trayectoria</a></li>
-            <li><a class="dropdown-item" href="#">Ajustes</a></li>
-            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <!-- <li><a class="dropdown-item" href="#">Ajustes</a></li>
+            <li><a class="dropdown-item" href="#">Profile</a></li> -->
             <li>
               <hr class="dropdown-divider">
             </li>
@@ -94,5 +94,11 @@
       </div>
     </div>
   </div>
+  
+  
+ 
   <!--fin modal LogOut-->
 </header>
+<div *ngIf="loaderService.isLoading | async" class="loader-container"> 
+  <mat-progress-bar mode="query"></mat-progress-bar>
+</div>
