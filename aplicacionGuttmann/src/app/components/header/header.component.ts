@@ -21,7 +21,7 @@ export class HeaderComponent implements OnInit {
   loginFailed: boolean;
   userid: any;
   jsonObject: any;
-  sessionObject: any;
+  emailID: any;
  
   constructor(
     public formulario: FormBuilder,
@@ -70,15 +70,13 @@ export class HeaderComponent implements OnInit {
 
       //SI EL MENSAJE ES "success" HACEMOS LO SIGUENTE:
       if (this.jsonObject.message == "success") {
-
         //Añadimos la sesion del usuario
         this.crudService.GetIdByEmail(this.userForm.value["Email"]).subscribe((data) => {
-          this.sessionObject = JSON.parse(data);
+          this.emailID = JSON.parse(data);
 
           //Añadimos nueva sesión a la base de datos
           let sesion = new Sesion();
-            sesion.idUsuario = this.sessionObject.id + "";
-            console.log(this.sessionObject.id);
+            sesion.idUsuario = this.emailID.id + "";
             if (this.is_touch_enabled()) {
               sesion.dispositivo = "tactil";
             } else {
@@ -87,7 +85,12 @@ export class HeaderComponent implements OnInit {
             sesion.fecha = new Date().toJSON().slice(0, 19).replace('T', ' ');
             sesion.version = "1.0";
             sesion.identificador = this.userForm.value["Identificador"];
-          this.crudService.AddSesion(sesion);
+
+            sesion=JSON.parse(JSON.stringify(sesion));
+
+          this.crudService.AddSesion(sesion).subscribe((data) =>{
+            console.log(data);
+          });
         });
 
         //GUARDAMOS EL TOKEN EN LOCAL CON EL SERVICIO DE CRUD

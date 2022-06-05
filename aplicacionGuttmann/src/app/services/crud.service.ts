@@ -30,7 +30,12 @@ export class CrudService {
 
   //AÑADIR SESION (SE USA EN EL LOGIN)
   AddSesion(sesionData: Sesion): Observable<any> {
+    //console.log(sesionData);
     return this.clientHttp.post(this.APISesion + "?addSesion=1", sesionData, { responseType: 'text' });
+  }
+
+  GetSesionId(){
+    return this.clientHttp.get(this.APISesion + "?getSessionId", { responseType: 'text' });
   }
 
   AddSerieLuces(dataLuces: serieLuces): Observable<any> {
@@ -82,8 +87,9 @@ export class CrudService {
     if (localStorage.getItem('token')) {
       const userToken = localStorage.getItem('token') || "[]";
       const isExpired = helper.isTokenExpired(userToken);
-      console.log('isExpired', isExpired);
+      //console.log('isExpired', isExpired);
       if (isExpired == true) {
+        window.alert("Vuelve a iniciar sesión, el token ha expirado.");
         this.logout();
       } else {
         this.loggedIn.next(true);

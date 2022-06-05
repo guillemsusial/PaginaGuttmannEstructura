@@ -13,23 +13,14 @@ import { CrudService } from 'src/app/services/crud.service';
 
 
 export class GameComponent implements OnInit {
-
+  sesionID:any;
   game: {
     mode: string
-   
-
   };
  
-  
-
-  constructor(private _CargarScripts: CargarScriptsService, private rutaActiva: ActivatedRoute,private router: Router, crudService:CrudService) {
-
+  constructor(private _CargarScripts: CargarScriptsService, private rutaActiva: ActivatedRoute,private router: Router, public crudService:CrudService) {
     this.game = { mode: this.rutaActiva.snapshot.params['mode'] };
-    
-
-
   }
-
 
   ngOnInit(): void {
     
@@ -48,15 +39,15 @@ export class GameComponent implements OnInit {
     });
    
   }
-    
   var simon = new Simon(player);
-    simon.init();
-      
-   
-  }
-  
-  
 
+  this.crudService.GetSesionId().subscribe((data) => {
+    this.sesionID = data.slice(8,10);
+    simon.getSesionId(this.sesionID);
+    simon.init();
+    console.log(this.sesionID);
+  });
+  }
 }
 
 

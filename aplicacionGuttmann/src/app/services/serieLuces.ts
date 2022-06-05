@@ -1,5 +1,5 @@
 export class serieLuces{
-    id!:string;
+    //id!:string;
     idSesion!:string;
     ronda!:string;
     coordenadasPresentadas!:string;
