@@ -1,9 +1,46 @@
 <app-header></app-header>
 
+
+<div class="container-fluid row">
+  <div class="col-6 clase">
+    <h4><span style="color:#006fc1;">Amigos del Institut Guttmann</span></h4>
+
+    <p>Ser Amigo del Institut Guttmann es ayudarnos a construir una sociedad más justa y participativa y a desarrollar
+      proyectos sociales y de investigación.<br>
+      &nbsp;</p>
+
+    <p>
+      <button  (click)="cargarJuego(2)" type="button"
+      class="btn btn-lg btn-primary boton mx-auto d-block">Tutorial</button>  </div>
+
+   <div class="col-6">
+    <button class="btn btn-outline-light " data-bs-toggle="modal" data-bs-target="#videoModal">
+      <video src="../../../assets/img/tutorial1.mp4" autoplay loop class=" img-fluid mx-0 d-block rounded-3"></video>
+    </button>
+  </div> 
+ 
+
+   <div class="col-6">
+    <button class="btn btn-outline-light " data-bs-toggle="modal" data-bs-target="#videoModal">
+      <video src="../../../assets/img/tutorial1.mp4" autoplay loop class=" img-fluid mx-0 d-block rounded-3"></video>
+    </button>
+  </div> 
+  <div class="col-6 clase">
+    <h4><span style="color:#006fc1;">Amigos del Institut Guttmann</span></h4>
+
+    <p>Ser Amigo del Institut Guttmann es ayudarnos a construir una sociedad más justa y participativa y a desarrollar
+      proyectos sociales y de investigación.<br>
+      &nbsp;</p>
+
+    <p>
+      <button  (click)="cargarJuego(1)" type="button"
+      class="btn btn-lg btn-primary boton mx-auto d-block">Juego</button>  </div>
+</div>
+<!-- 
 <div class="container-fluid">
   <div class="row mt-5 mb-3">
     <div class="col-lg-1 col-md-1 d-sm-none d-md-block"></div>
-    <div class="col-lg-5 col-md-5 mr-4 col-sm-12">
+     <div class="col-lg-5 col-md-5 mr-4 col-sm-12">
       <button class="btn btn-outline-light " data-bs-toggle="modal" data-bs-target="#videoModal">
         <video src="../../../assets/img/tutorial1.mp4" autoplay loop class=" img-fluid mx-0 d-block rounded-3"></video>
       </button>
@@ -11,9 +48,10 @@
         <button id="tutorial" type="button" class="btn btn-lg btn-primary mx-auto d-block" data-bs-toggle="modal"
           data-bs-target="#videoModal">Tutorial</button>
       </div>
-    </div>
+    </div> 
     <div class="col-lg-5 col-md-5 ml-4 col-sm-12">
-      <img src="../../../assets/img/simon.png" class=" img-fluid mx-0 d-block rounded-3">
+      
+       <img src="../../../assets/img/simon.png" class=" img-fluid mx-0 d-block rounded-3"> 
     </div>
     <div class="col-lg-1 col-md-1 d-sm-none d-md-block"></div>
   </div>
@@ -30,9 +68,9 @@
     </div>
     <div class="col-lg-1 col-md-1 d-sm-none d-md-block"></div>
   </div>
-</div>
+</div> -->
 
-<!--POPUP VIDEO TUTORIAL-->
+<!-- POPUP VIDEO TUTORIAL -->
 <div class="modal fade bd-video-modal-xl " id="videoModal" tabindex="-1" role="dialog" aria-labelledby="videoModalTitle"
   aria-hidden="true">
   <div class="modal-dialog modal-xl modal-dialog-centered " role="document">
@@ -41,6 +79,6 @@
         class="img-fluid d-block rounded-1 m-0 border border-dark"></video>
     </div>
   </div>
-</div>
+</div> 
 
 <app-footer></app-footer>

@@ -8,12 +8,12 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
   styleUrls: ['./tutorial.component.css'],
 })
 export class TutorialComponent implements OnInit {
-  game: { game: string };
+  game: { name: string };
 
   constructor(private rutaActiva: ActivatedRoute,public router: Router) { 
 
     this.game={
-      game:this.rutaActiva.snapshot.params['game']
+      name:this.rutaActiva.snapshot.params['game']
     };
   }
 
@@ -23,15 +23,15 @@ export class TutorialComponent implements OnInit {
   onload(): void {
   }
 
-  cargarJuego(game:number){
-    switch ( this.game.game+game) {
-      case  this.game.game+1 :
+  cargarJuego(option:number){
+    switch ( this.game.name+option) {
+      case  this.game.name+1 :
         
-          this.router.navigate(['/game/'+this.game.game+'/'+this.game.game+'-juego']);
+          this.router.navigate(['/game/'+this.game.name+'/'+this.game.name+'-juego']);
         break;
-        case  this.game.game+2:
+        case  this.game.name+2:
          
-          this.router.navigate(['/game/'+this.game.game+'/'+this.game.game+'-trial']);
+          this.router.navigate(['/game/'+this.game.name+'/'+this.game.name+'-trial']);
         break;
     }
   }
