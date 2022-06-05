@@ -18,14 +18,14 @@ export class Simon {
   simonButtons: any;
   transition: any;
   coordUser: any;
-  crudService!: CrudService;
+  crudService: CrudService;
 
   pruebaUser:any;
   pruebaSecuence:any;
 
   sesionID:any;
 
-  constructor(player: Player) {
+  constructor(player: Player,crudservice:CrudService) {
     this.roundHTML = document.getElementById('round');
     this.simonButtons = document.getElementsByClassName('card');
     this.transition = document.getElementById('transition');
@@ -42,6 +42,7 @@ export class Simon {
     this.userObject = player.userObject;
     this.pruebaUser = "";
     this.pruebaSecuence = "";
+    this.crudService = crudservice;
     player.createUserData();
   }
 
@@ -150,7 +151,9 @@ export class Simon {
         objetoLuces=JSON.parse(JSON.stringify(objetoLuces));
 
         console.log(objetoLuces);
-        //this.crudService.AddSerieLuces(objetoLuces);
+        this.crudService.AddSerieLuces(objetoLuces).subscribe((data) => {
+          console.log(data);
+        });
         
         //LLAMAR A ALGO
 
@@ -181,7 +184,8 @@ export class Simon {
         objetoLuces=JSON.parse(JSON.stringify(objetoLuces));
 
         console.log(objetoLuces);
-        //this.crudService.AddSerieLuces(objetoLuces);
+
+        this.crudService.AddSerieLuces(objetoLuces);
 
         this.pruebaUser="";
         this.pruebaSecuence="";
