@@ -51,6 +51,7 @@ export class Simon {
     this.countDown();
   }
 
+  
   getSesionId(sesionID:any){
     this.sesionID = sesionID;
   }
@@ -148,7 +149,7 @@ export class Simon {
         objetoLuces=JSON.parse(JSON.stringify(objetoLuces));
 
         console.log(objetoLuces);
-        this.crudService.AddSerieLuces(objetoLuces);
+        //this.crudService.AddSerieLuces(objetoLuces);
         
         //LLAMAR A ALGO
 
@@ -178,7 +179,7 @@ export class Simon {
         objetoLuces=JSON.parse(JSON.stringify(objetoLuces));
 
         console.log(objetoLuces);
-        this.crudService.AddSerieLuces(objetoLuces);
+        //this.crudService.AddSerieLuces(objetoLuces);
         
 
         this.pruebaUser="";
