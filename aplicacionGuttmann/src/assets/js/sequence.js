@@ -17,6 +17,7 @@ const finishModal = new bootstrap.Modal(document.getElementById('finishModal'),{
 class test {
 
     constructor( sequenceButtons, round){
+      this.pregunta = ['/','T',' &#92; ','<-','*','->',' &#92;_ ','_|_','_/'];
         this.preguntas = ['/','T',' &#92; ','<-','*','->',' &#92;_ ','_|_','_/'];
         this.respuestas = ['/','T',' &#92; ','<-','*','->',' &#92;_ ','_|_','_/'];
         this.primerArray =['./','_|_',' &#92; ','<-','*','->',' &#92; ','_|_','_/'];
@@ -24,11 +25,8 @@ class test {
         //this.order = randomOrder();
         this.buttons = Array.from(sequenceButtons);
         this.ansButtons = Array.from(answerButtons);
-
         this.totalRounds = player.totalRounds;
         this.round= player.round;
-
-
         this.userSequence= player.userSequence;
         this.userObject= player.userObject;
         this.userPosition= player.userPosition;
@@ -36,12 +34,20 @@ class test {
           round
 
         }
+        
+    }
 
+    cargarFotos(){
+      let rutafotoCarp= "../sequencias/";
+      
 
-
-
+      this.pregunta.forEach((elemento,i)=>{
+        elemento=1
+      })
+        console.log(this.preguntas);      
 
     }
+
   //inicia la Sequencia
     init() {
         this.startGame();
@@ -129,7 +135,7 @@ class test {
 
 
     }
-
+    //##Muestra los aciertos totales al finalizar las rondas
     resultadosAciertos(){
       //filas de la tabla respuestas
       var aciertos=0;
@@ -151,9 +157,9 @@ class test {
 
 
 
-  }
+    }
 
-      // Ejecuta una función cuando se hace click en un botón
+    // Ejecuta una función cuando se hace click en un botón
     buttonClickValidate(value,ref) {
 
       //## CREAMOS BOOLEANA PARA RECOGER EL ACIERTO O FALLO DE LA RESPUESTA
@@ -190,15 +196,11 @@ class test {
           this.gameFinish();}
 
     }
-
-
     //Actualiza la Ronda
     updateRound(value){
-
       this.round = value;
       this.display.round.textContent = `${this.round}/${this.totalRounds}`;
     }
-
     //PoPup Conforme juego Finalizado
     gameFinish(){
       finishModal.show();
@@ -208,19 +210,7 @@ class test {
       console.log(this.userSequence[this.round].Respuesta[0], this.userSequence[this.round]);
 
     }
-
-
-
-
-    funcionIincognita(){
-
-
-    }
-
-
-
-
-
+    
 };
 
 //### devuelve 4 valores aleatorios no repetidos del 1-4
