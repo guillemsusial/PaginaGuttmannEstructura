@@ -25,9 +25,7 @@ const routes: Routes = [
   { path: 'sequence', component: SequenceComponent, canActivate: [AuthGuard] },
   { path: 'register', component: LoginComponent },
 
-
   { path: '**', redirectTo: 'home' }
-
 ];
 
 @NgModule({
