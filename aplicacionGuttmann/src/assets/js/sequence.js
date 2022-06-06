@@ -4,6 +4,7 @@
 
 
 const sequenceButtons = document.getElementsByClassName('card');
+const questionButtons = document.getElementsByClassName('p');
 const answerButtons =document.getElementsByClassName('r');
 const acerts = document.getElementById('tAcertsN');
 const round = document.getElementById('round');
@@ -17,13 +18,14 @@ const finishModal = new bootstrap.Modal(document.getElementById('finishModal'),{
 class test {
 
     constructor( sequenceButtons, round){
-      this.pregunta = ['/','T',' &#92; ','<-','*','->',' &#92;_ ','_|_','_/'];
+      
         this.preguntas = ['/','T',' &#92; ','<-','*','->',' &#92;_ ','_|_','_/'];
         this.respuestas = ['/','T',' &#92; ','<-','*','->',' &#92;_ ','_|_','_/'];
         this.primerArray =['./','_|_',' &#92; ','<-','*','->',' &#92; ','_|_','_/'];
         this.resultados= [0,0,0,0,0,0];
         //this.order = randomOrder();
         this.buttons = Array.from(sequenceButtons);
+        this.questionButtons = Array.from(questionButtons);
         this.ansButtons = Array.from(answerButtons);
         this.totalRounds = player.totalRounds;
         this.round= player.round;
@@ -38,8 +40,26 @@ class test {
     }
 
     cargarFotos(){
-      let rutafotoCarp= "../sequencias/";
+
+      //Ruta de las librerias de fotos
+      let rutafotoCarp= "/assets/img/sequencias/";
+      //nombre carpetas de librerias de fotos
+      let carpetaFoto = ["1a","2a","3a","4a","5a","6a","7a","8a","9a","10a","11a","12a"];
       
+      //elemplo de ruta 
+      //let lnk= rutafotoCarp+carpetaFoto[0]+"/F_1_"+1+"_"+carpetaFoto[0]+".png";
+   
+      
+ 
+      
+     
+       this.questionButtons.forEach((element,i)=>{
+        element.innerHTML=this.preguntas[i];
+         //element.style.backgroundImage="url('./../img/sequencias/1a/F_1_1_1a.png')";
+        element.style.backgroundImage="url("+rutafotoCarp+carpetaFoto[0]+"/F_1_"+(i+1)+"_"+carpetaFoto[0]+".png";+")";
+        element.style.backgroundRepeat="no-repeat";
+        element.style.backgroundSize="100%";
+      })
 
       this.pregunta.forEach((elemento,i)=>{
         elemento=1
@@ -50,6 +70,8 @@ class test {
 
   //inicia la Sequencia
     init() {
+
+      //this.cargarFotos();
         this.startGame();
     }
 
@@ -66,11 +88,17 @@ class test {
     cargarCartas(){
        //## VARIABLES DE RECORRIDO
 
-       var y=0, z=0, w=0, x=0;
-       var v=0;
-       let pregsOrder=[,,,];
+       let y=0, z=0, w=0, x=0;
+       let v=0;   
+       
+       let libFoto=Math.floor(Math.random(0,11)*11);
+       let rutafotoCarp= "/assets/img/sequencias/";
+       let carpetaFoto = ["1a","2a","3a","4a","5a","6a","7a","8a","9a","10a","11a","12a"];
+       
+       
+
        //## VALOR INCOGNITO
-       var Incognito=Math.floor(Math.random(0,8)*8);
+       var Incognito=Math.floor(Math.random(1,9)*9);
        console.log('Id incognito ', Incognito);
        //## GUARDA las respuestas "VACIAS"
        let vRamPreg=[,,,];
@@ -92,6 +120,11 @@ class test {
            element.classList.remove('invisible');
            element.classList.add('visible');
            element.innerHTML=this.preguntas[i];
+           //element.style.backgroundImage="url('./../img/sequencias/1a/F_1_1_1a.png')";
+          element.style.backgroundImage="url("+rutafotoCarp+carpetaFoto[libFoto]+"/F_1_"+i+"_"+carpetaFoto[libFoto]+".png";+")";
+          element.style.backgroundRepeat="no-repeat";
+          element.style.backgroundSize="98% 98%";
+          element.style.backgroundPosition="center center";
 
        //## SEPARA EL ELEMENTO SELECCIONADO COMO INCOGNITO LO ESCONDE
          }else if(element.id==i && element.id==Incognito){
@@ -106,22 +139,30 @@ class test {
                vRamPreg[v]=Incognito;
                console.log('vRamPreg Posicion: ', vRamPreg[v],' ',v);
                w++;
+             
              }
              //## Si EL VALOR DE LA POSICION ESTA VACIA(0) INSERTA UN RNG DEL 1-9
              if(vRamPreg[z]==null){
                x=0;
                do{
-                 y=Math.floor(Math.random(0,8)*8);
-                 if ( (y!= Incognito) && (y!=vRamPreg[z-1]) && (y!= vRamPreg[z-2]) && (y!= vRamPreg[z-3]) ){x++;};
+                 y=Math.floor(Math.random(1,9)*9);
+                 if ( (y!= Incognito) && (y!=vRamPreg[z-1]) && (y!= vRamPreg[z-2]) && (y!= vRamPreg[z-3]) && (y!= 0) ){x++;};
                }while(x<1);
                vRamPreg[z]=y;
+
+              
              };
              //Recorre array de respuestas y verifica la correcta
              if(vRamPreg[z]===Incognito){
                y=vRamPreg[z];
              };
+             element.style.backgroundImage="url("+rutafotoCarp+carpetaFoto[libFoto]+"/F_1_"+y+"_"+carpetaFoto[libFoto]+".png)";
+               element.style.backgroundRepeat="no-repeat";
+               element.style.backgroundSize="98% 98%";
+               element.style.backgroundPosition="center center";
                 //sacamos la respuesta por html
-               element.innerHTML = this.respuestas[y]+' '+y;
+               element.innerHTML = this.preguntas[y]+' '+y;
+               
              z++;
          };
        });
@@ -138,9 +179,9 @@ class test {
     //##Muestra los aciertos totales al finalizar las rondas
     resultadosAciertos(){
       //filas de la tabla respuestas
-      var aciertos=0;
+      let aciertos=0;
 
-      for(var i=0; i<=this.totalRounds;i++){
+      for(let i=0; i<=this.totalRounds;i++){
         if(this.userSequence[i].Respuesta[0]==1){
           aciertos++;
         }
@@ -153,7 +194,7 @@ class test {
 
       };
       acerts.innerHTML+=aciertos;
-      console.log("Aciertos totales: ", aciertos,'| Aciertos de Ronda: ',  this.userSequence[i].Respuesta[0]);
+      console.log("Aciertos totales: ", aciertos,'| Aciertos de Ronda: ',  this.userSequence[5].Respuesta[0]);
 
 
 
