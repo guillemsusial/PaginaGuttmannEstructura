@@ -1,3 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300&display=swap');
+
+*{
+  font-family: Inter, Arial, Verdana, sans-serif!important;
+}
 #header {
   background-color: #8CC9D1;
 }
@@ -10,15 +15,25 @@
 .separador {
   color: #13B1BB;
 }
-
-.tituloImg{
-  font-family: Arial, Verdana, sans-serif;
-  letter-spacing: -0.64px;
-  font-weight: bold;
+.divTextos{
+  justify-content: center;
+  margin: auto;
+  align-items: center;
+  
 }
 
-.textoImg{
-  font-family: Arial, Verdana, sans-serif;
+.tituloImg{
+  
+  letter-spacing: -0.64px;
+  font-weight: bold;
+  font-size: 40px;
+}
+
+
+p.textos>a:hover{
+  background-color: #3d55ad52;
+  border-top-left-radius: 5pt;
+  border-top-right-radius: 5pt;
 }
 
 hr.style {
@@ -34,7 +49,8 @@ hr.style {
 }
 
 .textos {
-  margin: auto;
+  font-size: 18px;
+ 
   text-align: justify;
 }
 

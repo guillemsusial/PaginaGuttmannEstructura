@@ -25,9 +25,11 @@ import { SequenceComponent } from './components/sequence/sequence.component';
 
 import { TemplateComponent } from './components/template/template.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule} from '@angular/common/http';
-
+import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { CookieService } from 'ngx-cookie-service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { InterceptorService } from './loader/interceptor.service';
 
 @NgModule({
   declarations: [
@@ -50,9 +52,12 @@ import { CookieService } from 'ngx-cookie-service';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatProgressBarModule,
+    BrowserAnimationsModule
   ],
   providers: [
+    {provide:HTTP_INTERCEPTORS,useClass:InterceptorService,multi:true},
     CargarScriptsService,
     BooleanSelectorService,
     CookieService

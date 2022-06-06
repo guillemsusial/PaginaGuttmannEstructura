@@ -45,23 +45,18 @@ a:link {
   filter: invert(50%)
 }
 
-@media screen and (max-width:767px) {
+@media screen and (max-width:800px) {
 
   .font {
     font-size: 15px !important;
-
     word-wrap: break-word !important;
     word-break: break-word !important;
   }
-
-
-
-
-
   .space {
-    margin-left: 20% !important;
+    text-align: center;
+    display: inline-table;
+    width: 100% !important;
   }
-
 }
 
 

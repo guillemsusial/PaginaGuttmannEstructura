@@ -28,13 +28,30 @@
     <!--FIN BOTONES CATEGORIAS-->
   </div>
   <div class="row">
-    <div routerLink="/game/simon" id="game0"
+    <!-- <div routerLink="/game/simon" id="game0"
       class="col-xl-2 col-lg-3 col-md-4 col-12 div-game border border-white border-5" name="game" category="category1">
       SIMON
+    </div> -->
+
+    <div class="col-xl-2 col-lg-3 col-md-4 col-12 div-game border border-white border-5" name="game"
+      category="category1">
+      <div class="hovereffect div-game">
+        <img width="70%" src="../../../assets/img/simon1.png" alt="">
+        <div class="overlay">
+          <h2>SIMON</h2>
+          <a routerLink="/game/simon" id="game0" class="info">JUEGA YA</a>
+        </div>
+      </div>
     </div>
-    <div routerLink="/game/sequence" id="game1"
-      class="col-xl-2 col-lg-3 col-md-4 col-12 div-game border border-white border-5" name="game" category="category1">
-      Juego 2
+    <div class="col-xl-2 col-lg-3 col-md-4 col-12 div-game border border-white border-5" name="game"
+      category="category1">
+      <div class="hovereffect div-game">
+        <img width="70%" src="../../../assets/img/secuence1.png" alt="">
+        <div class="overlay">
+          <h2>SEQUENCE</h2>
+          <a routerLink="/game/sequenece" id="game1" class="info">JUEGA YA</a>
+        </div>
+      </div>
     </div>
     <div routerLink="/game" id="game2" class="col-xl-2 col-lg-3 col-md-4 col-12 div-game border border-white border-5"
       name="game" category="category2">
