@@ -1,9 +1,10 @@
+import { Router } from '@angular/router';
 import { CrudService } from 'src/app/services/crud.service';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { serieLuces } from 'src/app/services/serieLuces';
 import { resultadosLuces } from 'src/app/services/resultadosLuces';
 import { Player } from './player';
-import { Router } from '@angular/router';
+
 export class Simon {
   round: any;
   userPosition: any;
@@ -29,7 +30,9 @@ export class Simon {
 
   sesionID:any;
 
-  constructor(player: Player,crudservice:CrudService,routing: Router) {
+
+  constructor(player: Player,crudservice:CrudService,routing:Router) {
+
     this.roundHTML = document.getElementById('round');
     this.simonButtons = document.getElementsByClassName('card');
     this.transition = document.getElementById('transition');
@@ -191,7 +194,7 @@ export class Simon {
         //console.log(objetoLuces);
 
         this.crudService.AddSerieLuces(objetoLuces).subscribe((data) => {
-          //console.log(data);
+
         });
 
         this.pruebaUser="";
@@ -293,7 +296,6 @@ export class Simon {
         this.transition.classList.add('Error');
         this.transition.innerHTML = 'FALLASTE';
         if (this.fallos == 4) {
-          console.log(this.round);
 
           let objetoResultadosLuces = new resultadosLuces();
           objetoResultadosLuces.idSesion = this.sesionID;
