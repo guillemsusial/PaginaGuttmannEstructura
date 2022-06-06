@@ -26,7 +26,7 @@ export class Simon {
 
   sesionID:any;
 
-  constructor(player: Player,crudservice:CrudService) {
+  constructor(player: Player,crudservice:CrudService,router_:Router) {
     this.roundHTML = document.getElementById('round');
     this.simonButtons = document.getElementsByClassName('card');
     this.transition = document.getElementById('transition');
@@ -186,7 +186,9 @@ export class Simon {
 
         console.log(objetoLuces);
 
-        this.crudService.AddSerieLuces(objetoLuces);
+        this.crudService.AddSerieLuces(objetoLuces).subscribe((data) => {
+          console.log(data);
+        });
 
         this.pruebaUser="";
         this.pruebaSecuence="";
@@ -288,6 +290,18 @@ export class Simon {
         this.transition.innerHTML = 'FALLASTE';
         if (this.fallos == 4) {
           
+          let objetoResultadosLuces = new resultadosLuces();
+          objetoResultadosLuces.idSesion = this.sesionID;
+          objetoResultadosLuces.trialSuperado = "1";
+          objetoResultadosLuces.rondaMaxima = this.round;
+          objetoResultadosLuces=JSON.parse(JSON.stringify(objetoResultadosLuces));
+          console.log(objetoResultadosLuces);
+
+          this.crudService.AddResultadosLuces(objetoResultadosLuces).subscribe((data) => {
+            console.log(data);
+          });
+
+          this.router.navigateByUrl('game/simon');
 
           // var divNota = document.createElement('button');
 
