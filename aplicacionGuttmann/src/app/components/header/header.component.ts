@@ -67,6 +67,8 @@ export class HeaderComponent implements OnInit {
       this.crudService.logout();
       this.router.navigateByUrl('/home');
       this.loginFailed = false;
+    } else {
+      window.location.reload();
     }
   }
 

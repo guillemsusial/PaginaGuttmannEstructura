@@ -31,14 +31,14 @@ export class GameComponent implements OnInit {
       Round: "",
       Options: [],
       Sequence: []
-    });
+    },false);
    
   }else{
     var player = new Player(0, 0, 2, [], 1000, true, 0, [], {
       Round: "",
       Options: [],
       Sequence: []
-    });
+    },true);
    
   }
   var simon = new Simon(player,this.crudService,this.router);

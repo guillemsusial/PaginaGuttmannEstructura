@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { Sesion } from './sesion';
 import { serieLuces } from './serieLuces';
 import { resultadosLuces } from './resultadosLuces';
+import swal from'sweetalert2';
 
 const helper = new JwtHelperService();
 
@@ -15,7 +16,7 @@ const helper = new JwtHelperService();
   providedIn: 'root'
 })
 export class CrudService {
-
+  titular:any;
   loggedIn = new BehaviorSubject<boolean>(false);
 
   //URL DE LA API EN XAMPP
@@ -102,7 +103,8 @@ export class CrudService {
       const isExpired = helper.isTokenExpired(userToken);
       //console.log('isExpired', isExpired);
       if (isExpired == true) {
-        window.alert("Vuelve a iniciar sesión, el token ha expirado.");
+        swal.fire('Inicia Sesion Porfavor ', this.titular, 'error');
+        //window.alert("Vuelve a iniciar sesión, el token ha expirado.");
         this.logout();
       } else {
         this.loggedIn.next(true);
