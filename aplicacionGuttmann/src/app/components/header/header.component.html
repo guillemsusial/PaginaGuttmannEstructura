@@ -1,4 +1,5 @@
 <header id="header" class=" header p-5 text-white">
+  
   <div class="container">
     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
       <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
@@ -29,7 +30,7 @@
               <hr class="dropdown-divider">
             </li>
             <!--CUANDO LE DAS CLICK AL BOTÓN DE LOGOUT LLAMAS A UNA FUNCIÓN QUE ACABA LA SESIÓN isLogged=false -->
-            <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#logOutModal">Log out</a></li>
+            <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#logOutModal" (click)="logOut1()">Log out</a></li>
           </ul>
         </div>
       </div>
@@ -79,20 +80,7 @@
       </div>
     </div>
     <!--fin modal Login-->
-    <!--modal LogOut-->
-    <div class="modal" id="logOutModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content content form_wrapper">
-          <div class="modal-header title_container pb-4 pt-2 col-12 col-sm-12">
-            <h3 style="color: black">¿Quieres cerrar sesión?</h3>
-          </div>
-          <div class="modal-body boton">
-            <button type="button" class="btn btn-primary me-5" (click)="logOut(true)">Confirmar</button>
-            <button type="button" class="btn btn-danger" (click)="logOut(false)">Cancelar</button>
-          </div>
-        </div>
-      </div>
-    </div>
+   
   </div>
   
   
@@ -102,3 +90,5 @@
 <div *ngIf="loaderService.isLoading | async" class="loader-container"> 
   <mat-progress-bar mode="query"></mat-progress-bar>
 </div>
+
+
