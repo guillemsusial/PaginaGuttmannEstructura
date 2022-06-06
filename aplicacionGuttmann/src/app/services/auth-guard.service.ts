@@ -15,10 +15,6 @@ export class AuthGuardService implements CanActivate {
     if (!this.crud.isAuthenticated()) {
       swal.fire('Inicia Sesion Porfavor ', this.titular, 'error');
       this.router.navigateByUrl('/home');
-
-     
-     
-
       return false;
     }
     return true;
