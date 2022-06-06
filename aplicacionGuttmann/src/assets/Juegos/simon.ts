@@ -1,7 +1,10 @@
 import { Router } from '@angular/router';
 import { CrudService } from 'src/app/services/crud.service';
+import { AppRoutingModule } from 'src/app/app-routing.module';
 import { serieLuces } from 'src/app/services/serieLuces';
+import { resultadosLuces } from 'src/app/services/resultadosLuces';
 import { Player } from './player';
+import { Router } from '@angular/router';
 export class Simon {
   round: any;
   userPosition: any;
@@ -20,13 +23,14 @@ export class Simon {
   transition: any;
   coordUser: any;
   crudService: CrudService;
+  router: Router;
 
   pruebaUser:any;
   pruebaSecuence:any;
 
   sesionID:any;
 
-  constructor(player: Player,crudservice:CrudService) {
+  constructor(player: Player,crudservice:CrudService,routing: Router) {
     this.roundHTML = document.getElementById('round');
     this.simonButtons = document.getElementsByClassName('card');
     this.transition = document.getElementById('transition');
@@ -44,6 +48,7 @@ export class Simon {
     this.pruebaUser = "";
     this.pruebaSecuence = "";
     this.crudService = crudservice;
+    this.router = routing;
     player.createUserData();
   }
 
@@ -124,7 +129,7 @@ export class Simon {
   // Valida si el boton que toca el usuario corresponde a al valor de la secuencia
 
   validateChosenColor(value: any) {
-      console.log(this.userSequence);
+      //console.log(this.userSequence);
      /*userSconsole.log("POSITION->"+this.userPosition)
       console.log("VALUE->"+value);
       console.log(this.laSequencia_error);*/
@@ -151,9 +156,9 @@ export class Simon {
         objetoLuces.coordenadasUsuario = this.pruebaUser.slice(1);
         objetoLuces=JSON.parse(JSON.stringify(objetoLuces));
 
-        console.log(objetoLuces);
+        //console.log(objetoLuces);
         this.crudService.AddSerieLuces(objetoLuces).subscribe((data) => {
-          console.log(data);
+          //console.log(data);
         });
         
         //LLAMAR A ALGO
@@ -184,9 +189,11 @@ export class Simon {
         objetoLuces.coordenadasUsuario = this.pruebaUser.slice(1);
         objetoLuces=JSON.parse(JSON.stringify(objetoLuces));
 
-        console.log(objetoLuces);
+        //console.log(objetoLuces);
 
-        this.crudService.AddSerieLuces(objetoLuces);
+        this.crudService.AddSerieLuces(objetoLuces).subscribe((data) => {
+          //console.log(data);
+        });
 
         this.pruebaUser="";
         this.pruebaSecuence="";
@@ -287,7 +294,22 @@ export class Simon {
         this.transition.classList.add('Error');
         this.transition.innerHTML = 'FALLASTE';
         if (this.fallos == 4) {
-          
+
+          console.log(this.round);
+
+          let objetoResultadosLuces = new resultadosLuces();
+          objetoResultadosLuces.idSesion = this.sesionID;
+          objetoResultadosLuces.trialSuperado = "1";
+          objetoResultadosLuces.rondaMaxima = this.round;
+          objetoResultadosLuces=JSON.parse(JSON.stringify(objetoResultadosLuces));
+          console.log(objetoResultadosLuces);
+
+          this.crudService.AddResultadosLuces(objetoResultadosLuces).subscribe((data) => {
+            console.log(data);
+          });
+
+          this.router.navigateByUrl('game/simon');
+
 
           // var divNota = document.createElement('button');
 
