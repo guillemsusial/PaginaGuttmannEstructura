@@ -59,8 +59,7 @@ export class Simon {
     this.roundHTML.innerHTML = '0/' + this.totalRounds;
     this.countDown();
   }
-
-  
+  /*Obtener id de la sesion para BBDD*/
   getSesionId(sesionID:any){
     this.sesionID = sesionID;
   }
@@ -95,8 +94,7 @@ export class Simon {
     this.userPosition = 1;
 
     this.buttons.forEach((element: any, i: any) => {
-      element.onclick = () => this.buttonClick(i);
-      //this.crudService.AddSerieLuces(this.userObject);
+      element.onclick = () => this.buttonClick(i);      
     });
 
     this.showSequence();
@@ -129,7 +127,6 @@ export class Simon {
   }
 
   // Valida si el boton que toca el usuario corresponde a al valor de la secuencia
-
   validateChosenColor(value: any) {
       //console.log(this.userSequence);
      /*userSconsole.log("POSITION->"+this.userPosition)
@@ -161,9 +158,8 @@ export class Simon {
         //console.log(objetoLuces);
         this.crudService.AddSerieLuces(objetoLuces).subscribe((data) => {
           //console.log(data);
-        });
+        });        
         
-        //LLAMAR A ALGO
 
         this.pruebaUser="";
         this.pruebaSecuence="";
@@ -260,7 +256,6 @@ export class Simon {
   }
 
   // Pinta los botones para cuando se está mostrando la secuencia
-
   toggleButtonStyle(button: any) {
     //console.log(button);
     button.classList.toggle('Active');
@@ -310,19 +305,7 @@ export class Simon {
 
           this.router.navigateByUrl('game/simon');
 
-          // var divNota = document.createElement('button');
-
-          // divNota.setAttribute('id', 'startButton');
-
-          // divNota.setAttribute(
-          //   'Style',
-          //   " width: 50%;margin: auto; height: 100%; font-size: 50%;border: none;font-family: 'Merriweather', serif;cursor: pointer;border-radius: 10pt; color:rgb(92, 0, 76);border:solid rgb(92, 0, 76) ;padding: 5px;"
-          // );
-          // setTimeout(
-          //   () => this.transition.appendChild(divNota),
-          //   /*divNota.innerHTML = "Try Again",*/ this.speed * 0.5
-          // );
-          // divNota.onclick = () => window.location.reload();
+         
         }
       }
     }
@@ -352,15 +335,5 @@ export class Simon {
     this.transition.innerHTML = '🏆';
   }
 
-  /* $('#send').click( function() {
-       alert('Enviando!');
-           $.ajax(
-                   {
-                       url: 'get_var.php?var=<?php echo $var; ?>',
-                       success: function( data ) {
-                           alert( 'El servidor devolvio "' + data + '"' );
-                       }
-                   }
-               )
-           }*/
+  
 }
