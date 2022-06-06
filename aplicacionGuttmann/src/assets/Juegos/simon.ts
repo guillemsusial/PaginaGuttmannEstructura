@@ -1,9 +1,9 @@
-import { Router } from '@angular/router';
 import { CrudService } from 'src/app/services/crud.service';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { serieLuces } from 'src/app/services/serieLuces';
 import { resultadosLuces } from 'src/app/services/resultadosLuces';
 import { Player } from './player';
+import { Router } from '@angular/router';
 
 export class Simon {
   round: any;
@@ -22,6 +22,7 @@ export class Simon {
   simonButtons: any;
   transition: any;
   coordUser: any;
+  trial:boolean;
   crudService: CrudService;
   router: Router;
 
@@ -30,9 +31,7 @@ export class Simon {
 
   sesionID:any;
 
-
-  constructor(player: Player,crudservice:CrudService,routing:Router) {
-
+  constructor(player: Player,crudservice:CrudService,routing: Router) {
     this.roundHTML = document.getElementById('round');
     this.simonButtons = document.getElementsByClassName('card');
     this.transition = document.getElementById('transition');
@@ -51,6 +50,7 @@ export class Simon {
     this.pruebaSecuence = "";
     this.crudService = crudservice;
     this.router = routing;
+    this.trial = player.trial;
     player.createUserData();
   }
 
@@ -70,7 +70,6 @@ export class Simon {
 
     let timer = setInterval(() => {
       this.transition.classList.add('Active-1');
-      // transition.style.left = '48.5vw'
       if (sequenceIndex != 0) this.transition.innerHTML = sequenceIndex;
 
       if (sequenceIndex == 0) {
@@ -145,21 +144,20 @@ export class Simon {
      
       if (0 === this.userPosition) {
 
-        // console.log(this.pruebaUser.slice(1));
-        // console.log((this.pruebaSecuence.slice(1)));
+        if (this.trial==false){
+          let objetoLuces = new serieLuces();
+          objetoLuces.idSesion = this.sesionID;
+          objetoLuces.ronda = this.round;
+          objetoLuces.coordenadasPresentadas = this.pruebaSecuence.slice(1);
+          objetoLuces.coordenadasUsuario = this.pruebaUser.slice(1);
+          objetoLuces=JSON.parse(JSON.stringify(objetoLuces));
 
-        let objetoLuces = new serieLuces();
-        objetoLuces.idSesion = this.sesionID;
-        objetoLuces.ronda = this.round;
-        objetoLuces.coordenadasPresentadas = this.pruebaSecuence.slice(1);
-        objetoLuces.coordenadasUsuario = this.pruebaUser.slice(1);
-        objetoLuces=JSON.parse(JSON.stringify(objetoLuces));
+          //console.log(objetoLuces);
 
-        //console.log(objetoLuces);
-        this.crudService.AddSerieLuces(objetoLuces).subscribe((data) => {
-          //console.log(data);
-        });        
-        
+          this.crudService.AddSerieLuces(objetoLuces).subscribe((data) => {
+            //console.log(data);
+          });
+        }
 
         this.pruebaUser="";
         this.pruebaSecuence="";
@@ -177,21 +175,20 @@ export class Simon {
       this.laSequencia_error = true;
       if (0 === this.userPosition && this.laSequencia_error) {
 
-        // console.log(this.pruebaUser.slice(1));
-        // console.log((this.pruebaSecuence.slice(1)));
+        if (this.trial==false){
+          let objetoLuces = new serieLuces();
+          objetoLuces.idSesion = this.sesionID;
+          objetoLuces.ronda = this.round;
+          objetoLuces.coordenadasPresentadas = this.pruebaSecuence.slice(1);
+          objetoLuces.coordenadasUsuario = this.pruebaUser.slice(1);
+          objetoLuces=JSON.parse(JSON.stringify(objetoLuces));
 
-        let objetoLuces = new serieLuces();
-        objetoLuces.idSesion = this.sesionID;
-        objetoLuces.ronda = this.round;
-        objetoLuces.coordenadasPresentadas = this.pruebaSecuence.slice(1);
-        objetoLuces.coordenadasUsuario = this.pruebaUser.slice(1);
-        objetoLuces=JSON.parse(JSON.stringify(objetoLuces));
+          //console.log(objetoLuces);
 
-        //console.log(objetoLuces);
-
-        this.crudService.AddSerieLuces(objetoLuces).subscribe((data) => {
-
-        });
+          this.crudService.AddSerieLuces(objetoLuces).subscribe((data) => {
+            //console.log(data);
+          });
+        }
 
         this.pruebaUser="";
         this.pruebaSecuence="";
@@ -276,13 +273,11 @@ export class Simon {
       if (this.fallos <= 2) {
         this.transition.classList.toggle('Active-1');
         this.transition.classList.toggle('Warning');
-        // this.transition.style.left = '3vw'
         this.transition.innerHTML = 'Memoriza la siguiente secuencia';
         this.updateRound(this.round);
         if (this.fallos == 2) {
           setTimeout(() => this.showSequence(), this.speed * 0.5);
           this.transition.innerHTML = 'Tu Turno';
-          //  this.transition.style.left = '38vw'
         }
 
         /*SI FALLAS POR SEGUNDA VEZ SE ACABARA EL JUEGO */
@@ -291,21 +286,22 @@ export class Simon {
         this.transition.classList.add('Error');
         this.transition.innerHTML = 'FALLASTE';
         if (this.fallos == 4) {
+          //console.log(this.round);
 
-          let objetoResultadosLuces = new resultadosLuces();
-          objetoResultadosLuces.idSesion = this.sesionID;
-          objetoResultadosLuces.trialSuperado = "1";
-          objetoResultadosLuces.rondaMaxima = this.round;
-          objetoResultadosLuces=JSON.parse(JSON.stringify(objetoResultadosLuces));
-          console.log(objetoResultadosLuces);
+          if (this.trial==false){
+            let objetoResultadosLuces = new resultadosLuces();
+            objetoResultadosLuces.idSesion = this.sesionID;
+            objetoResultadosLuces.trialSuperado = "1";
+            objetoResultadosLuces.rondaMaxima = this.round;
+            objetoResultadosLuces=JSON.parse(JSON.stringify(objetoResultadosLuces));
+            //console.log(objetoResultadosLuces);
 
-          this.crudService.AddResultadosLuces(objetoResultadosLuces).subscribe((data) => {
-            console.log(data);
-          });
+            this.crudService.AddResultadosLuces(objetoResultadosLuces).subscribe((data) => {
+              console.log(data);
+            });
+          }
 
           this.router.navigateByUrl('game/simon');
-
-         
         }
       }
     }
@@ -330,10 +326,25 @@ export class Simon {
   gameWon() {
     this.blockedButtons = true;
 
+    if (this.trial==false){
+      let objetoResultadosLuces = new resultadosLuces();
+      objetoResultadosLuces.idSesion = this.sesionID;
+      objetoResultadosLuces.trialSuperado = "1";
+      objetoResultadosLuces.rondaMaxima = this.round;
+      objetoResultadosLuces=JSON.parse(JSON.stringify(objetoResultadosLuces));
+      console.log(objetoResultadosLuces);
+
+      this.crudService.AddResultadosLuces(objetoResultadosLuces).subscribe((data) => {
+        console.log(data);
+      });
+    }
+
     this.transition.classList.toggle('Active-1');
     this.transition.classList.toggle('Warning');
     this.transition.innerHTML = '🏆';
-  }
 
-  
+    setTimeout(() => {
+      this.router.navigateByUrl('game/simon');
+    }, 2000);
+  }
 }

@@ -11,8 +11,9 @@ export class Player{
     userSequence:any;
     display :any;
     userObject:any;
+    trial:any;
     static createUserData: any;
-    constructor(round: number,userPosition: number,totalRounds: number,sequence: never[],speed: number,blockedButtons: boolean,fallos: number,userSequence: never[],userObject: { Round: string; Options: never[]; Sequence: never[]; }) {
+    constructor(round: number,userPosition: number,totalRounds: number,sequence: never[],speed: number,blockedButtons: boolean,fallos: number,userSequence: never[],userObject: { Round: string; Options: never[]; Sequence: never[]; },trial:boolean) {
         this.round = round;
         this.userPosition = userPosition;
         this.totalRounds = totalRounds;
