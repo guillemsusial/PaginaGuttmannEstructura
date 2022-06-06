@@ -46,7 +46,7 @@ export class CrudService {
   }
 
   AddResultadosLuces(resultsLuces: resultadosLuces): Observable<any>{
-    console.log(resultsLuces);
+    //console.log(resultsLuces);
     return this.clientHttp.post(this.APILuces + "?addResultadosLuces=1", resultsLuces, { responseType: 'text' });
   }
 
@@ -90,6 +90,10 @@ export class CrudService {
   LoginUser(userData: User): Observable<any | void> {
     return this.clientHttp.post(this.API + "?login=1", userData, { responseType: 'text' });
   }
+
+//----------------------------------FIN APARTADO USER--------------------------------------
+
+//--------------------------------APARTADO AUTENTIFICACION---------------------------------
 
   //VER SI EL TOKEN SIGUE SIENDO VÁLIDO COMPROBANDO EL TIEMPO DE CADUCIDAD
   checkToken(): void {
@@ -139,5 +143,5 @@ export class CrudService {
     return helper.decodeToken(token);
   }
 
-//----------------------------------FIN APARTADO USER--------------------------------------
+
 }
