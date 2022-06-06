@@ -1,40 +1,49 @@
 <app-header></app-header>
 
 
-<div class="container-fluid row">
-  <div class="col-6 clase">
-    <h4><span style="color:#006fc1;">Amigos del Institut Guttmann</span></h4>
+<div class="container-fluid row fondo" >
+  <div class="col-6 clase " >
+    <h4><span style="color:#006fc1;" >INTENTA PONERTE A PRUEBA</span></h4>
 
-    <p>Ser Amigo del Institut Guttmann es ayudarnos a construir una sociedad más justa y participativa y a desarrollar
-      proyectos sociales y de investigación.<br>
+    <p>Aqui podras practicar todo lo que quieras para entender como funcionan
+      nuestros juegos .<br>
       &nbsp;</p>
 
     <p>
-      <button  (click)="cargarJuego(2)" type="button"
-      class="btn btn-lg btn-primary boton mx-auto d-block">Tutorial</button>  </div>
+      <button (click)="cargarJuego(2)" type="button"
+        class="btn btn-lg btn-primary boton mx-auto d-block btn-0">TRIAL</button>
+  </div>
 
-   <div class="col-6">
-    <button class="btn btn-outline-light " data-bs-toggle="modal" data-bs-target="#videoModal">
-      <video src="../../../assets/img/tutorial1.mp4" autoplay loop class=" img-fluid mx-0 d-block rounded-3"></video>
-    </button>
-  </div> 
- 
+  <div class="col-6 tutorial" style="background-position: right;">
+    <div>
+      <button class="btn btn-outline-light " data-bs-toggle="modal" data-bs-target="#videoModal">
+        <video src="../../../assets/img/tutorial1.mp4" autoplay loop class=" img-fluid mx-0 d-block rounded-3"></video>
+      </button>
+    </div>
+  </div>
 
-   <div class="col-6">
-    <button class="btn btn-outline-light " data-bs-toggle="modal" data-bs-target="#videoModal">
-      <video src="../../../assets/img/tutorial1.mp4" autoplay loop class=" img-fluid mx-0 d-block rounded-3"></video>
-    </button>
-  </div> 
-  <div class="col-6 clase">
-    <h4><span style="color:#006fc1;">Amigos del Institut Guttmann</span></h4>
+  <div class="col-lg-12 mb-5">
+    <hr class="style">
+  </div>
 
-    <p>Ser Amigo del Institut Guttmann es ayudarnos a construir una sociedad más justa y participativa y a desarrollar
-      proyectos sociales y de investigación.<br>
+
+  <div class="col-6 tutorial" style="background-position: left;">
+    <div>
+    
+        <img src="https://www.guttmann.com/sites/default/files/2021-11/slider_home_fundacion.jpg" class=" img-fluid mx-0 d-block rounded-3">
+     
+    </div>
+  </div>
+  <div class="col-6 clase" style="text-transform: uppercase;">
+    <h4><span style="color:#006fc1;">{{game.name}}</span></h4>
+
+    <p style="font: upercase;">Ya estas listo Para ponerte a prueba ? <br>
       &nbsp;</p>
+      
 
     <p>
-      <button  (click)="cargarJuego(1)" type="button"
-      class="btn btn-lg btn-primary boton mx-auto d-block">Juego</button>  </div>
+      <button (click)="cargarJuego(1)" type="button" class="btn btn-lg btn-primary boton mx-auto d-block">JUEGA YA</button>
+  </div>
 </div>
 <!-- 
 <div class="container-fluid">
@@ -79,6 +88,6 @@
         class="img-fluid d-block rounded-1 m-0 border border-dark"></video>
     </div>
   </div>
-</div> 
+</div>
 
 <app-footer></app-footer>

@@ -6,6 +6,7 @@ import { CrudService } from 'src/app/services/crud.service';
 import { Router } from '@angular/router';
 import { MessageServiceService } from 'src/app/services/message-service.service';
 import { Sesion } from '../../services/sesion';
+import { LoaderService } from 'src/app/loader/loader.service';
 
 declare var $: any;
 
@@ -28,6 +29,7 @@ export class HeaderComponent implements OnInit {
     public crudService: CrudService,
     private router: Router,
     private msgService: MessageServiceService,
+    public  loaderService:LoaderService
 
   ) {
     this.userForm = this.formulario.group({
@@ -100,7 +102,6 @@ export class HeaderComponent implements OnInit {
         //GUARDAMOS EL TOKEN EN LOCAL CON EL SERVICIO DE CRUD
         this.crudService.saveToken(this.jsonObject.token);
 
-        //window.location.reload();
 
         //VARIABLE loggedIn = true
         this.crudService.loggedIn.next(true);

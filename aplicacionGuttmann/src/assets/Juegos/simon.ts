@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { CrudService } from 'src/app/services/crud.service';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { serieLuces } from 'src/app/services/serieLuces';
@@ -293,6 +294,7 @@ export class Simon {
         this.transition.classList.add('Error');
         this.transition.innerHTML = 'FALLASTE';
         if (this.fallos == 4) {
+
           console.log(this.round);
 
           let objetoResultadosLuces = new resultadosLuces();
@@ -307,6 +309,7 @@ export class Simon {
           });
 
           this.router.navigateByUrl('game/simon');
+
 
           // var divNota = document.createElement('button');
 
