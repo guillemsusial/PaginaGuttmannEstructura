@@ -1,1 +1,93 @@
-<p>tutorial works!</p>
+<app-header></app-header>
+
+
+<div class="container-fluid row fondo" >
+  <div class="col-6 clase " >
+    <h1><span style="color:#006fc1;" >INTENTA PONERTE A PRUEBA</span></h1>
+
+    <p >Aqui podras practicar todo lo que quieras para entender como funcionan
+      nuestros juegos .<br>
+      &nbsp;</p>
+
+    <p>
+      <button (click)="cargarJuego(2)" type="button"
+        class="btn btn-lg btn-primary boton mx-auto d-block btn-0">TRIAL</button>
+  </div>
+
+  <div class="col-6 tutorial" style="background-position: right;">
+    <div>
+      <button class="btn btn-outline-light " data-bs-toggle="modal" data-bs-target="#videoModal">
+        <video src="../../../assets/img/tutorial1.mp4" autoplay loop class=" img-fluid mx-0 d-block rounded-3"></video>
+      </button>
+    </div>
+  </div>
+
+  <div class="col-lg-12 mb-5">
+    <hr class="style">
+  </div>
+
+
+  <div class="col-6 tutorial" style="background-position: left;">
+    <div>
+    
+        <img src="https://www.guttmann.com/sites/default/files/2021-11/slider_home_fundacion.jpg" class=" img-fluid mx-0 d-block rounded-3">
+     
+    </div>
+  </div>
+  <div class="col-6 clase" style="text-transform: uppercase;">
+    <h1><span style="color:#006fc1;">{{game.name}}</span></h1>
+
+    <p style="font: upercase;">Ya estas listo Para ponerte a prueba ? <br>
+      &nbsp;</p>
+      
+
+    <p>
+      <button (click)="cargarJuego(1)" type="button" class="btn btn-lg btn-primary boton mx-auto d-block">JUEGA YA</button>
+  </div>
+</div>
+<!-- 
+<div class="container-fluid">
+  <div class="row mt-5 mb-3">
+    <div class="col-lg-1 col-md-1 d-sm-none d-md-block"></div>
+     <div class="col-lg-5 col-md-5 mr-4 col-sm-12">
+      <button class="btn btn-outline-light " data-bs-toggle="modal" data-bs-target="#videoModal">
+        <video src="../../../assets/img/tutorial1.mp4" autoplay loop class=" img-fluid mx-0 d-block rounded-3"></video>
+      </button>
+      <div class="col-lg-6 col-md-12 d-block d-sm-block d-md-none  my-5">
+        <button id="tutorial" type="button" class="btn btn-lg btn-primary mx-auto d-block" data-bs-toggle="modal"
+          data-bs-target="#videoModal">Tutorial</button>
+      </div>
+    </div> 
+    <div class="col-lg-5 col-md-5 ml-4 col-sm-12">
+      
+       <img src="../../../assets/img/simon.png" class=" img-fluid mx-0 d-block rounded-3"> 
+    </div>
+    <div class="col-lg-1 col-md-1 d-sm-none d-md-block"></div>
+  </div>
+  <div class="row mb-5 mt-0 ">
+    <div class="col-lg-1 col-md-1 d-sm-none d-md-block"></div>
+    <div class="col-lg-5 col-md-5">
+      <button id="juego" (click)="cargarJuego(2)" type="button"
+        class="btn btn-lg btn-primary mx-auto d-block">Tutorial</button>
+    </div>
+
+    <div class="col-lg-5 col-md-5 col-sm-12">
+      <button id="juego" (click)="cargarJuego(1)" type="button"
+        class="btn btn-lg btn-primary mx-auto d-block">Juego</button>
+    </div>
+    <div class="col-lg-1 col-md-1 d-sm-none d-md-block"></div>
+  </div>
+</div> -->
+
+<!-- POPUP VIDEO TUTORIAL -->
+<div class="modal fade bd-video-modal-xl " id="videoModal" tabindex="-1" role="dialog" aria-labelledby="videoModalTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered " role="document">
+    <div class="modal-content ">
+      <video src="../../../assets/img/tutorial1.mp4" autoplay loop
+        class="img-fluid d-block rounded-1 m-0 border border-dark"></video>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

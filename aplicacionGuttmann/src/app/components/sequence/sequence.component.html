@@ -1,0 +1,76 @@
+<div id="startTransition" class="yourTurn">
+  <button id="startButton" Style="display: none;">Start</button>
+</div>
+
+
+
+<div id="top"></div>
+<div id="game">
+  <div id="sequence">
+
+    <div class="card p"  id="0"></div>
+    <div class="card p" id="1"></div>
+    <div class="card p" id="2"></div>
+    <div class="card p" id="3"></div>
+    <div class="card p" id="4"></div>
+    <div class="card p" id="5"></div>
+    <div class="card p" id="6"></div>
+    <div class="card p" id="7"></div>
+    <div class="card p" id="8"></div>
+  </div>
+  <div id="answers">
+    <div class="card r" id="answer9"></div>
+    <div class="card r" id="answer10"></div>
+    <div class="card r" id="answer11"></div>
+    <div class="card r" id="answer12"></div>
+  </div>
+  <div id="round" class="">1/6</div>
+</div>
+
+
+
+
+
+<!--Popup Start -->
+
+<div class="modal fade" id="startModalToggle" aria-hidden="true" aria-labelledby="startModalToggleLabel" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header ">
+        <h5 class="modal-title " id="startModalToggleLabel">Indica la figura que falta</h5>
+
+      </div>
+      <div class="modal-body">
+        A continuacion apareceran una serie de figuras con un patron, deberas indicar cual es la figura faltante
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-success" aria-label="Close" data-bs-toggle="modal"
+          data-bs-dismiss="modal">Empezar</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="finishModal" aria-hidden="true" aria-labelledby="finishModalLabel" tabindex="0">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <div class="modal-body  ">
+        <h1 class="modal-title text-center " id="finishModalToggleLabel">Final</h1><br>
+
+
+            <h3 class="modal-title text-center " id="tAcertsN">Aciertos: </h3>
+
+
+
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-success text-center"  routerLink="/home" aria-label="Close" data-bs-toggle="modal" data-bs-dismiss="modal">HOME</button>
+
+
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap');
+
+#top{
+  height: 4vw;
+  width: 100%;
+  background-color: white;
+}
+#game {
+  width: 90vw;
+  height: 45vw;
+  padding:1vw;
+  justify-content: start;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin: 0 auto;
+  border-radius: 10pt;
+  background-color: rgb(37, 159, 163);
+  display: flex;
+}
+
+.bad{
+  border-color:red; background-color: rgba(177, 68, 68, 0.801);
+}
+.good{
+  border-color:green;
+}
+
+.card {
+  font-size: 1.3vw;
+  border-radius: 0.8vw;
+  width: 13vw;
+  height: 10vw;
+  background-color: rgb(247, 247, 247);
+  position: relative;
+  display: flex;
+  min-width: 0;
+  word-wrap: break-word;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+#answers>.card {
+  font-size: 1vw;
+  width: 10vw;
+  height: 8vw;
+}
+
+.r:hover {
+  background-color: rgba(103, 252, 207, 0.459);
+  border-width: 2px;
+  border-color: black;
+  box-shadow: 1px 2px #072f3554;
+
+
+
+}
+
+#sequence {
+  border-radius: 1vw;
+  margin:1vh;
+  background-color: rgba(30, 30, 140, 0.432);
+  display: grid;
+  padding: 2vw;
+  grid-template-columns: repeat(3, auto);
+  grid-gap: 2vw;
+}
+
+#answers {
+  border-radius: 1vw;
+  background-color: rgba(90, 180, 160, 0.832);
+  height: 22vw;
+  display: grid;
+  padding: 2vw;
+  margin-left: 4vw;
+  margin-top: 10vw;
+  grid-template-columns: repeat(2, auto);
+  grid-gap: 2vw;
+}
+
+#round {
+
+  padding-top: 36vw;
+  margin-left: 2vw;
+  font-size: 4vw;
+  font-family: 'Gloria Hallelujah', cursive;
+  color: rgb(10, 70, 52);
+}
+
+.Active {
+  background-color: green !important;
+}
+
+.buttonContainer {
+  display: inline-grid;
+  grid-gap: 10px;
+  grid-template-columns: auto auto;
+  transform: rotate(45deg);
+}
+
+/*.card:hover{
+    background-color:rgba(5, 233, 5, 0.301);
+}*/
+
+
+
+.card:active,
+.active {
+  filter: brightness(125%);
+}
+
+
+#startButton {
+  width: 75px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  font-family: 'Merriweather', serif;
+  cursor: pointer;
+  border-radius: 5px;
+  color: #fff;
+  background-color: #587792;
+  padding: 5px;
+}
+
+#startButton:disabled {
+  background-color: #eee;
+}
+
+.title {
+  width: min-content;
+}
+
+.winner {
+  animation: spin 1s ease-in-out;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(180deg)
+  }
+}
+
+.yourTurn {
+  font-size: 15vw;
+  font-family: 'Courier New', Courier, monospace;
+  color: rgb(14, 66, 59);
+  position: fixed;
+  top: 0px;
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  display: none;
+  justify-content: center;
+}
+
+.Active-1 {
+  display: flex;
+}
+
+.Error {
+  background-color: rgba(255, 127, 127, 0.596);
+  display: grid;
+}
+
+.Guess {
+  background-color: rgba(127, 255, 212, 0.596);
+}
+
+.Warning {
+  background-color: rgba(255, 189, 127, 0.596);
+}
+
+.tryButton {
+  border: none;
+  font-family: 'Merriweather', serif;
+  cursor: pointer;
+  border-radius: 5px;
+  color: #fff;
+  background-color: #587792;
+  padding: 5px;
+}
+
+#startTransition{
+  font-size: 5vw;
+  text-align: center;
+
+  font-family: 'Courier New', Courier, monospace;
+  color: rgb(92, 0, 76);
+  position:fixed;
+  top:20vw;
+  left:38vw;
+  align-items: center;
+  display: none;
+  justify-content: center;
+}

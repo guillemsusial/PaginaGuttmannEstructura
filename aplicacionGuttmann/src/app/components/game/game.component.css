@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap');
+
+#game{
+    width: 90vw;
+    height:100%;
+    justify-content: center;   
+    margin: 0 auto;
+    border-radius:10pt;
+    background-color:rgb(235, 255, 252);
+    display: grid;
+   
+    padding:4vw ;
+    grid-template-columns:  repeat(auto-fit,minmax(100px,25vw)) ;  
+    grid-gap: 2vw;
+}
+.card{
+    width:20vw;
+    height:7vw;
+    margin: auto;
+    background-color:rgb(247, 247, 247);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    
+
+}
+
+.card:hover {
+  background-color: rgba(103, 252, 207, 0.459);
+}
+
+
+  
+
+@media only screen and (min-width: 1440px)  {
+    #game{
+        grid-template-columns:  repeat(4, auto) ;  
+    }
+    
+}
+#round{ 
+    text-align:end;
+    padding: 1vw;
+    padding-right: 2vw;
+    font-size: 3vw;
+    font-family:'Gloria Hallelujah', cursive ;
+    color:rgb(10, 70, 52);
+
+}
+
+.Active {
+  background-color: green !important;
+}
+
+.buttonContainer {
+  display: inline-grid;
+  grid-gap: 10px;
+  grid-template-columns: auto auto;
+  transform: rotate(45deg);
+}
+
+/*.card:hover{
+    background-color:rgba(5, 233, 5, 0.301);
+}*/
+
+
+
+.card:active,
+.active {
+  filter: brightness(125%);
+}
+
+
+#startButton {
+  width: 75px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  font-family: 'Merriweather', serif;
+  cursor: pointer;
+  border-radius: 5px;
+  color: #fff;
+  background-color: #587792;
+  padding: 5px;
+}
+
+#startButton:disabled {
+  background-color: #eee;
+}
+
+.title {
+  width: min-content;
+}
+
+.winner {
+
+    animation: spin 1s ease-in-out;
+}
+
+@keyframes spin { 
+    100% { transform:rotate(180deg) } }
+
+.yourTurn{
+    font-size: 5vw;
+    text-align: center;
+    
+    font-family: 'Courier New', Courier, monospace;
+    color: rgb(92, 0, 76);   
+    position:fixed;    
+    top:0;    
+    width:100vw;
+    height: 50vw;
+    align-items: center;
+    display: none;     
+    justify-content: center;   
+          
+}
+@media only screen and (max-width: 1440px)  {
+    .yourTurn{
+        height: 65vw;    
+    }
+    
+}
+@media only screen and (max-width: 410px)  {
+    .yourTurn{
+        height: 85vw;    
+    }
+    
+}
+@media only screen and (max-width: 250px)  {
+    .yourTurn{
+        height: 160vw;    
+    }
+    
+}
+.Active-1{
+    display: flex;
+}
+
+.Error{
+    background-color: rgba(255, 127, 127, 0);
+    display: grid;
+}
+.Guess{
+    background-color: rgba(255, 127, 127, 0);
+}
+.Warning{
+    background-color: rgba(255, 127, 127, 0);
+}
+.tryButton{
+    border: none;
+    font-size:1vw;
+    font-family: 'Merriweather', serif;
+    cursor: pointer;
+    border-radius: 5px;    
+    color: #fff;
+    background-color: #587792;
+    padding: 5px;
+}

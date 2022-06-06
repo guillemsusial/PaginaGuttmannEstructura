@@ -1,23 +1,94 @@
-<div class="container-fluid header border rounded-bottom m-0">
-   
-    <div class="content header">
-        <br>
-        <div class="row">
-            <div class="col-1 col-sm-1">
-                <br>
-            </div>
-            <div class="col-9 col-sm-9">
-                <img src="/aplicacionGuttmann/src/assets/img/logo.svg" alt="" srcset="">
-            </div>
-            <div class="col-2 col-sm-2">
-                <div #user>
-                    <img src="..." class="rounded-circle" alt="" srcset="">
-                </div>
-            </div>
-        </div>
-       
-        <br>
-    </div>
+<header id="header" class=" header p-5 text-white">
+  
+  <div class="container">
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+      <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+        <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+          <use xlink:href="#bootstrap"></use>
+        </svg>
+      </a>
 
+      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+        <li><a href="#">
+            <img class="format " src="../../../assets/img/logo.svg" alt="" srcset=""></a>
+        </li>
+      </ul>
+
+      <!-- PERFIL USUARIO LOGGED-->
+      <!--CUANDO EL USER ESTÁ LOGUEADO SE MUESTRA EL MENÚ DE USUARIO-->
+      <div class="col-2 col-sm-2 pt-4 " *ngIf="crudService.isLogged | async; else loggedOut">
+        <div class="dropdown text-center">
+          <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png" alt="mdo" width="64" height="64" class="rounded-circle">
+          </a>
+          <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+            <li><a class="dropdown-item" routerLink="/user">Trayectoria</a></li>
+            <!-- <li><a class="dropdown-item" href="#">Ajustes</a></li>
+            <li><a class="dropdown-item" href="#">Profile</a></li> -->
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <!--CUANDO LE DAS CLICK AL BOTÓN DE LOGOUT LLAMAS A UNA FUNCIÓN QUE ACABA LA SESIÓN isLogged=false -->
+            <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#logOutModal" (click)="logOut1()">Log out</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- LOGIN SIGN-->
+      <!--USER NO LOGGED MENU LOGIN/REGISTER-->
+      <ng-template #loggedOut>
+        <div class="text-end">
+          <button id="login" type="button" class="btn btn-outline-light me-2" data-bs-toggle="modal"
+            data-bs-target="#loginModal">
+            Login
+          </button>
+          <button type="button" class="btn btn-primary" routerLink="/register">Sign-up</button>
+        </div>
+      </ng-template>
+    </div>
+    <!--modal Login-->
+    <div class="modal " id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content content form_wrapper">
+          <div class="modal-header title_container pb-4 pt-2 col-12 col-sm-12">
+            <img class="format guttmann imag-fluid" src="../../../assets/img/logo.svg">
+          </div>
+          <div class="modal-body">
+            <form [formGroup]="userForm" (ngSubmit)="enviarDatosLogin()">
+              <div class="text-danger" *ngIf="getLoginFailed">
+                  Usuario o contraseña incorrectos
+              </div>
+              <div class="mb-3 form-group">
+                <label style="color: black">Email address</label>
+                <input formControlName="Email" name="email" type="email" class="form-control" id="id_email">
+              </div>
+              <div class="mb-3 form-group">
+                <label for="id_Password" class="form-label" style="color: black">Password</label>
+                <input formControlName="Password" name="password" type="password" class="form-control" id="id_Password">
+              </div>
+              <div class="mb-3 form-group">
+                <label for="id_Identificador" class="form-label" style="color: black">Identificador</label>
+                <input formControlName="Identificador" name="Identificador" type="text" class="form-control" id="id_Identificador">
+              </div>
+              <button type="submit" class=" mt-3 btn btn-iblue w-100">Iniciar Sesion</button>
+            </form>
+            <button type="button" class="mt-3 btn btn-secondary w-100" data-bs-dismiss="modal" aria-label="Close"
+              routerLink="/register">Sign-up</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--fin modal Login-->
+   
+  </div>
+  
+  
+ 
+  <!--fin modal LogOut-->
+</header>
+<div *ngIf="loaderService.isLoading | async" class="loader-container"> 
+  <mat-progress-bar mode="query"></mat-progress-bar>
 </div>
-<hr>
+
+

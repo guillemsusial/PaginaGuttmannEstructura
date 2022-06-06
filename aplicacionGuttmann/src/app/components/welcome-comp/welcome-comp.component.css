@@ -1,32 +1,150 @@
-.header {
-  background-color: var(--header-color);
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300&display=swap');
+
+*{
+  font-family: Inter, Arial, Verdana, sans-serif!important;
+}
+#header {
+  background-color: #8CC9D1;
 }
 
 .usuario {
+
   color: #3D55AD;
 }
 
 .separador {
   color: #13B1BB;
 }
-
-.col{
-    display: flex;    
+.divTextos{
+  justify-content: center;
+  margin: auto;
+  align-items: center;
+  
 }
 
-.imagenes{
-    background-color: #259BA3;
-    margin: auto;
-    border-radius: 10px;   
-    width: 100%;
-    height: 70%;
-    max-width: 80%;
-    animation-delay: 0s;
-    animation-direction: normal;
-    animation-duration: 2400ms;
-    animation-iteration-count: 1;
+.tituloImg{
+  
+  letter-spacing: -0.64px;
+  font-weight: bold;
+  font-size: 40px;
 }
 
-.enlace{
-    color: #025668;
+
+p.textos>a:hover{
+  background-color: #3d55ad52;
+  border-top-left-radius: 5pt;
+  border-top-right-radius: 5pt;
+}
+
+hr.style {
+  border: 0;
+  height: 2px;
+  width: 75%;
+  background: linear-gradient(90deg, rgba(19,177,187,1) 0%, rgba(9,9,121,1) 50%, rgba(19,177,187,1) 100%);
+  margin: auto;
+}
+
+.flex {
+  display: flex;
+}
+
+.textos {
+  font-size: 18px;
+ 
+  text-align: justify;
+}
+
+.imagenes {
+  margin: auto;
+  border-radius: 10px;
+  width: 100%;
+  height: 70%;
+  max-width: 80%;
+}
+
+.sombra {
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+}
+
+.enlace {
+  color: #025668;
+}
+
+.centrar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/*footer*/
+.foot {
+  background-color: #8cc9d1;
+}
+
+.iconos {
+  max-width: 3%;
+}
+
+/*carousel*/
+.carousel-item {
+  height: 30rem;
+  background: #000000;
+  background-position: center;
+  background-size: cover;
+}
+
+.titulos {
+  color: #ffffff;
+  margin-bottom: 15%;
+  text-shadow: 0 0 20px #000000;
+}
+
+/* Animacion de la flecha */
+#more-arrows {
+  width: 75px;
+  height: 65px;
+}
+
+#more-arrows:hover polygon {
+  fill: #188097;
+  transition: all 0.2s ease-out;
+}
+
+#more-arrows:hover polygon.arrow-bottom {
+  transform: translateY(-18px);
+}
+
+#more-arrows:hover polygon.arrow-top {
+  transform: translateY(18px);
+}
+
+polygon {
+  fill: #025668;
+  transition: all 0.2s ease-out;
+}
+
+polygon.arrow-middle {
+  opacity: 0.75;
+}
+
+polygon.arrow-top {
+  opacity: 0.5;
+}
+
+#categories-1:hover {
+  cursor: pointer;
+}
+
+.reveal {
+  position: relative;
+  transform: translateY(150px);
+  visibility: hidden;
+  opacity: 0;
+  transition: 2s all ease;
+}
+
+.reveal.active {
+  transform: translateY(0);
+  visibility: visible;
+  opacity: 1;
 }
