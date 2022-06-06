@@ -1,9 +1,5 @@
-#foto-user {
-
-  border-radius: 15px;
-  background-image: url("../../../assets/img/DefaultUser.png");
-  background-repeat: no-repeat;
-  background-size: cover;
+.userPage{
+  background-color: #66faff9c;
 }
 
 hr {
@@ -13,21 +9,65 @@ hr {
 .div-user {
 
   background: rgb(255, 0, 0);
-  background: radial-gradient(circle, rgba(255, 0, 0, 1) 0%, rgba(70, 252, 79, 1) 49%, rgba(70, 252, 79, 0) 64%);
+  background: radial-gradient(circle, rgba(255, 0, 0, 1) 0%, rgba(70, 252, 79, 1) 40%, rgba(70, 252, 79, 0) 60%);
 
 }
 
 .informacion{
   margin-left: 150px;
+  
+}
+.user_div{
+display: flex;
+justify-content: center; 
+
+}
+#div_User {
+ 
+  margin: 40px;
+ 
+  
 }
 
-#div_User {
-  background-color: #aae8f3;
-  margin-top: 50px;
-  margin-left: 150px;
-  margin-bottom: 50px;
-  margin-right: 150px;
-  border-radius: 15px;
+@import url(https://fonts.googleapis.com/css?family=Patrick+Hand+SC);
+#user_Info {
+  align-self: center;
+  margin: 0 1rem;
+  transition: all 0.5s ease;
+  color: #313131;
+  border: solid 10px ;
+  /* font-size: calc(1em + 1vw);*/
+  word-wrap:break-word;
+   margin-left: 100px;
+   background-color: #8CC9D1;
+   padding: 25px;
+   padding-left: 30%;
+   width: 60vw;
+   margin-top: 50px;  
+  letter-spacing: 1px;
+  outline: none;
+  box-shadow: 20px 38px 34px -26px rgba(0, 0, 0, 0.2);
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+}
+#user_Info.lined.thick {
+  border: solid 7px #41403e;
+}
+
+#foto_User{
+  padding: 0px;
+  position: absolute;
+  width: 250px ;
+
+}
+@media screen and (max-width: 770px) {
+  #foto_User{
+    visibility: hidden;
+  
+  }
+  #user_Info{
+    padding-left: 5%;
+    margin-left: 0;
+  }
 }
 
 hr.style {
@@ -38,7 +78,7 @@ hr.style {
   margin: auto;
 }
 
-#titulo {
+.titulo {
   text-align: center;
 }
 
@@ -64,3 +104,4 @@ hr.style {
   background-color: #2532a1;
   color: white;
 }
+/*pruebas*/

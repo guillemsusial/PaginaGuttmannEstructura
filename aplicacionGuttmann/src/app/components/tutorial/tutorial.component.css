@@ -7,7 +7,13 @@
 
 }
 
-.video{
+.title_ {
+  font-family: Arial, Verdana, sans-serif;
+  color: #006fc1;
+
+}
+
+.video {
   margin: auto;
   border-radius: 10px;
   width: 100%;
@@ -26,7 +32,7 @@
 
 
 /*POPU VIDEO*/
-.crack{
+.crack {
   position: static;
   width: 100%;
   height: 100vh;
@@ -36,6 +42,17 @@
   background-position: center center;
   background-size: cover;
 }
+
+
+hr.style {
+  border: 0;
+  height: 2px;
+  width: 75%;
+  background: linear-gradient(90deg, rgba(19, 177, 187, 1) 0%, rgba(9, 9, 121, 1) 50%, rgba(19, 177, 187, 1) 100%);
+  margin: auto;
+}
+
+
 #back {
   position: static;
   width: 100%;
@@ -45,6 +62,34 @@
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
+}
+.clase
+{
+  padding: 50px;
+  padding-left: 200px;
+  margin: auto;
+  background: rgb(116,235,213);
+  background: linear-gradient(90deg, rgba(116,235,213,0) 0%, rgba(116,235,213,1) 11%, rgba(124,219,250,1) 89%, rgba(78,106,230,0) 100%);
+  border-top:  solid 1px#57d6bb;
+  border-bottom:  solid 1px#57d6bb;
+}
+.tutorial{
+  background-size: 300px 100px;
+  background-image: url('../../../assets/img/32.jpg');
+  padding: 70px;
+  background-origin: padding-box;
+  background-repeat: no-repeat;
+  
+  background-size: 60% 90% ;
+ 
+ 
+  
+}
+.boton {
+  box-shadow: none;
+  border-radius: 70px;
+  background-color: #ee6500;
+  color: #ffffff;
 }
 
 .guttmann {
@@ -513,4 +558,3 @@
     padding-bottom: 20px;
   }
 }
-

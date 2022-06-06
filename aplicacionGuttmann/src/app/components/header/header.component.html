@@ -19,12 +19,12 @@
         <div class="dropdown text-center">
           <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1"
             data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="https://github.com/mdo.png" alt="mdo" width="64" height="64" class="rounded-circle">
+            <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png" alt="mdo" width="64" height="64" class="rounded-circle">
           </a>
           <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
             <li><a class="dropdown-item" routerLink="/user">Trayectoria</a></li>
-            <li><a class="dropdown-item" href="#">Ajustes</a></li>
-            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <!-- <li><a class="dropdown-item" href="#">Ajustes</a></li>
+            <li><a class="dropdown-item" href="#">Profile</a></li> -->
             <li>
               <hr class="dropdown-divider">
             </li>
@@ -55,6 +55,9 @@
           </div>
           <div class="modal-body">
             <form [formGroup]="userForm" (ngSubmit)="enviarDatosLogin()">
+              <div class="text-danger" *ngIf="getLoginFailed">
+                  Usuario o contraseña incorrectos
+              </div>
               <div class="mb-3 form-group">
                 <label style="color: black">Email address</label>
                 <input formControlName="Email" name="email" type="email" class="form-control" id="id_email">
@@ -91,5 +94,11 @@
       </div>
     </div>
   </div>
+  
+  
+ 
   <!--fin modal LogOut-->
 </header>
+<div *ngIf="loaderService.isLoading | async" class="loader-container"> 
+  <mat-progress-bar mode="query"></mat-progress-bar>
+</div>

@@ -21,7 +21,7 @@ class test {
       
         this.preguntas = ['/','T',' &#92; ','<-','*','->',' &#92;_ ','_|_','_/'];
         this.respuestas = ['/','T',' &#92; ','<-','*','->',' &#92;_ ','_|_','_/'];
-        this.primerArray =['/','_|_',' &#92; ','<-','*','->',' &#92; ','_|_','_/'];
+        this.primerArray =['./','_|_',' &#92; ','<-','*','->',' &#92; ','_|_','_/'];
         this.resultados= [0,0,0,0,0,0];
         //this.order = randomOrder();
         this.buttons = Array.from(sequenceButtons);

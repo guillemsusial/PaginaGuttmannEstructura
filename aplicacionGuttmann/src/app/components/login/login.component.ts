@@ -35,10 +35,9 @@ export class LoginComponent implements OnInit {
   }
 
   enviarDatos(): any {
-    console.log(this.userForm.value.Password);
+    //console.log(this.userForm.value.Password);
+    //console.log(this.userForm.value);
     
-    
-
     this.crudService.AddUser(this.userForm.value).subscribe();
     this.router.navigateByUrl('');
     

@@ -7,6 +7,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
 import { Sesion } from './sesion';
 import { serieLuces } from './serieLuces';
+import { resultadosLuces } from './resultadosLuces';
 
 const helper = new JwtHelperService();
 
@@ -30,11 +31,23 @@ export class CrudService {
 
   //AÑADIR SESION (SE USA EN EL LOGIN)
   AddSesion(sesionData: Sesion): Observable<any> {
+    //console.log(sesionData);
     return this.clientHttp.post(this.APISesion + "?addSesion=1", sesionData, { responseType: 'text' });
   }
 
+  GetSesionId(id: any):Observable<any>{
+    //console.log(id);
+    return this.clientHttp.get(this.APISesion + "?getSessionId="+id, { responseType: 'text' });
+  }
+
   AddSerieLuces(dataLuces: serieLuces): Observable<any> {
+    //console.log(dataLuces);
     return this.clientHttp.post(this.APILuces + "?addRegistroLuces=1", dataLuces, { responseType: 'text' });
+  }
+
+  AddResultadosLuces(resultsLuces: resultadosLuces): Observable<any>{
+    //console.log(resultsLuces);
+    return this.clientHttp.post(this.APILuces + "?addResultadosLuces=1", resultsLuces, { responseType: 'text' });
   }
 
 //--------------------------------FIN APARTADO SESION DE JUEGO--------------------------------
@@ -43,6 +56,7 @@ export class CrudService {
 
   //AÑADIR USER (SE USA EN REGISTER/SIGN-UP)
   AddUser(userData: User): Observable<any> {
+    //console.log(userData);
     return this.clientHttp.post(this.API + "?addUser=1", userData, { responseType: 'text' });
   }
 
@@ -77,13 +91,18 @@ export class CrudService {
     return this.clientHttp.post(this.API + "?login=1", userData, { responseType: 'text' });
   }
 
+//----------------------------------FIN APARTADO USER--------------------------------------
+
+//--------------------------------APARTADO AUTENTIFICACION---------------------------------
+
   //VER SI EL TOKEN SIGUE SIENDO VÁLIDO COMPROBANDO EL TIEMPO DE CADUCIDAD
   checkToken(): void {
     if (localStorage.getItem('token')) {
       const userToken = localStorage.getItem('token') || "[]";
       const isExpired = helper.isTokenExpired(userToken);
-      console.log('isExpired', isExpired);
+      //console.log('isExpired', isExpired);
       if (isExpired == true) {
+        window.alert("Vuelve a iniciar sesión, el token ha expirado.");
         this.logout();
       } else {
         this.loggedIn.next(true);
@@ -124,5 +143,5 @@ export class CrudService {
     return helper.decodeToken(token);
   }
 
-//----------------------------------FIN APARTADO USER--------------------------------------
+
 }

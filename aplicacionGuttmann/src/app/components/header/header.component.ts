@@ -6,6 +6,7 @@ import { CrudService } from 'src/app/services/crud.service';
 import { Router } from '@angular/router';
 import { MessageServiceService } from 'src/app/services/message-service.service';
 import { Sesion } from '../../services/sesion';
+import { LoaderService } from 'src/app/loader/loader.service';
 
 declare var $: any;
 
@@ -18,16 +19,17 @@ declare var $: any;
 
 export class HeaderComponent implements OnInit {
   userForm: FormGroup;
-  logged = false;
+  loginFailed: boolean;
   userid: any;
   jsonObject: any;
-  sessionObject: any;
+  emailID: any;
  
   constructor(
     public formulario: FormBuilder,
     public crudService: CrudService,
     private router: Router,
     private msgService: MessageServiceService,
+    public  loaderService:LoaderService
 
   ) {
     this.userForm = this.formulario.group({
@@ -35,7 +37,7 @@ export class HeaderComponent implements OnInit {
       Password: [''],
       Identificador: ['']
     });
-
+    this.loginFailed = false;
   }
 
   ngOnInit(): void {
@@ -45,6 +47,7 @@ export class HeaderComponent implements OnInit {
     if (confirm == true) {
       this.crudService.logout();
       window.location.reload();
+      this.loginFailed = false;
     } else {
       window.location.reload();
     }
@@ -52,6 +55,10 @@ export class HeaderComponent implements OnInit {
 
   is_touch_enabled() {
     return ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+  }
+
+  get getLoginFailed(): boolean {
+    return this.loginFailed;
   }
 
   //FUNCIÓN PARA ENVIAR LOS DATOS DEL LOGIN
@@ -65,36 +72,45 @@ export class HeaderComponent implements OnInit {
 
       //SI EL MENSAJE ES "success" HACEMOS LO SIGUENTE:
       if (this.jsonObject.message == "success") {
-
         //Añadimos la sesion del usuario
         this.crudService.GetIdByEmail(this.userForm.value["Email"]).subscribe((data) => {
-          this.sessionObject = JSON.parse(data);
+          this.emailID = JSON.parse(data);
 
           //Añadimos nueva sesión a la base de datos
           let sesion = new Sesion();
-            sesion.idUsuario = this.sessionObject.id + "";
-            console.log(this.sessionObject.id);
+
+            sesion.idUsuario = this.emailID.id + "";
+
             if (this.is_touch_enabled()) {
-              sesion.dispositivo = "tactil";
+              sesion.dispositivo ="tactil";
             } else {
-              sesion.dispositivo = "teclado/raton";
+              sesion.dispositivo ="teclado/raton";
             }
             sesion.fecha = new Date().toJSON().slice(0, 19).replace('T', ' ');
             sesion.version = "1.0";
+
             sesion.identificador = this.userForm.value["Identificador"];
-          this.crudService.AddSesion(sesion);
+
+            sesion=JSON.parse(JSON.stringify(sesion));
+
+          this.crudService.AddSesion(sesion).subscribe((data) =>{
+            //console.log(data);
+          });
+
         });
 
         //GUARDAMOS EL TOKEN EN LOCAL CON EL SERVICIO DE CRUD
         this.crudService.saveToken(this.jsonObject.token);
-        window.location.reload();
+
 
         //VARIABLE loggedIn = true
         this.crudService.loggedIn.next(true);
-
+        setTimeout(()=>{window.location.reload();}, 1000);
       } else {
         //SI NO ES CORRECTO EL LOGIN LE DECIMOS QUE LA VARIABLE loggedIn ES false
         this.crudService.loggedIn.next(false);
+        this.loginFailed = true;
+        this.userForm.reset();
       }
     }, (error) => {
       console.log("error Function");
