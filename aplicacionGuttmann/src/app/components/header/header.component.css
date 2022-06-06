@@ -569,3 +569,12 @@
 
 
 /*POOPUP LOGIN 2*/
+
+
+
+/*Loader*/
+.loader-container{
+  position: fixed;
+  width: 100%;
+  z-index:99;
+}

@@ -1,6 +1,10 @@
+import { Router } from '@angular/router';
 import { CrudService } from 'src/app/services/crud.service';
+import { AppRoutingModule } from 'src/app/app-routing.module';
 import { serieLuces } from 'src/app/services/serieLuces';
+import { resultadosLuces } from 'src/app/services/resultadosLuces';
 import { Player } from './player';
+
 export class Simon {
   round: any;
   userPosition: any;
@@ -18,14 +22,17 @@ export class Simon {
   simonButtons: any;
   transition: any;
   coordUser: any;
-  crudService!: CrudService;
+  crudService: CrudService;
+  router: Router;
 
   pruebaUser:any;
   pruebaSecuence:any;
 
   sesionID:any;
 
-  constructor(player: Player) {
+
+  constructor(player: Player,crudservice:CrudService,routing:Router) {
+
     this.roundHTML = document.getElementById('round');
     this.simonButtons = document.getElementsByClassName('card');
     this.transition = document.getElementById('transition');
@@ -42,6 +49,8 @@ export class Simon {
     this.userObject = player.userObject;
     this.pruebaUser = "";
     this.pruebaSecuence = "";
+    this.crudService = crudservice;
+    this.router = routing;
     player.createUserData();
   }
 
@@ -122,7 +131,7 @@ export class Simon {
   // Valida si el boton que toca el usuario corresponde a al valor de la secuencia
 
   validateChosenColor(value: any) {
-      console.log(this.userSequence);
+      //console.log(this.userSequence);
      /*userSconsole.log("POSITION->"+this.userPosition)
       console.log("VALUE->"+value);
       console.log(this.laSequencia_error);*/
@@ -149,8 +158,10 @@ export class Simon {
         objetoLuces.coordenadasUsuario = this.pruebaUser.slice(1);
         objetoLuces=JSON.parse(JSON.stringify(objetoLuces));
 
-        console.log(objetoLuces);
-        //this.crudService.AddSerieLuces(objetoLuces);
+        //console.log(objetoLuces);
+        this.crudService.AddSerieLuces(objetoLuces).subscribe((data) => {
+          //console.log(data);
+        });
         
         //LLAMAR A ALGO
 
@@ -180,8 +191,11 @@ export class Simon {
         objetoLuces.coordenadasUsuario = this.pruebaUser.slice(1);
         objetoLuces=JSON.parse(JSON.stringify(objetoLuces));
 
-        console.log(objetoLuces);
-        //this.crudService.AddSerieLuces(objetoLuces);
+        //console.log(objetoLuces);
+
+        this.crudService.AddSerieLuces(objetoLuces).subscribe((data) => {
+
+        });
 
         this.pruebaUser="";
         this.pruebaSecuence="";
@@ -282,19 +296,33 @@ export class Simon {
         this.transition.classList.add('Error');
         this.transition.innerHTML = 'FALLASTE';
         if (this.fallos == 4) {
-          var divNota = document.createElement('button');
 
-          divNota.setAttribute('id', 'startButton');
+          let objetoResultadosLuces = new resultadosLuces();
+          objetoResultadosLuces.idSesion = this.sesionID;
+          objetoResultadosLuces.trialSuperado = "1";
+          objetoResultadosLuces.rondaMaxima = this.round;
+          objetoResultadosLuces=JSON.parse(JSON.stringify(objetoResultadosLuces));
+          console.log(objetoResultadosLuces);
 
-          divNota.setAttribute(
-            'Style',
-            " width: 50%;margin: auto; height: 100%; font-size: 50%;border: none;font-family: 'Merriweather', serif;cursor: pointer;border-radius: 10pt; color:rgb(92, 0, 76);border:solid rgb(92, 0, 76) ;padding: 5px;"
-          );
-          setTimeout(
-            () => this.transition.appendChild(divNota),
-            /*divNota.innerHTML = "Try Again",*/ this.speed * 0.5
-          );
-          divNota.onclick = () => window.location.reload();
+          this.crudService.AddResultadosLuces(objetoResultadosLuces).subscribe((data) => {
+            console.log(data);
+          });
+
+          this.router.navigateByUrl('game/simon');
+
+          // var divNota = document.createElement('button');
+
+          // divNota.setAttribute('id', 'startButton');
+
+          // divNota.setAttribute(
+          //   'Style',
+          //   " width: 50%;margin: auto; height: 100%; font-size: 50%;border: none;font-family: 'Merriweather', serif;cursor: pointer;border-radius: 10pt; color:rgb(92, 0, 76);border:solid rgb(92, 0, 76) ;padding: 5px;"
+          // );
+          // setTimeout(
+          //   () => this.transition.appendChild(divNota),
+          //   /*divNota.innerHTML = "Try Again",*/ this.speed * 0.5
+          // );
+          // divNota.onclick = () => window.location.reload();
         }
       }
     }
