@@ -6,7 +6,7 @@
   background-color: white;
 }
 #game {
-  width: 85vw;
+  width: 90vw;
   height: 45vw;
   padding:1vw;
   justify-content: start;
@@ -26,6 +26,7 @@
 
 .card {
   font-size: 1.3vw;
+  border-radius: 0.8vw;
   width: 13vw;
   height: 10vw;
   background-color: rgb(247, 247, 247);
@@ -78,7 +79,7 @@
 #round {
 
   padding-top: 36vw;
-  text-align: center;
+  margin-left: 2vw;
   font-size: 4vw;
   font-family: 'Gloria Hallelujah', cursive;
   color: rgb(10, 70, 52);
