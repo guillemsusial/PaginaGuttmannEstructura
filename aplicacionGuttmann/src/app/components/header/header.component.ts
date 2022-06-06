@@ -105,8 +105,7 @@ export class HeaderComponent implements OnInit {
 
         //VARIABLE loggedIn = true
         this.crudService.loggedIn.next(true);
-        //window.location.reload();
-
+        setTimeout(()=>{window.location.reload();}, 1000);
       } else {
         //SI NO ES CORRECTO EL LOGIN LE DECIMOS QUE LA VARIABLE loggedIn ES false
         this.crudService.loggedIn.next(false);
