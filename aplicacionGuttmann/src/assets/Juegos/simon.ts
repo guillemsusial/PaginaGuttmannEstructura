@@ -1,9 +1,9 @@
-import { Router } from '@angular/router';
 import { CrudService } from 'src/app/services/crud.service';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { serieLuces } from 'src/app/services/serieLuces';
 import { resultadosLuces } from 'src/app/services/resultadosLuces';
 import { Player } from './player';
+import { Router } from '@angular/router';
 
 export class Simon {
   round: any;
@@ -30,9 +30,7 @@ export class Simon {
 
   sesionID:any;
 
-
-  constructor(player: Player,crudservice:CrudService,routing:Router) {
-
+  constructor(player: Player,crudservice:CrudService,routing: Router) {
     this.roundHTML = document.getElementById('round');
     this.simonButtons = document.getElementsByClassName('card');
     this.transition = document.getElementById('transition');
@@ -148,9 +146,6 @@ export class Simon {
      
       if (0 === this.userPosition) {
 
-        // console.log(this.pruebaUser.slice(1));
-        // console.log((this.pruebaSecuence.slice(1)));
-
         let objetoLuces = new serieLuces();
         objetoLuces.idSesion = this.sesionID;
         objetoLuces.ronda = this.round;
@@ -181,9 +176,6 @@ export class Simon {
       this.laSequencia_error = true;
       if (0 === this.userPosition && this.laSequencia_error) {
 
-        // console.log(this.pruebaUser.slice(1));
-        // console.log((this.pruebaSecuence.slice(1)));
-
         let objetoLuces = new serieLuces();
         objetoLuces.idSesion = this.sesionID;
         objetoLuces.ronda = this.round;
@@ -194,7 +186,7 @@ export class Simon {
         //console.log(objetoLuces);
 
         this.crudService.AddSerieLuces(objetoLuces).subscribe((data) => {
-
+          //console.log(data);
         });
 
         this.pruebaUser="";
@@ -281,13 +273,11 @@ export class Simon {
       if (this.fallos <= 2) {
         this.transition.classList.toggle('Active-1');
         this.transition.classList.toggle('Warning');
-        // this.transition.style.left = '3vw'
         this.transition.innerHTML = 'Memoriza la siguiente secuencia';
         this.updateRound(this.round);
         if (this.fallos == 2) {
           setTimeout(() => this.showSequence(), this.speed * 0.5);
           this.transition.innerHTML = 'Tu Turno';
-          //  this.transition.style.left = '38vw'
         }
 
         /*SI FALLAS POR SEGUNDA VEZ SE ACABARA EL JUEGO */
@@ -296,6 +286,7 @@ export class Simon {
         this.transition.classList.add('Error');
         this.transition.innerHTML = 'FALLASTE';
         if (this.fallos == 4) {
+          console.log(this.round);
 
           let objetoResultadosLuces = new resultadosLuces();
           objetoResultadosLuces.idSesion = this.sesionID;
@@ -309,20 +300,6 @@ export class Simon {
           });
 
           this.router.navigateByUrl('game/simon');
-
-          // var divNota = document.createElement('button');
-
-          // divNota.setAttribute('id', 'startButton');
-
-          // divNota.setAttribute(
-          //   'Style',
-          //   " width: 50%;margin: auto; height: 100%; font-size: 50%;border: none;font-family: 'Merriweather', serif;cursor: pointer;border-radius: 10pt; color:rgb(92, 0, 76);border:solid rgb(92, 0, 76) ;padding: 5px;"
-          // );
-          // setTimeout(
-          //   () => this.transition.appendChild(divNota),
-          //   /*divNota.innerHTML = "Try Again",*/ this.speed * 0.5
-          // );
-          // divNota.onclick = () => window.location.reload();
         }
       }
     }
@@ -347,20 +324,23 @@ export class Simon {
   gameWon() {
     this.blockedButtons = true;
 
+    let objetoResultadosLuces = new resultadosLuces();
+    objetoResultadosLuces.idSesion = this.sesionID;
+    objetoResultadosLuces.trialSuperado = "1";
+    objetoResultadosLuces.rondaMaxima = this.round;
+    objetoResultadosLuces=JSON.parse(JSON.stringify(objetoResultadosLuces));
+    console.log(objetoResultadosLuces);
+
+    this.crudService.AddResultadosLuces(objetoResultadosLuces).subscribe((data) => {
+      console.log(data);
+    });
+
     this.transition.classList.toggle('Active-1');
     this.transition.classList.toggle('Warning');
     this.transition.innerHTML = '🏆';
-  }
 
-  /* $('#send').click( function() {
-       alert('Enviando!');
-           $.ajax(
-                   {
-                       url: 'get_var.php?var=<?php echo $var; ?>',
-                       success: function( data ) {
-                           alert( 'El servidor devolvio "' + data + '"' );
-                       }
-                   }
-               )
-           }*/
+    setTimeout(() => {
+      this.router.navigateByUrl('game/simon');
+    }, 2000);
+  }
 }
