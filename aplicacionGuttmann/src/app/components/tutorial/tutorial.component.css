@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300&display=swap');
+
+*{
+  font-family: Inter, Arial, Verdana, sans-serif!important;
+}
+
+
 .imagenes {
   margin: auto;
 
@@ -5,6 +12,10 @@
   height: 70%;
   max-width: 80%;
 
+}
+
+p{
+  font-size: 20px;
 }
 
 .title_ {
