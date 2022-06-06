@@ -59,8 +59,7 @@ export class Simon {
     this.roundHTML.innerHTML = '0/' + this.totalRounds;
     this.countDown();
   }
-
-  
+  /*Obtener id de la sesion para BBDD*/
   getSesionId(sesionID:any){
     this.sesionID = sesionID;
   }
@@ -94,8 +93,7 @@ export class Simon {
     this.userPosition = 1;
 
     this.buttons.forEach((element: any, i: any) => {
-      element.onclick = () => this.buttonClick(i);
-      //this.crudService.AddSerieLuces(this.userObject);
+      element.onclick = () => this.buttonClick(i);      
     });
 
     this.showSequence();
@@ -128,7 +126,6 @@ export class Simon {
   }
 
   // Valida si el boton que toca el usuario corresponde a al valor de la secuencia
-
   validateChosenColor(value: any) {
       //console.log(this.userSequence);
      /*userSconsole.log("POSITION->"+this.userPosition)
@@ -161,8 +158,6 @@ export class Simon {
             //console.log(data);
           });
         }
-        
-        //LLAMAR A ALGO
 
         this.pruebaUser="";
         this.pruebaSecuence="";
@@ -258,7 +253,6 @@ export class Simon {
   }
 
   // Pinta los botones para cuando se está mostrando la secuencia
-
   toggleButtonStyle(button: any) {
     //console.log(button);
     button.classList.toggle('Active');
