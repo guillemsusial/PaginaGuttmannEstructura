@@ -27,6 +27,7 @@ export class Player{
         this.display = {
           round
         }
+        this.trial=trial;
   
       }
   

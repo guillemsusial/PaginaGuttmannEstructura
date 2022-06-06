@@ -22,7 +22,7 @@ export class Simon {
   simonButtons: any;
   transition: any;
   coordUser: any;
-  trial:boolean;
+  trial:any;
   crudService: CrudService;
   router: Router;
 
@@ -58,6 +58,7 @@ export class Simon {
   init() {
     this.roundHTML.innerHTML = '0/' + this.totalRounds;
     this.countDown();
+    console.log(this.trial)
   }
   /*Obtener id de la sesion para BBDD*/
   getSesionId(sesionID:any){
