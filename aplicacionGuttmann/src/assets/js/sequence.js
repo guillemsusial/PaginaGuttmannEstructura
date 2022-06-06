@@ -119,7 +119,7 @@ class test {
          if(element.id==i && i!=Incognito && element.id!='answer'+i){
            element.classList.remove('invisible');
            element.classList.add('visible');
-           element.innerHTML=this.preguntas[i];
+           //element.innerHTML=this.preguntas[i];
            //element.style.backgroundImage="url('./../img/sequencias/1a/F_1_1_1a.png')";
           element.style.backgroundImage="url("+rutafotoCarp+carpetaFoto[libFoto]+"/F_1_"+i+"_"+carpetaFoto[libFoto]+".png";+")";
           element.style.backgroundRepeat="no-repeat";
@@ -161,7 +161,7 @@ class test {
                element.style.backgroundSize="98% 98%";
                element.style.backgroundPosition="center center";
                 //sacamos la respuesta por html
-               element.innerHTML = this.preguntas[y]+' '+y;
+               //element.innerHTML = this.preguntas[y]+' '+y;
                
              z++;
          };
