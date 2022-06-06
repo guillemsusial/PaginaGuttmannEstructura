@@ -1,12 +1,32 @@
-import { Component, OnInit } from '@angular/core';
-import { CargarScriptsService } from 'src/app/cargar-scripts.service';
-import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
-
-import { CrudService } from 'src/app/services/crud.service';
-import { Router } from '@angular/router';
-import { MessageServiceService } from 'src/app/services/message-service.service';
-import { Sesion } from '../../services/sesion';
-import { LoaderService } from 'src/app/loader/loader.service';
+import {
+  Component,
+  OnInit
+} from '@angular/core';
+import {
+  CargarScriptsService
+} from 'src/app/cargar-scripts.service';
+import {
+  FormControl,
+  FormGroup,
+  Validators,
+  FormBuilder
+} from '@angular/forms';
+import swal from 'sweetalert2';
+import {
+  CrudService
+} from 'src/app/services/crud.service';
+import {
+  Router
+} from '@angular/router';
+import {
+  MessageServiceService
+} from 'src/app/services/message-service.service';
+import {
+  Sesion
+} from '../../services/sesion';
+import {
+  LoaderService
+} from 'src/app/loader/loader.service';
 
 declare var $: any;
 
@@ -23,13 +43,13 @@ export class HeaderComponent implements OnInit {
   userid: any;
   jsonObject: any;
   emailID: any;
- 
+
   constructor(
     public formulario: FormBuilder,
     public crudService: CrudService,
     private router: Router,
     private msgService: MessageServiceService,
-    public  loaderService:LoaderService
+    public loaderService: LoaderService
 
   ) {
     this.userForm = this.formulario.group({
@@ -40,16 +60,13 @@ export class HeaderComponent implements OnInit {
     this.loginFailed = false;
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   logOut(confirm: boolean): void {
     if (confirm == true) {
       this.crudService.logout();
-      window.location.reload();
+      this.router.navigateByUrl('/home');
       this.loginFailed = false;
-    } else {
-      window.location.reload();
     }
   }
 
@@ -79,21 +96,21 @@ export class HeaderComponent implements OnInit {
           //Añadimos nueva sesión a la base de datos
           let sesion = new Sesion();
 
-            sesion.idUsuario = this.emailID.id + "";
+          sesion.idUsuario = this.emailID.id + "";
 
-            if (this.is_touch_enabled()) {
-              sesion.dispositivo ="tactil";
-            } else {
-              sesion.dispositivo ="teclado/raton";
-            }
-            sesion.fecha = new Date().toJSON().slice(0, 19).replace('T', ' ');
-            sesion.version = "1.0";
+          if (this.is_touch_enabled()) {
+            sesion.dispositivo = "tactil";
+          } else {
+            sesion.dispositivo = "teclado/raton";
+          }
+          sesion.fecha = new Date().toJSON().slice(0, 19).replace('T', ' ');
+          sesion.version = "1.0";
 
-            sesion.identificador = this.userForm.value["Identificador"];
+          sesion.identificador = this.userForm.value["Identificador"];
 
-            sesion=JSON.parse(JSON.stringify(sesion));
+          sesion = JSON.parse(JSON.stringify(sesion));
 
-          this.crudService.AddSesion(sesion).subscribe((data) =>{
+          this.crudService.AddSesion(sesion).subscribe((data) => {
             //console.log(data);
           });
 
@@ -105,7 +122,9 @@ export class HeaderComponent implements OnInit {
 
         //VARIABLE loggedIn = true
         this.crudService.loggedIn.next(true);
-        setTimeout(()=>{window.location.reload();}, 1000);
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
       } else {
         //SI NO ES CORRECTO EL LOGIN LE DECIMOS QUE LA VARIABLE loggedIn ES false
         this.crudService.loggedIn.next(false);
@@ -116,7 +135,35 @@ export class HeaderComponent implements OnInit {
       console.log("error Function");
     });
   }
+
+
+  logOut1() {
+
+    const swalWithBootstrapButtons = swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false
+    })
+
+    swalWithBootstrapButtons.fire({
+      title: 'Quieres Salir?',     
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Si,salir',
+      cancelButtonText: 'No, quedarme',
+      reverseButtons: false
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.logOut(true);
+      } else {
+        result.dismiss === swal.DismissReason.cancel
+
+
+      }
+    })
+
+  }
+
 }
-
-
-
