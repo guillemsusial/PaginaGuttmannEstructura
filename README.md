@@ -28,10 +28,10 @@
 
        ![](https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2021/07/2-Multi-root-workspace-untitled-ESP32-ESP8266-VS-Code.png?resize=750%2C288&quality=100&strip=all&ssl=1)
 
-  3.Termino "ng" no se reconoce...
-   * Para resolver este error deberemos en las variables de entorno de Windowns
-   * Entrar en variables locales
-   * Entramos en PATH
-   * Y añadir:
+  3.Termino "ng" no se reconoce...  
+     ![](/readme_assets/41065b1d-3939-4f5d-b986-ff6c600f49ea.jpg)
+     
+   * Para resolver este error deberemos en las variables de entorno de Windowns     
+   * Entrar en variables locales -> Entramos en PATH -> Y añadir:
    
      >C:\Users\%usuario%\AppData\Roaming\npm
