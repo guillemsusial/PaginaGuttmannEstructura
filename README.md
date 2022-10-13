@@ -16,6 +16,11 @@
   ### Instalar depencias del proyecto
   > npm install
   
+## Implementación del Proyecto
+  ### Instalacion y Descarga
+  [1.Instalar XAMP](https://downloadsapachefriends.global.ssl.fastly.net/8.1.10/xampp-windows-x64-8.1.10-0-VS16-installer.exe?from_af=true)
+  2.
+  
 ## Posibles Errores
   1. **Scripts** 
   
@@ -42,3 +47,6 @@
    * Entrar en variables locales -> Entramos en PATH -> Y añadir:
    
      >C:\Users\%usuario%\AppData\Roaming\npm
+     
+
+  
