@@ -1,8 +1,16 @@
 # Instalación y ejecución del proyecto
 ## Programas necesarios
-1. Editor de codigo (VisualStudioCode)
-2. Node.js
-## Instalación
+  [1.Instalar XAMP](https://downloadsapachefriends.global.ssl.fastly.net/8.1.10/xampp-windows-x64-8.1.10-0-VS16-installer.exe?from_af=true)
+  
+  [2.Descargar API](https://monlaues-my.sharepoint.com/:u:/g/personal/raulmenmat_monlau_com/EWqRjukdQIZDnjBIqOkFqeYBvE20obmR5A93XrY6fhk1ig?e=IzZ3RE)
+  
+  [3.Descargar SQL](https://monlaues-my.sharepoint.com/:u:/g/personal/raulmenmat_monlau_com/EQ_jIZgR4ddMtLf8dFZpgk4Bi-ssxuxFG7inlHXfHCkPdg?e=TerdrN)
+  
+  [4.Node.js](https://nodejs.org/es/)
+  
+  [5.VisualStudio](https://code.visualstudio.com/)
+
+## Implementación y Descarga
 * Crear una carpeta vacia.
 * Acceder dentro mediante terminal
   ### Git Clone
@@ -15,13 +23,8 @@
 
   ### Instalar depencias del proyecto
   > npm install
-  
-## Implementación del Proyecto
-  ### Instalacion y Descarga
-  [1.Instalar XAMP](https://downloadsapachefriends.global.ssl.fastly.net/8.1.10/xampp-windows-x64-8.1.10-0-VS16-installer.exe?from_af=true)
-  2.
-  
-## Posibles Errores
+    
+## Posibles Errores al inicar el Proyecto
   1. **Scripts** 
   
    ![](/readme_assets/ErrorScriptsPowershell.png)
