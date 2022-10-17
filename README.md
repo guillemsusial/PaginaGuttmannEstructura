@@ -11,6 +11,33 @@
   [5.VisualStudio](https://code.visualstudio.com/)
 
 ## Implementación y Descarga
+  ### Implementacion de API y BBDD
+  ### API
+   1. Accederemos a la ruta de instalacion de XAMP
+   2. Accederemos a la carpeta de "htdocs"
+   3. Extraer contenido de "Api" en "htdocs"->([Descargar API](https://monlaues-my.sharepoint.com/:u:/g/personal/raulmenmat_monlau_com/EWqRjukdQIZDnjBIqOkFqeYBvE20obmR5A93XrY6fhk1ig?e=IzZ3RE))
+> Para que la API funcione, tenemos que cambiar la ruta de los archivos PHP, la iremos a buscar a la carpeta del PROYECTO
+   5. Acceder a la Carpeta del Proyecto Guttmann: "PaginaGuttmannEstructura\aplicacionGuttmann\vendor\autoload.php"
+   6. Copiar ruta absoluta del archivo
+   7. Una vez hemos copiado la ruta volveremos a los archivos dentro de la carpeta API (PASO 3) 
+   8. Entraremos dentro de cada archivo y cambiaremos la ruta Ubicada en la linea 9
+      
+   ![](/readme_assets/codigo.png)   
+  ### BBDD
+  1. Ejecutamos XAMP
+  2. Iniciamos Apache y MySQL  
+  3. Una vez iniciados , seleccionamos "Admin" de MySQL
+  ![](/readme_assets/paneldeXAMP.png)
+  
+  4. Seleccionaremos "Nueva" y crearemos la BBDD con el nombre de "aplicacionguttmann"
+  ![](/readme_assets/CrearBBDD.png)
+  
+  5. vamos a la opcion IMPORTAR (situada en la parte superior de la ventana)
+  ![](/readme_assets/ImportarSQL.png)
+  
+  6. Al final de la ventana encontraremos la Opcion Importar.
+  
+  ### Proyecto
 * Crear una carpeta vacia.
 * Acceder dentro mediante terminal
   ### Git Clone
