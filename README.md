@@ -1,6 +1,6 @@
 # Instalación y ejecución del proyecto
 ## Programas necesarios
-  [1.Instalar XAMP](https://downloadsapachefriends.global.ssl.fastly.net/8.1.10/xampp-windows-x64-8.1.10-0-VS16-installer.exe?from_af=true)
+  [1.Instalar XAMP](https://www.apachefriends.org/es/download.html)
   
   [2.Descargar API](https://monlaues-my.sharepoint.com/:u:/g/personal/raulmenmat_monlau_com/EWqRjukdQIZDnjBIqOkFqeYBvE20obmR5A93XrY6fhk1ig?e=IzZ3RE)
   
