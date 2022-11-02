@@ -1,4 +1,5 @@
 # Instalación y ejecución del proyecto
+## (Hemos creado esta pagina para facilitar algo mas la instalación [AQUI](https://zircon-scarecrow-3aa.notion.site/Angular-afcd744c4a1a48dd9a1b11aa78f62f68))
 ## Programas necesarios
   [1.Instalar XAMP](https://www.apachefriends.org/es/download.html)
   
